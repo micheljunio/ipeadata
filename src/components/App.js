@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import MenuLeft from "./MenuLeft";
 import MenuTop from "./MenuTop";
 import Content from "./Content";
+import Content2 from "./Content2";
 import Footer from "./Footer";
 import GridSerie from "./GridSerie";
 import Datatable from "./Datatable";
@@ -50,7 +51,6 @@ class App extends Component {
           </Col>
           <Col className="content" md={10}>
             <Content url={this.props.match.params} serie1={serie1} serie2={serie2} serie3={serie3} seriemacro={seriemacro} serieregional={serieregional} seriesocial={seriesocial}/>
-            
           </Col>
         </Row>
         <Row className="down-area">

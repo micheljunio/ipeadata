@@ -6,78 +6,64 @@ import Series from "./Series";
 import DireitosUso from "./DireitosUso";
 import { Breadcrumb } from "react-bootstrap";
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import GridSerie from "./GridSerie";
+
 import jsonQuery from 'json-query';
 
-import {moduleGrid, moduleGraph} from "../../script/modulesSync.js"
-        var serie = "erro"
-        var text = "erro";
+let order = 'desc';
+
+  const selectRowProp = {
+    mode: 'checkbox'
+
+  };
 class Content extends Component {
 
-    constructor() {
-        super();
-        this.renderTable = this.renderTable.bind(this);
-        this.renderGraph = this.renderGraph.bind(this);
-     
+    handleBtnClick = () => {
+    if (order === 'desc') {
+      this.refs.table.handleSort('asc', 'name');
+      order = 'asc';
+    } else {
+      this.refs.table.handleSort('desc', 'name');
+      order = 'desc';
     }
+  }
 
-    renderTable(serie){
-        
 
-        if (this.props.url.id == "macroeconomico") {                
-            serie = this.props.seriemacro;            
-        }
-        if (this.props.url.id == "regional" ) {                
-            serie = this.props.serieregional;            
-        }
-        if (this.props.url.id == "social" ) {                
-            serie = this.props.seriesocial;            
-        }
-
-        if (this.props.url.submenu !== undefined) {
-                serie = this.props.serie4;
-        }
-
-        if (this.props.url.submenu2 !== undefined) {
-                    serie = this.props.serie4;            
-        }
-        
-        {moduleGrid(serie)}
-
-        
-     
-    }
-
-    renderGraph(){
-        {moduleGraph()}
-    }
-
-    componentWillMount() {
-        
-        /*
-            serie = this.props.seriemacro;
-        if (this.props.url.id == "macroeconomico") {            
-        }*/
-    
-    }
-    
     render() {
 
+
+        var serie = "erro"
+        var text = "erro";
         if (this.props.url.id !== undefined) {
             text = this.props.url.id;
+            serie = this.props.serie4;
             if (this.props.url.submenu !== undefined) {
                 text = this.props.url.submenu;
+                serie = this.props.serie4;
                 if (this.props.url.submenu2 !== undefined) {
                     text = this.props.url.submenu2;
+                    serie = this.props.serie4;
                 }
             }
         }
 
-    
-    
+    if (this.props.url.id !== undefined) {
+        if (this.props.url.id == "macroeconomico") {            
+            serie = this.props.seriemacro;
+            if (this.props.url.submenu == "temas") {                
+                if (this.props.url.submenu2 == "balanco-de-pagamentos") {
+                    serie = this.props.serie1;            
+                }
+                if (this.props.url.submenu2 == "cambio") {
+                    serie = this.props.serie2;            
+                }
+                if (this.props.url.submenu2 == "comercio-exterior") {
+                    serie = this.props.serie3;
+            
+                }
+            }
+        }
 
-
-        /*if (this.props.url.id == "regional") {            
+        if (this.props.url.id == "regional") {            
             serie = this.props.serieregional;
             if (this.props.url.submenu == "temas") {                
                 if (this.props.url.submenu2 == "balanco-de-pagamentos") {
@@ -107,12 +93,11 @@ class Content extends Component {
             
                 }
             }
-        }*/
-    /*}*/
-
+        }
+    }
         return (
-            <div>
-                <div>
+            <div >
+            <h1>{text}</h1>
                 <Breadcrumb>
                     <Breadcrumb.Item href="#">
                         {this.props.url.id}
@@ -124,16 +109,15 @@ class Content extends Component {
                         {this.props.url.submenu2}
                     </Breadcrumb.Item>
                 </Breadcrumb>
+
+                <div className="tabelaseries" >
+                    <BootstrapTable striped ref='table' data={ serie } selectRow={selectRowProp} exportCSV={true} search={true} multiColumnSearch={true} pagination>
+                        <TableHeaderColumn dataField='nome' isKey={ true } dataSort={ true } >Nome</TableHeaderColumn>
+                        <TableHeaderColumn dataField='unidade' dataSort={ true }>Unidade</TableHeaderColumn>
+                        <TableHeaderColumn dataField='freq' dataSort={ true }>Frequencia</TableHeaderColumn>
+                        <TableHeaderColumn dataField='periodo' dataSort={ true }>Perídodo</TableHeaderColumn>
+                    </BootstrapTable>
                 </div>
-                <div id="Grid">
-                    {this.renderTable(serie)}                    
-                </div>
-                <div className="row">
-                    <div className="cols-sample-area" >
-                        <div id="container"></div>
-                        {this.renderGraph()}
-                    </div>
-                </div>    
             </div>
         );
     }

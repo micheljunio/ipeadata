@@ -12,12 +12,9 @@
     "flexicious-react-datagrid-styles": "^1.2.4",
     "imports-loader": "^0.6.5",
     "jquery": "^3.2.1",
-<<<<<<< HEAD
     "jquery-ui": "^1.12.1",
     "json-query": "^2.2.2",
-=======
     "jsrender": "^0.9.84",
->>>>>>> 3054616ee261db36d0768b880c6cf69bc5d91b44
     "react": "^15.5.4",
     "react-bootstrap": "^0.30.9",
     "react-bootstrap-table": "^3.3.7",
