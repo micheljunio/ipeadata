@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { NavDropdown, MenuItem, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import img1 from '../imgs/logo.gif';
-import img2 from '../imgs/logo_ipea.gif';
-import img3 from '../imgs/ico_inglaterra.gif';
+import img1 from "../imgs/logo.gif";
+import img2 from "../imgs/logo_ipea.gif";
+import img3 from "../imgs/ico_inglaterra.gif";
 
 /*import Metadados from "./Metadados";
 import Equipe from "./Equipe";

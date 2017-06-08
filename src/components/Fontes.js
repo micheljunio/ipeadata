@@ -6,7 +6,8 @@ class Fontes extends Component {
 			<p>
 				Abia <br />
 
-				Associação Brasileira das Indústrias da Alimentação, Levantamento Abia-Brasil (Abia)
+				Associação Brasileira das Indústrias da Alimentação,
+				Levantamento Abia-Brasil (Abia)
 				<br />
 				www.abia.org.br{" "}
 			</p>

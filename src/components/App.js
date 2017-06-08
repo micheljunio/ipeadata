@@ -12,6 +12,12 @@ import Datatable from "./Datatable";
 /*import { itensMenuTop } from "../data/state";*/
 import { itensDropMenu } from "../data/dropdown";
 import { itensTabs } from "../data/itensComponenteTab";
+import { serie1 } from "../data/serie1";
+import { serie2 } from "../data/serie2";
+import { serie3 } from "../data/serie3";
+import { seriemacro } from "../data/seriemacro";
+import { seriesocial } from "../data/seriesocial";
+import { serieregional } from "../data/serieregional";
 
 class App extends Component {
   render() {
@@ -26,8 +32,8 @@ class App extends Component {
         </Row>
         <Row className="menu-top">
           <Col className="menu-left" md={2}>
-          {/*<MenuLeftCustom itens={itensTabs} />*/}
-          <MenuLeft
+            {/*<MenuLeftCustom itens={itensTabs} />*/}
+            <MenuLeft
               itens={itensTabs}
               menuname={this.props.match.params.id}
               menucolor={this.props.match.params.id + "-nav-sidebar"}
@@ -42,16 +48,16 @@ class App extends Component {
             />
           </Col>
           <Col className="content" md={10}>
-            <Content url={this.props.match.params} />
-            <Datatable />
+            <Content url={this.props.match.params} serie1={serie1} serie2={serie2} serie3={serie3} seriemacro={seriemacro} serieregional={serieregional} seriesocial={seriesocial}/>
+            
           </Col>
         </Row>
         <Row className="down-area">
           <Col md={2}> </Col>
         </Row>
-        <Row >
+        <Row>
           <Col md={12}> </Col>
-          <Footer/>
+          {/*<Footer />*/}
         </Row>
       </Grid>
     );

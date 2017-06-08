@@ -1,4 +1,4 @@
-export const itensMenuTop = {
+export var itensMenuTop = {
     macro: {
         name: "macroeconomico",
         active: true

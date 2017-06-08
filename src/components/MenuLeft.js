@@ -25,28 +25,25 @@ class MenuLeft extends Component {
 		//console.log(teste);
 
 		return (
-			<Link to={`/${menuname}/${titleFanstasia}`} >
-				
+			<Link to={`/${menuname}/${titleFanstasia}`}>
+
 				{/*<Link to={`/${titleFanstasia}`}>*/}
 				<ul
 					className={"dropdown-menu " + `dropdown-menu0${i}`}
 					title={titleReal}
-					
 				>
 					<li className="dropdown-submenu">
 						<a>{titleReal}</a>
 						<ul className="dropdown-menu">
 
 							{teste.map(function(itens, j) {
-								
 								const numul = 1;
 								return (
-									<li key={j}
-										className="dropdown-submenu"
-										
-									>
+									<li key={j} className="dropdown-submenu">
 										{" "}
-										<Link to={`/${menuname}/${title.fantasia}/${itens.fantasia}`}>
+										<Link
+											to={`/${menuname}/${title.fantasia}/${itens.fantasia}`}
+										>
 											{" "}<a>{itens.name}</a>{" "}
 										</Link>
 										{itens.hasOwnProperty("subItens") &&
@@ -176,9 +173,9 @@ class MenuLeft extends Component {
 				<ul className={"nav " + this.props.menucolor}>
 					<li className="active">
 						<Link to={`/${menuname}`}>
-							{menuname}	
+							{menuname}
 						</Link>
-						
+
 					</li>
 
 				</ul>

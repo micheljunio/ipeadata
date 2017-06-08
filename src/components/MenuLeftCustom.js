@@ -5,7 +5,6 @@ import "rc-menu/assets/index.css";
 import { Link } from "react-router-dom";
 
 export class MenuLeftCustom extends Component {
-
 	constructor() {
 		super();
 		this.renderMenu = this.renderMenu.bind(this);
@@ -164,7 +163,7 @@ export class MenuLeftCustom extends Component {
 				);
 				break;
 		}
-/*
+		/*
 		function handleSelect(info) {
 			console.log("selected ", info);
 		}
@@ -200,11 +199,14 @@ export class MenuLeftCustom extends Component {
 
 		const leftMenu = (
 			<Menu>
-				<SubMenu title={itenName.map(a => this.renderMenu(a, i))} key="1">
-				{/*	<MenuItem key="1-1">0-1</MenuItem>
+				<SubMenu
+					title={itenName.map(a => this.renderMenu(a, i))}
+					key="1"
+				>
+					{/*	<MenuItem key="1-1">0-1</MenuItem>
 					<MenuItem key="1-2">0-2</MenuItem>*/}
 				</SubMenu>
-				
+
 			</Menu>
 		);
 

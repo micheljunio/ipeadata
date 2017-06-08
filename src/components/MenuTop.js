@@ -73,7 +73,7 @@ class MenuTop extends Component {
         const itensSub = Object.keys(itens).map(keys => itens[keys].itens);
 
         return (
-            <ButtonToolbar >
+            <ButtonToolbar>
                 {itensNames.map((a, i) =>
                     this.renderDropdownButton(a, i, itensSub[i])
                 )}
