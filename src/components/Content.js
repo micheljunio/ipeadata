@@ -30,7 +30,7 @@ class Content extends Component {
 
         return (
             <div>
-      <GridSerie />
+      <GridSerie/>
                 <Breadcrumb>
                     <Breadcrumb.Item href="#">
                         {this.props.url.id}
