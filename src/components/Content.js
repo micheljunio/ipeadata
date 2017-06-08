@@ -4,8 +4,12 @@ import Equipe from "./Equipe";
 import Fontes from "./Fontes";
 import Series from "./Series";
 import DireitosUso from "./DireitosUso";
+
 import { Breadcrumb } from "react-bootstrap";
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+
+import GridSerie from "./GridSerie";
+
 
 import jsonQuery from 'json-query';
 
@@ -26,13 +30,10 @@ class Content extends Component {
       order = 'desc';
     }
   }
-
-
     render() {
-
-
         var serie = "erro"
         var text = "erro";
+
         if (this.props.url.id !== undefined) {
             text = this.props.url.id;
             serie = this.props.serie4;
@@ -96,8 +97,8 @@ class Content extends Component {
         }
     }
         return (
-            <div >
-            <h1>{text}</h1>
+            <div>
+                {/*      <GridSerie/>*/}
                 <Breadcrumb>
                     <Breadcrumb.Item href="#">
                         {this.props.url.id}
