@@ -8,6 +8,7 @@ import { Breadcrumb } from "react-bootstrap";
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import GridSerie from "./GridSerie";
 import jsonQuery from 'json-query';
+import { Link } from "react-router-dom";
 
 import {moduleGrid, moduleGraph} from "../../script/modulesSync.js"
         var serie = "erro"
@@ -26,30 +27,42 @@ class Content extends Component {
 
         if (this.props.url.id == "macroeconomico") {                
             serie = this.props.seriemacro;            
+            {moduleGrid(serie)}
         }
         if (this.props.url.id == "regional" ) {                
             serie = this.props.serieregional;            
+            {moduleGrid(serie)}
         }
         if (this.props.url.id == "social" ) {                
             serie = this.props.seriesocial;            
+            {moduleGrid(serie)}
         }
 
         if (this.props.url.submenu !== undefined) {
                 serie = this.props.serie4;
+                {moduleGrid(serie)}
         }
 
         if (this.props.url.submenu2 !== undefined) {
                     serie = this.props.serie4;            
+                    {moduleGrid(serie)}
         }
-        
-        {moduleGrid(serie)}
 
+
+
+
+        
+        
+        
         
      
     }
 
     renderGraph(){
-        {moduleGraph()}
+        if (this.props.url.id == "macroeconomico" && this.props.url.serie == "serie1" ) {                
+            {moduleGraph()}
+            console.log(this.props.url.serie)
+        }
     }
 
     componentWillMount() {
@@ -113,7 +126,7 @@ class Content extends Component {
         return (
             <div>
                 <div>
-                <Breadcrumb>
+                <Breadcrumb >
                     <Breadcrumb.Item href="#">
                         {this.props.url.id}
                     </Breadcrumb.Item>
@@ -125,6 +138,7 @@ class Content extends Component {
                     </Breadcrumb.Item>
                 </Breadcrumb>
                 </div>
+                <h1>{text}</h1>
                 <div id="Grid">
                     {this.renderTable(serie)}                    
                 </div>

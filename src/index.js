@@ -13,9 +13,13 @@ class Root extends Component {
         <div>
           <Redirect from="/" to="/macroeconomico" />
           <Route exact path="/" component={App} />
-          <Route exact path="/:id/:submenu/:submenu2" component={App} />
-          <Route exact path="/:id/:submenu" component={App} />
-          <Route exact path="/:id" component={App} />
+          {/*<Route exact path="/:id/:submenu/:submenu2/:submenu3/:submenu4/:submenu5/:serie" component={App} />
+          <Route exact path="/:id/:submenu/:submenu2/:submenu3/:submenu4/:serie" component={App} />
+          <Route exact path="/:id/:submenu/:submenu2/:submenu3/:serie" component={App} />
+          <Route exact path="/:id/:submenu/:submenu2/:serie" component={App} />          
+          <Route exact path="/:id/:submenu/:serie" component={App} />
+          */}<Route exact path="/:id/:serie" component={App} />
+          <Route exact path="/:id"component={App} />
           
         </div>
       </Router>

@@ -1,6 +1,7 @@
+import React from 'react'
 export var seriemacro = [
 	{
-		nome: "Macroeconomico A",
+		nome: "<a href=macroeconomico/serie1/> Macroeconomico A</a>",
 		unidade: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"

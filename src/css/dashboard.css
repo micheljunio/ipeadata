@@ -261,6 +261,7 @@ code {
       border-top-left-radius: 1em;
       padding: 5px;
       width: 200px;
+      margin-right: 5px;
   }
   
   #dropdown-basic-1 {
@@ -269,6 +270,7 @@ code {
       border-top-left-radius: 1em;
       padding: 5px;
       width: 200px;
+      margin-right: 5px;
   }
   
   #dropdown-basic-2 {
@@ -277,6 +279,7 @@ code {
       border-top-left-radius: 1em;
       padding: 5px;
       width: 200px;
+      margin-right: 5px;
   }
   
   ul.menu,
@@ -286,11 +289,14 @@ code {
       padding: 0;
       list-style: none;
       text-decoration: none;
+      color: white !important;
   }
   
   ul.menu ul {
       position: absolute;
       display: none;
+      color: white !important;
+      left: -40px;
   }
   
   ul.menu {
@@ -298,6 +304,7 @@ code {
       /*faz os objetos flutuar para uma direçao*/
       font-size: 10 px;
       border-radius: 5px;
+      color: white !important;
   }
   
   .menu li {
@@ -311,13 +318,27 @@ code {
       height: 20px;
       /*indica a altura do elemento*/
       float: left;
+      z-index: 100;
+      color: white !important;
   }
   
+  .menu li:hover > ul.submenu-1> li > a {
+   color: white !important;
+  }
+  .menu li:hover > ul.submenu-2> li > a {
+   color: white !important;
+  }
+  .menu li:hover > ul.submenu-3> li > a {
+   color: white !important;
+  }
+  .menu li:hover > ul.submenu-4> li > a {
+   color: white !important;
+  }
   .menu li:hover > ul.submenu-1 {
       float: left;
       /*faz os objetos flutuar para uma direçao*/
       display: block;
-      color: white;
+      color: white !important;
   }
   
   .menu ul.submenu-1 li {
@@ -344,7 +365,7 @@ code {
   }
   
   .menu li:hover > ul.submenu-3 {
-    
+      float: left;
       display: block;
       top: 0;
       left: 195px;
@@ -369,12 +390,14 @@ code {
       width: 200px;
       padding: 0 5px;
       border-radius: 5px;
+      color: white !important;
   }
   
   .menu ul.submenu-3 li {
-      width: 50px;
-      padding: 0 20px;
+      width: 200px;
+      padding: 0 5px;
       border-radius: 5px;
+      color: white !important;
   }
   
   .dropdown-menu .sub-menu {
@@ -399,7 +422,14 @@ code {
   .navbar .dropdown-menu {
       margin-top: 0;
   }
-  
+  .dropdown-submenu  ul.dropdown-submenu > li > a {
+   color: white !important;
+  }
+
+/*   .menu li:hover > ul.submenu-1> li > a {
+   color: white !important;
+  }
+   */  
   */
   /*Regional*/
   /*.regional-dropdown .regional-dropdown-toggle{
@@ -646,7 +676,8 @@ code {
   
   .btn-toolbar {
       margin-top: -10px;
-      margin-left: -13px;
+      margin-left: -1px;
+
   }
   /*table th:nth-child(3), td:nth-child(3) {
   display: none;
