@@ -11,7 +11,7 @@ import jsonQuery from 'json-query';
 import { Link } from "react-router-dom";
 
 import {moduleGrid, moduleGraph} from "../../script/modulesSync.js"
-        var serie = "erro"
+        var serie;
         var text = "erro";
 class Content extends Component {
 
@@ -22,10 +22,10 @@ class Content extends Component {
      
     }
 
-    renderTable(serie){
+    renderTable(){
         
 
-        if (this.props.url.id == "macroeconomico") {                
+        /*if (this.props.url.id == "macroeconomico") {                
             serie = this.props.seriemacro;            
             {moduleGrid(serie)}
         }
@@ -36,33 +36,24 @@ class Content extends Component {
         if (this.props.url.id == "social" ) {                
             serie = this.props.seriesocial;            
             {moduleGrid(serie)}
+        }   */
+        if (this.props.url.id == "macroeconomico"){
+            serie = this.props.serie1;
+
+          
+            
         }
-
-        if (this.props.url.submenu !== undefined) {
-                serie = this.props.serie4;
-                {moduleGrid(serie)}
+        else{
+            serie = this.props.serie2;
         }
-
-        if (this.props.url.submenu2 !== undefined) {
-                    serie = this.props.serie4;            
-                    {moduleGrid(serie)}
-        }
-
-
-
-
-        
-        
-        
+        console.log(serie);
+        return( <GridSerie serie = {serie} div={"Grid"}></GridSerie> );
         
      
     }
 
     renderGraph(){
-        if (this.props.url.id == "macroeconomico" && this.props.url.serie == "serie1" ) {                
-            {moduleGraph()}
-            console.log(this.props.url.serie)
-        }
+        
     }
 
     componentWillMount() {
@@ -85,7 +76,6 @@ class Content extends Component {
                 }
             }
         }
-
     
     
 
@@ -122,7 +112,6 @@ class Content extends Component {
             }
         }*/
     /*}*/
-
         return (
             <div>
                 <div>
@@ -139,13 +128,13 @@ class Content extends Component {
                 </Breadcrumb>
                 </div>
                 <h1>{text}</h1>
-                <div id="Grid">
-                    {this.renderTable(serie)}                    
-                </div>
+                 {this.renderTable()}
+                
+                
                 <div className="row">
                     <div className="cols-sample-area" >
                         <div id="container"></div>
-                        {this.renderGraph()}
+                       
                     </div>
                 </div>    
             </div>

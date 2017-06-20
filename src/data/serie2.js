@@ -1,175 +1,175 @@
 export var serie2 = [
 	{
 		nome: "Cambio A",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio B",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio C",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio D",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio F",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio G ",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	},
 	{
 		nome: "Cambio",
-		unidade: "US$",
+		unidadeteste: "US$",
 		freq: "trimestral",
 		periodo: "1987-2017"
 	}

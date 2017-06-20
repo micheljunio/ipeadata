@@ -1,9 +1,13 @@
 module.exports = {
     
-    moduleGrid: function (data) {
-        $("#Grid").ejGrid({
-            dataSource: ej.DataManager(data),
-            recordClick: "selected",
+    moduleGrid: function (data, div, flag) {
+        window.baseurl =  "http://js.syncfusion.com/ExportingServices/api/";
+        if(flag)
+            $("#Grid").ejGrid("destroy"); 
+        $("#"+div).ejGrid({
+            dataSource: data,
+            exportToExcelAction: "http://js.syncfusion.com/ExportingServices/api/JSGridExport/ExcelExport",
+            toolbarSettings: { showToolbar: true, toolbarItems: [ej.Grid.ToolBarItems.ExcelExport] },
             allowPaging: true,
             allowSorting: true,
             allowGrouping: false,
@@ -11,59 +15,25 @@ module.exports = {
             allowReordering: true,
             allowMultiSorting: true,
             filterSettings: {filterType: "excel"},
-            toolbarSettings: {showToolbar: true, toolbarItems: [ej.Grid.ToolBarItems.ExcelExport, ej.Grid.ToolBarItems.WordExport, ej.Grid.ToolBarItems.PdfExport]},
-            columns: [
-                {type: "checkbox", width: 10},
-                {field: "nome",  headerText: "Nome", width: 100, key: true, textAlign: ej.TextAlign.Left},
-                {field: "unidade", headerText: "Unidade", width: 30 , textAlign: ej.TextAlign.Left},
-                {field: "freq", headerText: "Frequencia", width: 50, textAlign: ej.TextAlign.Left},
-                {field: "periodo",  headerText: "Período", width: 50, textAlign: ej.TextAlign.Left}
-                
-            ],
-            /*toolbarClick: function (e) {
-                this.exportGrid = this["export"];
-                if (e.itemName == "Excel Export") {
-                    this.exportGrid(window.baseurl + 'api/grid/ExcelExport');
-                    e.cancel = true;
-                    alert("dfa");
-                } else if (e.itemName == "Word Export") {
-                    this.exportGrid(window.baseurl + 'api/grid/WordExport');
-                    e.cancel = true;
-                } else if (e.itemName == "PDF Export") {
-                    this.exportGrid(window.baseurl + 'api/grid/PdfExport');
-                    e.cancel = true;
-                }
-            },*/
+            rowSelected: "window.rowSelected"
         });
-
-         $('#dialog').ejDialog({ autoOpen: false, title: 'RecordClick Event' });
-            $("#eventMode").ejDropDownList({ "change": "selectChange", width: "135px" })
-                            .ejDropDownList('selectItemByIndex', 0);
-            
-            window.selectChange = function (args) {
-                var gridObj = $("#Grid").data("ejGrid");
-                if (this.getSelectedValue() == "recordClick") {
-                    $("#Grid").ejGrid({ "recordClick": "selected", "recordDoubleClick": "" });
-                    $('#dialog').ejDialog({ title: "RecordClick Event" });
-                }
-                else {
-                    $("#Grid").ejGrid({ "recordClick": "", "recordDoubleClick": "selected" });
-                    $('#dialog').ejDialog({ title: "RecordDoubleClick Event" });
-                }
-            }
-            window.selected = function (args) {
-                var template = $.templates("#template");
-
-                document.getElementById('dialog').innerHTML = template.render(args.currentData);
-                $('#b1').ejButton({ size: 'small',click:'action' });
-               $('#dialog').ejDialog("open");
-               
-            }
-            window.action = function (args) {
-                $('#dialog').ejDialog("close");
-            }
+        console.log("fazendo");
+        rowSelected = function(args) {
+            //console.log(args.data.id)
+        }
     },
-    
+
+    getRowSelected: function(){
+        var grid = $("#Grid").data("ejGrid");
+        
+        if(grid.getSelectedRecords().length)
+            return  grid.getSelectedRecords()[0].id;
+        else
+            return -1;
+        
+    },
+
+
   moduleGraph: function () {
     
         $(function ()
