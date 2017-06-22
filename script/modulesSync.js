@@ -1,9 +1,10 @@
 module.exports = {
-    
-    moduleGrid: function (data, div, flag) {
+    moduleGrid: function (data, div) {
+            console.log("Serie na grid:");
+            console.log(data);
         window.baseurl =  "http://js.syncfusion.com/ExportingServices/api/";
-        if(flag)
-            $("#Grid").ejGrid("destroy"); 
+        if($("#"+div).data("ejGrid"))
+            $("#"+div).ejGrid("destroy"); 
         $("#"+div).ejGrid({
             dataSource: data,
             exportToExcelAction: "http://js.syncfusion.com/ExportingServices/api/JSGridExport/ExcelExport",
@@ -17,7 +18,7 @@ module.exports = {
             filterSettings: {filterType: "excel"},
             rowSelected: "window.rowSelected"
         });
-        console.log("fazendo");
+        console.log("montando grid");
         rowSelected = function(args) {
             //console.log(args.data.id)
         }
@@ -27,7 +28,7 @@ module.exports = {
         var grid = $("#Grid").data("ejGrid");
         
         if(grid.getSelectedRecords().length)
-            return  grid.getSelectedRecords()[0].id;
+            return  grid.getSelectedRecords()[0].nome;
         else
             return -1;
         

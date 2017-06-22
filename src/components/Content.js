@@ -9,6 +9,7 @@ import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import GridSerie from "./GridSerie";
 import jsonQuery from 'json-query';
 import { Link } from "react-router-dom";
+import { metadadosSeries } from "../data/metadadosSeries";
 
 import {moduleGrid, moduleGraph} from "../../script/modulesSync.js"
         var serie;
@@ -24,32 +25,14 @@ class Content extends Component {
 
     renderTable(){
         
-
-        /*if (this.props.url.id == "macroeconomico") {                
-            serie = this.props.seriemacro;            
-            {moduleGrid(serie)}
+        for(var key in metadadosSeries) {
+            if(metadadosSeries.hasOwnProperty(key)) {
+                if(metadadosSeries[key].var == this.props.url.id){
+                    serie = this.props[metadadosSeries[key].serie]
+                }
+            }
         }
-        if (this.props.url.id == "regional" ) {                
-            serie = this.props.serieregional;            
-            {moduleGrid(serie)}
-        }
-        if (this.props.url.id == "social" ) {                
-            serie = this.props.seriesocial;            
-            {moduleGrid(serie)}
-        }   */
-        if (this.props.url.id == "macroeconomico"){
-            serie = this.props.serie1;
-
-          
-            
-        }
-        else{
-            serie = this.props.serie2;
-        }
-        console.log(serie);
-        return( <GridSerie serie = {serie} div={"Grid"}></GridSerie> );
-        
-     
+        return( <GridSerie serie = {serie} div = {"Grid"} url = {this.props.url.id}></GridSerie> );         
     }
 
     renderGraph(){
