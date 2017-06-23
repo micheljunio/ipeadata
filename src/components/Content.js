@@ -4,74 +4,57 @@ import Fontes from "./Fontes";
 import Series from "./Series";
 import DireitosUso from "./DireitosUso";
 import { Breadcrumb, Panel, Jumbotron } from "react-bootstrap";
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
 import GridSerie from "./GridSerie";
-import jsonQuery from 'json-query';
+import jsonQuery from "json-query";
 import { Link } from "react-router-dom";
 import { metadadosSeries } from "../data/metadadosSeries";
 
-import {moduleGrid, moduleGraph} from "../../script/modulesSync.js"
-        var serie;
-        var text = "";
+import { moduleGrid, moduleGraph } from "../../script/modulesSync.js";
+var serie;
+var text = "";
 //css
 import "../css/content.css";
 
 import img from "../imgs/Screenshot_2.png";
 
 class Content extends Component {
-
     constructor() {
         super();
         this.renderTable = this.renderTable.bind(this);
         this.renderTableGraph = this.renderGraph.bind(this);
     }
 
-
-    renderTable(serie) {
-        if (this.props.url.id === "macroeconomico")
-            serie = this.props.seriemacro;
-
-        if (this.props.url.id === "regional") serie = this.props.serieregional;
-
-        if (this.props.url.id === "social") serie = this.props.seriesocial;
-
-        if (this.props.url.submenu !== undefined) serie = this.props.serie4;
-
-        if (this.props.url.submenu2 !== undefined) serie = this.props.serie4;
-
-        moduleGrid(serie);
-    }
-
-
-    renderTable(){
-        
-        for(var key in metadadosSeries) {
-            if(metadadosSeries.hasOwnProperty(key)) {
-                if(metadadosSeries[key].var == this.props.url.id){
-                    serie = this.props[metadadosSeries[key].serie]
+    renderTable() {
+        if (this.props.url.id == undefined) {
+            return (
+                <Jumbotron>
+                    {" "}<img
+                        alt="imagem"
+                        className="imageminicial"
+                        src={img}
+                    />
+                </Jumbotron>
+            );
+        }
+        for (var key in metadadosSeries) {
+            if (metadadosSeries.hasOwnProperty(key)) {
+                if (metadadosSeries[key].var == this.props.url.id) {
+                    serie = this.props[metadadosSeries[key].serie];
                 }
             }
         }
-        if (this.props.url.id == undefined ){
-            return( <Jumbotron > <img alt="imagem" className="imageminicial" src={img} /></Jumbotron> );            
-        }
-            return( <GridSerie serie = {serie} div = {"Grid"} url = {this.props.url.id}></GridSerie> );         
-        
+        return <GridSerie serie={serie} div={"Grid"} url={this.props.url.id} />;
     }
 
-    renderGraph(){
-        
-    }
+    renderGraph() {}
 
     componentWillMount() {
-        
         /*
             serie = this.props.seriemacro;
         if (this.props.url.id == "macroeconomico") {            
         }*/
-    
     }
-    
 
     render() {
         if (this.props.url.id !== undefined) {
@@ -83,7 +66,6 @@ class Content extends Component {
                 }
             }
         }
-    
 
         /*if (this.props.url.id == "regional") {            
             serie = this.props.serieregional;
@@ -116,18 +98,17 @@ class Content extends Component {
                 }
             }
         }*/
-    /*}*/
-    var menu = this.props.url.id;
-    if (this.props.url.id !== "macroeconomico" )
-      if (this.props.url.id !== "regional" )
-        if (this.props.url.id !== "social"){
-        menu = "macroeconomico";
-    }
-
+        /*}*/
+        var menu = this.props.url.id;
+        if (this.props.url.id !== "macroeconomico")
+            if (this.props.url.id !== "regional")
+                if (this.props.url.id !== "social") {
+                    menu = "macroeconomico";
+                }
 
         return (
-            <div >
-                <div className="topContent" >
+            <div>
+                <div className="topContent">
                     <Breadcrumb className={"breadcrumb-" + menu}>
                         <Breadcrumb.Item href="#">
                             {this.props.url.id}
@@ -138,13 +119,12 @@ class Content extends Component {
                         <Breadcrumb.Item active>
                             {this.props.url.submenu2}
                         </Breadcrumb.Item>
-                    </Breadcrumb>                
+                    </Breadcrumb>
                 </div>
 
                 <div className="grapharea">
-                    <Panel header={text}>
-                    </Panel>
-                        {this.renderTable()}
+                    <Panel header={text} />
+                    {this.renderTable()}
                     {/*<div id="Grid">
                     {this.renderTable(serie)}                    
                 </div>*/}
