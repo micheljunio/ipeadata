@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 
+import "../css/footer.css";
+
 export class Footer extends Component {
 	render() {
 		return (
 			<footer className="footer">
 				<div className="container">
-					<p className="text-muted"> footer text </p>
+					<span className="text-muted">
+						Place sticky footer content here.
+					</span>
 				</div>
 			</footer>
 		);

@@ -1,4 +1,9 @@
+//react
 import React, { Component } from "react";
+
+//css
+import "../css/navbar.css";
+
 import { NavDropdown, MenuItem, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -58,9 +63,7 @@ class Navbar extends Component {
                             aria-controls="navbar"
                         >
                             <span className="sr-only">Toggle navigation</span>
-                            <span className="icon-bar" />
-                            <span className="icon-bar" />
-                            <span className="icon-bar" />
+
                         </button>
 
                         <a
@@ -85,11 +88,7 @@ class Navbar extends Component {
                             </a>
                         </ul>
 
-                        <Button className="navbar-form navbar-right">
-                            {itensNames.map((a, i) =>
-                                this.renderDropdownButton(a, i, itensSub[i])
-                            )}
-                        </Button>
+                            
 
                         <form className="navbar-form navbar-right">
                             <input

@@ -1,17 +1,23 @@
+//react
 import React, { Component } from "react";
-import "../css/dashboard.css";
+
+//css
+import "../css/App.css";
+
+//bootstrap
 import { Grid, Col, Row } from "react-bootstrap";
-import {EJ} from "jsrender";
+
+//components
 import Navbar from "./Navbar";
 import MenuLeft from "./MenuLeft";
 import MenuTop from "./MenuTop";
 import Content from "./Content";
-import Content2 from "./Content2";
+/*import Content2 from "./Content2";*/
 import Footer from "./Footer";
-import GridSerie from "./GridSerie";
-import Datatable from "./Datatable";
-/*import MenuLeftCustom from "./MenuLeftCustom";*/
-/*import { itensMenuTop } from "../data/state";*/
+/*import GridSerie from "./GridSerie";*/
+/*import Datatable from "./Datatable";*/
+
+//dados
 import { itensDropMenu } from "../data/dropdown";
 import { itensTabs } from "../data/itensComponenteTab";
 import { serie1 } from "../data/serie1";
@@ -26,43 +32,73 @@ class App extends Component {
     //console.log(this.props.match.params)
 
     return (
-      <Grid>
-        <Row className="navbar">
-          <Col md={12}>
-            <Navbar itens={itensDropMenu} navname="Ipeadata" />
+      <Grid fluid="true">
+        {/*navbar*/}
+        <Row>
+          <Col className="nopadding navbarnew" xs={12} md={12}>
+            <Navbar itens={itensDropMenu} navname={"Ipeadata"} />
           </Col>
         </Row>
-        <Row className="menu-top">
-          <Col className="menu-left" md={2}>
-            {/*<MenuLeftCustom itens={itensTabs} />*/}
-            <MenuLeft
+
+        <Row>
+          {/*downarea*/}
+          <Col className="nopadding" xs={12} md={12}>
+
+            {/*menuleft*/}
+            <Col className="menu-left" xs={2} md={2} > 
+              <MenuLeft
               itens={itensTabs}
               menuname={this.props.match.params.id}
               menucolor={this.props.match.params.id + "-nav-sidebar"}
               sidecolor={this.props.match.params.id + "-sidebar"}
-            />
-          </Col>
-          <Col md={10}>
-            <MenuTop
+          />
+            </Col>
+
+            {/*rightarea*/}
+            <Col className="nopadding" xs={10} md={10}>
+
+              {/*menutop*/}
+              <Col className="nopadding menu-top" xs={12} md={12} >
+                <MenuTop
               itens={itensTabs}
               tabcolor={this.props.match.params.id + "-dropdown"}
-              togle={this.props.match.params.id + "-dropdown-toggle"}
-            />
-          </Col>
-          <Col className="content" md={10}>
-            <Content url={this.props.match.params} serie1={serie1} serie2={serie2} serie3={serie3} seriemacro={seriemacro} serieregional={serieregional} seriesocial={seriesocial}/>
+              togle={this.props.match.params.id + "-dropdown-toggle"}/>
+              </Col>
+
+              {/*content*/}
+              <Col className="nopadding content" xs={12} md={12} > 
+                <Content url={this.props.match.params} serie1={serie1} serie2={serie2} serie3={serie3} seriemacro={seriemacro} serieregional={serieregional} seriesocial={seriesocial}/>
+              </Col>
+
+            </Col>
+
           </Col>
         </Row>
-        <Row className="down-area">
-          <Col md={2}> </Col>
-        </Row>
-        <Row>
-          <Col md={12}> </Col>
-          {/*<Footer />*/}
+        {/*footer*/}
+        <Row className=" footernew">
+          <Col xs={12} md={12} />
         </Row>
       </Grid>
     );
   }
+}
+{
+  /*<MenuLeft
+              itens={itensTabs}
+              menuname={this.props.match.params.id}
+              menucolor={this.props.match.params.id + "-nav-sidebar"}
+              sidecolor={this.props.match.params.id + "-sidebar"}
+          />*/
+}
+{
+  /*<MenuTop
+              itens={itensTabs}
+              tabcolor={this.props.match.params.id + "-dropdown"}
+              togle={this.props.match.params.id + "-dropdown-toggle"}/>
+*/
+}
+{
+  /*<Navbar itens={itensDropMenu} navname={"Ipeadata"} />*/
 }
 
 export default App;

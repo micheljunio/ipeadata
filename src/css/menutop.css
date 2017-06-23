@@ -1,0 +1,215 @@
+ul.menu,
+  .menu li,
+  .menu {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-decoration: none;
+      color: white !important;
+  }
+  
+  ul.menu ul {
+      position: absolute;
+      display: none;
+      color: white !important;
+      left: -60px;
+
+  }
+  
+  ul.menu {
+      float: left;
+      /*faz os objetos flutuar para uma direçao*/
+      font-size: 10 px;
+      color: white !important;
+  }
+  
+  .menu li {
+      float: left;
+      width: auto;
+      position: relative;
+      /*posiciona o elemento em relação a si mesmo*/
+      display: block;
+      /*indica que o elemento ser um bloco que podera receber uma posição e uma largura*/
+      /*indica o espaçamento entre as linhas*/
+      height: 21px;
+      /*indica a altura do elemento*/
+      float: left;
+      z-index: 100;
+      color: white !important;
+  }
+
+.menu li:hover > ul.submenu-1> li > a {
+   color: white !important;
+   font-family: Verdana, Tahoma, Arial;
+   font-weight: bold;
+   font-style: normal;
+   font-size: 11px;
+  }
+  .menu li:hover > ul.submenu-2> li > a {
+   color: white !important;
+   font-family: Verdana, Tahoma, Arial;
+   font-weight: bold;
+   font-style: normal;
+   font-size: 11px;
+  }
+  .menu li:hover > ul.submenu-3> li > a {
+   color: white !important;
+   font-family: Verdana, Tahoma, Arial;
+   font-weight: bold;
+   font-style: normal;
+   font-size: 11px;
+  }
+  .menu li:hover > ul.submenu-4> li > a {
+   color: white !important;
+   font-family: Verdana, Tahoma, Arial;
+   font-weight: bold;
+   font-style: normal;
+   font-size: 11px;
+  }
+  .menu li:hover > ul.submenu-1 {
+      float: left;
+      /*faz os objetos flutuar para uma direçao*/
+      display: block;
+      color: white !important;
+  }
+  
+  .menu ul.submenu-1 li {
+      background-color: #024e9b !important;
+      float: left;
+      /*faz os objetos flutuar para uma direçao*/
+      width: 200px;
+      padding: 0 5px;
+      border-color: white;
+      
+  }
+  
+  .menu li:hover > ul.submenu-2 {
+     
+      float: left;      
+      /*faz os objetos flutuar para uma direçao*/
+      display: block;
+      top: 0;
+      left: 195px;
+      padding: 5px;
+      width: 200px;     
+     
+  }
+  
+  .menu li:hover > ul.submenu-3 {
+      float: left;
+      display: block;
+      top: 0;
+      left: 195px;
+      padding: 5px;
+      width: 200px;
+      
+      color: white !important;
+  }
+  
+  .menu li:hover > ul.submenu-4 {
+      background-color: #024e9b !important;
+      display: block;
+      top: 0;
+      left: 195px;
+      padding: 5px;
+      width: 200px;
+      
+      color: white !important;
+  }
+  
+  .menu ul.submenu-2 li {
+      width: 200px;
+      padding: 0 5px;           
+      color: white !important;
+  }
+  
+  .menu ul.submenu-3 li {
+      width: 200px;
+      padding: 0 5px;
+     
+      color: white !important;
+  }
+
+  .menu ul.submenu-2 li {
+      width: 200px;
+      padding: 0 5px;
+     
+      color: white !important;
+  }
+  
+  .menu ul.submenu-3 li {
+      width: 200px;
+      padding: 0 5px;
+     
+      color: white !important;
+  }
+  
+  .dropdown-menu .sub-menu {
+      left: 100%;
+      position: absolute;
+      top: 0;
+      visibility: hidden;
+      margin-top: -1px;
+      color: white;
+  }
+  
+  .dropdown-menu li:hover .sub-menu {
+      visibility: visible;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+      display: block;
+  }
+  
+  .nav-tabs .dropdown-menu,
+  .nav-pills .dropdown-menu,
+  .navbar .dropdown-menu {
+      margin-top: 0;
+  }
+  .dropdown-submenu  ul.dropdown-submenu > li > a {
+   color: white !important;
+  }
+
+  #dropdown-basic-0 {
+      color: white;
+      background-color: #024e9b;
+      border-top-left-radius: 0.5em;      
+      width: 200px;
+      margin-right: 5px;
+      padding-left: 20px; 
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 14px;
+  }
+  
+  #dropdown-basic-1 {
+      color: white;
+      background-color: #7AA623;
+      border-top-left-radius: 0.5em;      
+      width: 200px;
+      margin-right: 5px;
+      padding-left: 20px;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 14px;
+  }
+  
+  #dropdown-basic-2 {
+      color: white;
+      background-color: #990303;
+      border-top-left-radius: 0.5em;      
+      width: 200px;
+      margin-right: 5px;
+      padding-left: 20px;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      font-style: normal;
+      font-size: 14px;
+  }
+
+  .menutop{
+    padding-left: 5px;
+    padding-top: 5px;
+  }

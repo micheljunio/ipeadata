@@ -1,6 +1,9 @@
 import React, { Component } from "react";
-import { ButtonToolbar, DropdownButton, MenuItem } from "react-bootstrap";
+import { ButtonToolbar} from "react-bootstrap";
 import { Link } from "react-router-dom";
+
+//css
+import "../css/menutop.css";
 
 class MenuTop extends Component {
     constructor() {
@@ -42,13 +45,7 @@ class MenuTop extends Component {
                         <ul className="submenu-1">
 
                             {x.map(function(itens, j) {
-                                const itensSub = Object.keys(itens).map(
-                                    keys => itens[keys]
-                                );
-                                const itensSub1 =
-                                    itensSub[Object.keys(itensSub)[2]];
-                                // console.log(itensSub1);
-                                // console.log(itens.subItens[0].name);
+                            
                                 const numul = 1;
                                 return (
                                     <li key={j}>
@@ -73,7 +70,7 @@ class MenuTop extends Component {
         const itensSub = Object.keys(itens).map(keys => itens[keys].itens);
 
         return (
-            <ButtonToolbar>
+            <ButtonToolbar className="menutop">
                 {itensNames.map((a, i) =>
                     this.renderDropdownButton(a, i, itensSub[i])
                 )}

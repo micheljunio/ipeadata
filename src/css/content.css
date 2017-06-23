@@ -1,0 +1,26 @@
+.topContent{
+	/* background-color: #024e9b; */
+	height: 30px;
+	width: 100%;
+}
+
+.downcontent{
+	background-color: gray;	
+	height: 100%	;
+	width: 100%;
+}
+.breadcrumb{
+	background-color: #024e9b;
+}
+
+.breadcrumb li>a{
+	color: white;
+}
+
+.panel-default>.panel-heading{
+	  font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-weight: bold;
+   font-style: normal;
+   font-size: 16px;
+   text-decoration: none;
+}

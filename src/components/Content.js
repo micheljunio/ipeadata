@@ -1,81 +1,37 @@
 import React, { Component } from "react";
-import Metadados from "./Metadados";
-import Equipe from "./Equipe";
-import Fontes from "./Fontes";
-import Series from "./Series";
-import DireitosUso from "./DireitosUso";
-import { Breadcrumb } from "react-bootstrap";
-import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
-import GridSerie from "./GridSerie";
-import jsonQuery from 'json-query';
-import { Link } from "react-router-dom";
 
-import {moduleGrid, moduleGraph} from "../../script/modulesSync.js"
-        var serie = "erro"
-        var text = "erro";
+import { Breadcrumb, Panel } from "react-bootstrap";
+
+//css
+import "../css/content.css";
+
+/*import { Link } from "react-router-dom";*/
+
+import { moduleGrid } from "../../script/modulesSync.js";
+
+var text = "erro";
 class Content extends Component {
-
     constructor() {
         super();
         this.renderTable = this.renderTable.bind(this);
-        this.renderGraph = this.renderGraph.bind(this);
-     
     }
 
-    renderTable(serie){
-        
-
-        if (this.props.url.id == "macroeconomico") {                
-            serie = this.props.seriemacro;            
-            {moduleGrid(serie)}
-        }
-        if (this.props.url.id == "regional" ) {                
-            serie = this.props.serieregional;            
-            {moduleGrid(serie)}
-        }
-        if (this.props.url.id == "social" ) {                
-            serie = this.props.seriesocial;            
-            {moduleGrid(serie)}
-        }
-
-        if (this.props.url.submenu !== undefined) {
-                serie = this.props.serie4;
-                {moduleGrid(serie)}
-        }
-
-        if (this.props.url.submenu2 !== undefined) {
-                    serie = this.props.serie4;            
-                    {moduleGrid(serie)}
-        }
-
-
-
-
-        
-        
-        
-        
-     
-    }
-
-    renderGraph(){
-        if (this.props.url.id == "macroeconomico" && this.props.url.serie == "serie1" ) {                
-            {moduleGraph()}
-            console.log(this.props.url.serie)
-        }
-    }
-
-    componentWillMount() {
-        
-        /*
+    renderTable(serie) {
+        if (this.props.url.id === "macroeconomico")
             serie = this.props.seriemacro;
-        if (this.props.url.id == "macroeconomico") {            
-        }*/
-    
-    }
-    
-    render() {
 
+        if (this.props.url.id === "regional") serie = this.props.serieregional;
+
+        if (this.props.url.id === "social") serie = this.props.seriesocial;
+
+        if (this.props.url.submenu !== undefined) serie = this.props.serie4;
+
+        if (this.props.url.submenu2 !== undefined) serie = this.props.serie4;
+
+        moduleGrid(serie);
+    }
+
+    render() {
         if (this.props.url.id !== undefined) {
             text = this.props.url.id;
             if (this.props.url.submenu !== undefined) {
@@ -85,69 +41,28 @@ class Content extends Component {
                 }
             }
         }
-
-    
-    
-
-
-        /*if (this.props.url.id == "regional") {            
-            serie = this.props.serieregional;
-            if (this.props.url.submenu == "temas") {                
-                if (this.props.url.submenu2 == "balanco-de-pagamentos") {
-                    serie = this.props.serie4;            
-                }
-                if (this.props.url.submenu2 == "cambio") {
-                    serie = this.props.serie4;            
-                }
-                if (this.props.url.submenu2 == "comercio-exterior") {
-                    serie = this.props.serie4;
-            
-                }
-            }
-        }
-
-        if (this.props.url.id == "social") {            
-            serie = this.props.seriesocial;
-            if (this.props.url.submenu == "temas") {                
-                if (this.props.url.submenu2 == "balanco-de-pagamentos") {
-                    serie = this.props.serie4;            
-                }
-                if (this.props.url.submenu2 == "cambio") {
-                    serie = this.props.serie4;            
-                }
-                if (this.props.url.submenu2 == "comercio-exterior") {
-                    serie = this.props.serie4;
-            
-                }
-            }
-        }*/
-    /*}*/
-
         return (
-            <div>
-                <div>
-                <Breadcrumb >
-                    <Breadcrumb.Item href="#">
-                        {this.props.url.id}
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item href="#">
-                        {this.props.url.submenu}
-                    </Breadcrumb.Item>
-                    <Breadcrumb.Item active>
-                        {this.props.url.submenu2}
-                    </Breadcrumb.Item>
-                </Breadcrumb>
+            <div >
+                <div className="topContent" >
+                    <Breadcrumb>
+                        <Breadcrumb.Item href="#">
+                            {this.props.url.id}
+                        </Breadcrumb.Item>
+                        <Breadcrumb.Item href="#">
+                            {this.props.url.submenu}
+                        </Breadcrumb.Item>
+                        <Breadcrumb.Item active>
+                            {this.props.url.submenu2}
+                        </Breadcrumb.Item>
+                    </Breadcrumb>                
                 </div>
-                <h1>{text}</h1>
-                <div id="Grid">
+                <div >
+                    <Panel header={text}/>
+                    
+                    {/*<div id="Grid">
                     {this.renderTable(serie)}                    
+                </div>*/}
                 </div>
-                <div className="row">
-                    <div className="cols-sample-area" >
-                        <div id="container"></div>
-                        {this.renderGraph()}
-                    </div>
-                </div>    
             </div>
         );
     }
@@ -228,9 +143,8 @@ setState() {
         }
     }*/
 
-
-        //console.log(this.props.url)
-        /*{this.props.url === "Equipe" && <Equipe />}
+//console.log(this.props.url)
+/*{this.props.url === "Equipe" && <Equipe />}
                 {this.props.url === "Metadados" && <Metadados />}
                 {this.props.url === "fontes" && <Fontes />}
                 {this.props.url === "direitos" && <DireitosUso />}

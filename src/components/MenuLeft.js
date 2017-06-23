@@ -1,12 +1,9 @@
+//react
 import React, { Component } from "react";
-/*import { 
-	ButtonToolbar,
-	DropdownButton,
-	MenuItem,
-	Button,
-	ButtonGroup,
-	SplitButton
-} from "react-bootstrap";*/
+
+//css
+import "../css/menuleft.css";
+
 import { Link } from "react-router-dom";
 
 class MenuLeft extends Component {
@@ -33,7 +30,7 @@ class MenuLeft extends Component {
 					title={titleReal}
 				>
 					<li className="dropdown-submenu">
-						<a>{titleReal}</a>
+						<a className="text">{titleReal}</a>
 						<ul className="dropdown-menu">
 
 							{teste.map(function(itens, j) {
@@ -44,7 +41,7 @@ class MenuLeft extends Component {
 										<Link
 											to={`/${menuname}/${title.fantasia}/${itens.fantasia}`}
 										>
-											{" "}<a>{itens.name}</a>{" "}
+											{" "}<a className="text">{itens.name}</a>{" "}
 										</Link>
 										{itens.hasOwnProperty("subItens") &&
 											this.menuUl(itens.subItens, numul)}
@@ -72,7 +69,7 @@ class MenuLeft extends Component {
 						<li key={j} className="dropdown-submenu">
 
 							<Link to={`/${subi.fantasia}`}>
-								{" "}<a>{subi.name}</a>{" "}
+								{" "}<a className="text">{subi.name}</a>{" "}
 							</Link>
 							{subi.hasOwnProperty("subItens") &&
 								this.menuUl(subi.subItens, numul)}
@@ -88,26 +85,19 @@ class MenuLeft extends Component {
 			<Link key={i} to={`/${title}`}>
 				<ul className="dropdown-menu" title={title} key={i}>
 					<li className="dropdown-submenu">
-						<a>
+						<a className="text">
 							{title}
 						</a>
 						<ul className="dropdown-menu">
 
 							{x.map(function(itens, j) {
-								const itensSub = Object.keys(itens).map(
-									keys => itens[keys]
-								);
-								/*const itensSub1 =
-									itensSub[Object.keys(itensSub)[2]];*/
-								// console.log(itensSub1);
-								// console.log(itens.subItens[0].name);
 								const numul = 1;
 								return (
 									<li eventKey={j}>
 
 										{" "}
 										<Link to={`/${itens.fantasia}`}>
-											{" "}<a>{itens.name} </a>{" "}
+											{" "}<a className="text">{itens.name} </a>{" "}
 										</Link>
 										{itens.hasOwnProperty("subItens") &&
 											this.menuUl(itens.subItens, numul)}
@@ -139,27 +129,27 @@ class MenuLeft extends Component {
 				break;
 
 			case "regional":
-				var itenName = itensSub[Object.keys(itensSub)[1]];
-				var menuname = itensNames[Object.keys(itensSub)[1]];
-				var i = 1;
+				itenName = itensSub[Object.keys(itensSub)[1]];
+				menuname = itensNames[Object.keys(itensSub)[1]];
+				i = 1;
 				/*var itenName2 = Object.keys(itenName).map(
 					keys => itenName[keys].name
 				);*/
 				break;
 
 			case "social":
-				var itenName = itensSub[Object.keys(itensSub)[2]];
-				var menuname = itensNames[Object.keys(itensSub)[2]];
-				var i = 2;
+				itenName = itensSub[Object.keys(itensSub)[2]];
+				menuname = itensNames[Object.keys(itensSub)[2]];
+				i = 2;
 				/*var itenName2 = Object.keys(itenName).map(
 					keys => itenName[keys].name
 				);*/
 				break;
 
 			default:
-				var itenName = itensSub[Object.keys(itensSub)[0]];
-				var menuname = itensNames[Object.keys(itensSub)[0]];
-				var i = 0;
+				itenName = itensSub[Object.keys(itensSub)[0]];
+				menuname = itensNames[Object.keys(itensSub)[0]];
+				i = 0;
 				/*var itenName2 = Object.keys(itenName).map(
 					keys => itenName[keys].name
 				);*/
