@@ -115,7 +115,7 @@ class Content extends Component {
         return (
             <div >
                 <div className="topContent" >
-                    <Breadcrumb>
+                    <Breadcrumb className={"breadcrumb-" + this.props.url.id}>
                         <Breadcrumb.Item href="#">
                             {this.props.url.id}
                         </Breadcrumb.Item>

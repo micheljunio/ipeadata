@@ -11,8 +11,16 @@
 	max-width: 100%;
 
 }
-.breadcrumb{
+.breadcrumb-macroeconomico{
 	background-color: #024e9b;
+}
+
+.breadcrumb-regional{
+	background-color: #7AA623;
+}
+
+.breadcrumb-social{
+	background-color: #990303;
 }
 
 .breadcrumb li>a{
