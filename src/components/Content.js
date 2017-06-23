@@ -3,7 +3,7 @@ import Equipe from "./Equipe";
 import Fontes from "./Fontes";
 import Series from "./Series";
 import DireitosUso from "./DireitosUso";
-import { Breadcrumb, Panel } from "react-bootstrap";
+import { Breadcrumb, Panel, Jumbotron } from "react-bootstrap";
 import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 import GridSerie from "./GridSerie";
 import jsonQuery from 'json-query';
@@ -12,9 +12,11 @@ import { metadadosSeries } from "../data/metadadosSeries";
 
 import {moduleGrid, moduleGraph} from "../../script/modulesSync.js"
         var serie;
-        var text = "erro";
+        var text = "";
 //css
 import "../css/content.css";
+
+import img from "../imgs/Screenshot_2.png";
 
 class Content extends Component {
 
@@ -50,7 +52,11 @@ class Content extends Component {
                 }
             }
         }
-        return( <GridSerie serie = {serie} div = {"Grid"} url = {this.props.url.id}></GridSerie> );         
+        if (this.props.url.id == undefined ){
+            return( <Jumbotron > <img alt="imagem" className="imageminicial" src={img} /></Jumbotron> );            
+        }
+            return( <GridSerie serie = {serie} div = {"Grid"} url = {this.props.url.id}></GridSerie> );         
+        
     }
 
     renderGraph(){
@@ -111,11 +117,18 @@ class Content extends Component {
             }
         }*/
     /*}*/
+    var menu = this.props.url.id;
+    if (this.props.url.id !== "macroeconomico" )
+      if (this.props.url.id !== "regional" )
+        if (this.props.url.id !== "social"){
+        menu = "macroeconomico";
+    }
+
 
         return (
             <div >
                 <div className="topContent" >
-                    <Breadcrumb className={"breadcrumb-" + this.props.url.id}>
+                    <Breadcrumb className={"breadcrumb-" + menu}>
                         <Breadcrumb.Item href="#">
                             {this.props.url.id}
                         </Breadcrumb.Item>
@@ -130,8 +143,8 @@ class Content extends Component {
 
                 <div className="grapharea">
                     <Panel header={text}>
-                        {this.renderTable()}
                     </Panel>
+                        {this.renderTable()}
                     {/*<div id="Grid">
                     {this.renderTable(serie)}                    
                 </div>*/}

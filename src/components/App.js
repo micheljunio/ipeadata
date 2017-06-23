@@ -30,6 +30,12 @@ import { serieregional } from "../data/serieregional";
 class App extends Component {
   render() {
     //console.log(this.props.match.params)
+    var menu = this.props.match.params.id;
+    if (this.props.match.params.id !== "macroeconomico" )
+      if (this.props.match.params.id !== "regional" )
+        if (this.props.match.params.id !== "social"){
+        menu = "macroeconomico";
+    }
 
     return (
       <Grid fluid="true">
@@ -48,9 +54,9 @@ class App extends Component {
             <Col className="menu-left" xs={2} md={2} > 
               <MenuLeft
               itens={itensTabs}
-              menuname={this.props.match.params.id}
-              menucolor={this.props.match.params.id + "-nav-sidebar"}
-              sidecolor={this.props.match.params.id + "-sidebar"}
+              menuname={menu}
+              menucolor={menu + "-nav-sidebar"}
+              sidecolor={menu + "-sidebar"}
           />
             </Col>
 
