@@ -8,6 +8,8 @@
 	background-color: gray;	
 	height: 100%	;
 	width: 100%;
+	max-width: 100%;
+
 }
 .breadcrumb{
 	background-color: #024e9b;
@@ -23,4 +25,19 @@
    font-style: normal;
    font-size: 16px;
    text-decoration: none;
+}
+
+.grapharea{
+	overflow-y: auto;
+	overflow-x: hide;
+	max-width: 100%;
+}
+.e-grid .e-toolbar.e-toolbarspan{
+	max-width: 20%;
+	margin-top: -45px;
+	right: 16px;
+}
+
+.e-grid{
+	margin-top: 50px
 }

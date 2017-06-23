@@ -1,20 +1,29 @@
 import React, { Component } from "react";
-
+import Equipe from "./Equipe";
+import Fontes from "./Fontes";
+import Series from "./Series";
+import DireitosUso from "./DireitosUso";
 import { Breadcrumb, Panel } from "react-bootstrap";
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
+import GridSerie from "./GridSerie";
+import jsonQuery from 'json-query';
+import { Link } from "react-router-dom";
+import { metadadosSeries } from "../data/metadadosSeries";
 
+import {moduleGrid, moduleGraph} from "../../script/modulesSync.js"
+        var serie;
+        var text = "erro";
 //css
 import "../css/content.css";
 
-/*import { Link } from "react-router-dom";*/
-
-import { moduleGrid } from "../../script/modulesSync.js";
-
-var text = "erro";
 class Content extends Component {
+
     constructor() {
         super();
         this.renderTable = this.renderTable.bind(this);
+        this.renderTableGraph = this.renderGraph.bind(this);
     }
+
 
     renderTable(serie) {
         if (this.props.url.id === "macroeconomico")
@@ -31,6 +40,33 @@ class Content extends Component {
         moduleGrid(serie);
     }
 
+
+    renderTable(){
+        
+        for(var key in metadadosSeries) {
+            if(metadadosSeries.hasOwnProperty(key)) {
+                if(metadadosSeries[key].var == this.props.url.id){
+                    serie = this.props[metadadosSeries[key].serie]
+                }
+            }
+        }
+        return( <GridSerie serie = {serie} div = {"Grid"} url = {this.props.url.id}></GridSerie> );         
+    }
+
+    renderGraph(){
+        
+    }
+
+    componentWillMount() {
+        
+        /*
+            serie = this.props.seriemacro;
+        if (this.props.url.id == "macroeconomico") {            
+        }*/
+    
+    }
+    
+
     render() {
         if (this.props.url.id !== undefined) {
             text = this.props.url.id;
@@ -41,6 +77,41 @@ class Content extends Component {
                 }
             }
         }
+    
+
+        /*if (this.props.url.id == "regional") {            
+            serie = this.props.serieregional;
+            if (this.props.url.submenu == "temas") {                
+                if (this.props.url.submenu2 == "balanco-de-pagamentos") {
+                    serie = this.props.serie4;            
+                }
+                if (this.props.url.submenu2 == "cambio") {
+                    serie = this.props.serie4;            
+                }
+                if (this.props.url.submenu2 == "comercio-exterior") {
+                    serie = this.props.serie4;
+            
+                }
+            }
+        }
+
+        if (this.props.url.id == "social") {            
+            serie = this.props.seriesocial;
+            if (this.props.url.submenu == "temas") {                
+                if (this.props.url.submenu2 == "balanco-de-pagamentos") {
+                    serie = this.props.serie4;            
+                }
+                if (this.props.url.submenu2 == "cambio") {
+                    serie = this.props.serie4;            
+                }
+                if (this.props.url.submenu2 == "comercio-exterior") {
+                    serie = this.props.serie4;
+            
+                }
+            }
+        }*/
+    /*}*/
+
         return (
             <div >
                 <div className="topContent" >
@@ -56,9 +127,11 @@ class Content extends Component {
                         </Breadcrumb.Item>
                     </Breadcrumb>                
                 </div>
-                <div >
-                    <Panel header={text}/>
-                    
+
+                <div className="grapharea">
+                    <Panel header={text}>
+                        {this.renderTable()}
+                    </Panel>
                     {/*<div id="Grid">
                     {this.renderTable(serie)}                    
                 </div>*/}
