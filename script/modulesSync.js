@@ -1,7 +1,7 @@
 module.exports = {
     moduleGrid: function (data, div) {
-            console.log("Serie na grid:");
-            console.log(data);
+        console.log("Serie na grid:");
+        console.log(data);
         window.baseurl =  "http://js.syncfusion.com/ExportingServices/api/";
         if($("#"+div).data("ejGrid"))
             $("#"+div).ejGrid("destroy"); 
