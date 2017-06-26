@@ -1,14 +1,10 @@
-.topContent{
-	/* background-color: #024e9b; */
-	height: 30px;
-	width: 100%;
-}
-
-.downcontent{
-	background-color: gray;	
-	height: 100%	;
+.breadcrumb{
+	height: 35px;
+	background-color: white;	
 	width: 100%;
 	max-width: 100%;
+	padding: 0px 0px ;
+	margin-bottom: 10px;
 
 }
 .breadcrumb-macroeconomico{
@@ -24,22 +20,20 @@
 }
 
 .breadcrumb li>a{
-	color: white;
+	color: white;	
 }
 
+
 .panel-default>.panel-heading{
-	  font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-family: Verdana, Arial, Helvetica, sans-serif;
    font-weight: bold;
    font-style: normal;
    font-size: 16px;
    text-decoration: none;
 }
 
-.grapharea{
-	overflow-y: auto;
-	overflow-x: hide;
-	max-width: 100%;
-}
+
+
 .e-grid .e-toolbar.e-toolbarspan{
 	max-width: 20%;
 	margin-top: -45px;
@@ -54,3 +48,15 @@
 	position: relative;
 	left: 25%;
 }
+
+.tabs{
+	overflow-y: auto;
+	overflow-x: hide;
+
+}
+
+      .leaflet-container {
+        height: 400px;
+        width: 80%;
+        margin: 0 auto;
+      }

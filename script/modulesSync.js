@@ -35,11 +35,11 @@ module.exports = {
     },
 
 
-  moduleGraph: function () {
+  moduleGraph: function (div) {
     
         $(function ()
         {
-            $("#container").ejChart(
+            $("#"+div).ejChart(
                     {
                         //Initializing Primary X Axis	
                         primaryXAxis:

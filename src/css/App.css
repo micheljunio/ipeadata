@@ -55,7 +55,7 @@ body{
 }
 
 .content {
-    background-color: #dce8f1;
+    /* background-color: #dce8f1; */
     height: calc(100vh - 90px);
     padding-top: 50px;	
     width: 98%;    

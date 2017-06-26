@@ -1,39 +1,43 @@
 import React, { Component } from "react";
-import Equipe from "./Equipe";
-import Fontes from "./Fontes";
-import Series from "./Series";
-import DireitosUso from "./DireitosUso";
-import { Breadcrumb, Panel, Jumbotron } from "react-bootstrap";
-import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
+import { Breadcrumb, Panel, Jumbotron, Tabs, Tab } from "react-bootstrap";
 import GridSerie from "./GridSerie";
-import jsonQuery from "json-query";
-import { Link } from "react-router-dom";
+import GraphSerie from "./GraphSerie";
+import MapaSerie from "./MapaSerie";
 import { metadadosSeries } from "../data/metadadosSeries";
 
-import { moduleGrid, moduleGraph } from "../../script/modulesSync.js";
-var serie;
-var text = "";
 //css
 import "../css/content.css";
 
 import img from "../imgs/Screenshot_2.png";
 
+var serie;
+var text = "";
+
 class Content extends Component {
     constructor() {
         super();
         this.renderTable = this.renderTable.bind(this);
-        this.renderTableGraph = this.renderGraph.bind(this);
+        this.renderGraph = this.renderGraph.bind(this);
+        this.renderMap = this.renderMap.bind(this);
+
+        this.handleSelect = this.handleSelect.bind(this);
+
+        this.state = {
+            key: 1
+        };
+    }
+
+    handleSelect(key) {
+        /*alert("selected " + key);*/
+        this.setState({ key });
     }
 
     renderTable() {
         if (this.props.url.id == undefined) {
             return (
                 <Jumbotron>
-                    {" "}<img
-                        alt="imagem"
-                        className="imageminicial"
-                        src={img}
-                    />
+                    {" "}
+                    <img alt="imagem" className="imageminicial" src={img} />
                 </Jumbotron>
             );
         }
@@ -47,13 +51,12 @@ class Content extends Component {
         return <GridSerie serie={serie} div={"Grid"} url={this.props.url.id} />;
     }
 
-    renderGraph() {}
+    renderGraph() {
+        return <GraphSerie div={"container"} />;
+    }
 
-    componentWillMount() {
-        /*
-            serie = this.props.seriemacro;
-        if (this.props.url.id == "macroeconomico") {            
-        }*/
+    renderMap() {
+        return <MapaSerie />;
     }
 
     render() {
@@ -67,38 +70,6 @@ class Content extends Component {
             }
         }
 
-        /*if (this.props.url.id == "regional") {            
-            serie = this.props.serieregional;
-            if (this.props.url.submenu == "temas") {                
-                if (this.props.url.submenu2 == "balanco-de-pagamentos") {
-                    serie = this.props.serie4;            
-                }
-                if (this.props.url.submenu2 == "cambio") {
-                    serie = this.props.serie4;            
-                }
-                if (this.props.url.submenu2 == "comercio-exterior") {
-                    serie = this.props.serie4;
-            
-                }
-            }
-        }
-
-        if (this.props.url.id == "social") {            
-            serie = this.props.seriesocial;
-            if (this.props.url.submenu == "temas") {                
-                if (this.props.url.submenu2 == "balanco-de-pagamentos") {
-                    serie = this.props.serie4;            
-                }
-                if (this.props.url.submenu2 == "cambio") {
-                    serie = this.props.serie4;            
-                }
-                if (this.props.url.submenu2 == "comercio-exterior") {
-                    serie = this.props.serie4;
-            
-                }
-            }
-        }*/
-        /*}*/
         var menu = this.props.url.id;
         if (this.props.url.id !== "macroeconomico")
             if (this.props.url.id !== "regional")
@@ -106,9 +77,14 @@ class Content extends Component {
                     menu = "macroeconomico";
                 }
 
+        var descriçãocolor = "";
+        if (this.props.url.id == "macroeconomico") descriçãocolor = "primary";
+        if (this.props.url.id == "regional") descriçãocolor = "success";
+        if (this.props.url.id == "social") descriçãocolor = "danger";
+
         return (
             <div>
-                <div className="topContent">
+                <div className="breadcrumb">
                     <Breadcrumb className={"breadcrumb-" + menu}>
                         <Breadcrumb.Item href="#">
                             {this.props.url.id}
@@ -122,12 +98,29 @@ class Content extends Component {
                     </Breadcrumb>
                 </div>
 
-                <div className="grapharea">
-                    <Panel header={text} />
-                    {this.renderTable()}
-                    {/*<div id="Grid">
-                    {this.renderTable(serie)}                    
-                </div>*/}
+                <div className="descrição">
+                    <Panel bsStyle={descriçãocolor} header={text}>
+                        <p>Descrição</p>
+                    </Panel>
+                </div>
+
+                <div className="tabs">
+                    <Tabs
+                        activeKey={this.state.key}
+                        onSelect={this.handleSelect}
+                        animation={false}
+                        id="controlled-tab-example"
+                    >
+                        <Tab eventKey={1} title="Tabela">
+                            {this.renderTable()}
+                        </Tab>
+                        <Tab eventKey={2} title="Grafico">
+                            {this.renderGraph()}
+                        </Tab>
+                        <Tab eventKey={3} title="Mapa"> 
+                            {this.renderMap()}
+                        </Tab>
+                    </Tabs>
                 </div>
             </div>
         );
