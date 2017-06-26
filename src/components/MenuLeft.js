@@ -1,10 +1,10 @@
 //react
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 //css
 import "../css/menuleft.css";
 
-import { Link } from "react-router-dom";
 
 class MenuLeft extends Component {
 	constructor() {
@@ -17,14 +17,8 @@ class MenuLeft extends Component {
 		const titleReal = title.name;
 		const titleFanstasia = title.fantasia;
 		const teste = title.subItens;
-
-		//console.log(title);
-		//console.log(teste);
-
 		return (
 			<Link to={`/${menuname}/${titleFanstasia}`}>
-
-				{/*<Link to={`/${titleFanstasia}`}>*/}
 				<ul
 					className={"dropdown-menu " + `dropdown-menu0${i}`}
 					title={titleReal}
@@ -32,7 +26,6 @@ class MenuLeft extends Component {
 					<li className="dropdown-submenu">
 						<a className="text">{titleReal}</a>
 						<ul className="dropdown-menu">
-
 							{teste.map(function(itens, j) {
 								const numul = 1;
 								return (
@@ -41,7 +34,9 @@ class MenuLeft extends Component {
 										<Link
 											to={`/${menuname}/${title.fantasia}/${itens.fantasia}`}
 										>
-											{" "}<a className="text">{itens.name}</a>{" "}
+											{" "}
+											<a className="text">{itens.name}</a>
+											{" "}
 										</Link>
 										{itens.hasOwnProperty("subItens") &&
 											this.menuUl(itens.subItens, numul)}
@@ -49,22 +44,17 @@ class MenuLeft extends Component {
 								);
 							}, this)}
 						</ul>
-
 					</li>
-
 				</ul>
-
 			</Link>
 		);
 	}
 	menuUl(itens, numul) {
 		numul++;
-		//console.log("funcao");
 
 		return (
 			<ul className="dropdown-menu">
 				{itens.map(function(subi, j) {
-					// console.log(subi.name +" " +  itens.name + " " +title);
 					return (
 						<li key={j} className="dropdown-submenu">
 
@@ -97,16 +87,19 @@ class MenuLeft extends Component {
 
 										{" "}
 										<Link to={`/${itens.fantasia}`}>
-											{" "}<a className="text">{itens.name} </a>{" "}
+											{" "}
+											<a className="text">
+												{itens.name}
+												{" "}
+											</a>
+											{" "}
 										</Link>
 										{itens.hasOwnProperty("subItens") &&
 											this.menuUl(itens.subItens, numul)}
-
 									</li>
 								);
 							}, this)}
 						</ul>
-
 					</li>
 				</ul>
 			</Link>
@@ -123,51 +116,35 @@ class MenuLeft extends Component {
 				var itenName = itensSub[Object.keys(itensSub)[0]];
 				var menuname = itensNames[Object.keys(itensSub)[0]];
 				var i = 0;
-				/*var itenName2 = Object.keys(itenName).map(
-					keys => itenName[keys].name
-				);*/
 				break;
 
 			case "regional":
 				itenName = itensSub[Object.keys(itensSub)[1]];
 				menuname = itensNames[Object.keys(itensSub)[1]];
 				i = 1;
-				/*var itenName2 = Object.keys(itenName).map(
-					keys => itenName[keys].name
-				);*/
 				break;
 
 			case "social":
 				itenName = itensSub[Object.keys(itensSub)[2]];
 				menuname = itensNames[Object.keys(itensSub)[2]];
 				i = 2;
-				/*var itenName2 = Object.keys(itenName).map(
-					keys => itenName[keys].name
-				);*/
 				break;
 
 			default:
 				itenName = itensSub[Object.keys(itensSub)[0]];
 				menuname = itensNames[Object.keys(itensSub)[0]];
 				i = 0;
-				/*var itenName2 = Object.keys(itenName).map(
-					keys => itenName[keys].name
-				);*/
 				break;
 		}
 
-		//console.log (this.props.menuname)
 		return (
 			<div>
-
 				<ul className={"nav " + this.props.menucolor}>
 					<li className="active">
 						<Link to={`/${menuname}`}>
 							{menuname}
 						</Link>
-
 					</li>
-
 				</ul>
 
 				<ul
@@ -177,9 +154,7 @@ class MenuLeft extends Component {
 					{itenName.map(a => this.renderMenu(a, i, menuname))}
 
 				</ul>
-
 				<div className={this.props.sidecolor}> </div>
-
 			</div>
 		);
 	}

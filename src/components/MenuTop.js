@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ButtonToolbar} from "react-bootstrap";
+import { ButtonToolbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 //css
@@ -13,12 +13,10 @@ class MenuTop extends Component {
     }
     menuUl(itens, numul) {
         numul++;
-        //console.log("funcao");
-
+        
         return (
             <ul className={`submenu-${numul}`}>
                 {itens.map(function(subi, j) {
-                    // console.log(subi.name +" " +  itens.name + " " +title);
                     return (
                         <li key={j}>
                             <Link to={`/${subi.fantasia}`}> {subi.name} </Link>
@@ -45,7 +43,6 @@ class MenuTop extends Component {
                         <ul className="submenu-1">
 
                             {x.map(function(itens, j) {
-                            
                                 const numul = 1;
                                 return (
                                     <li key={j}>

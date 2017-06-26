@@ -32,7 +32,23 @@ class Content extends Component {
         this.setState({ key });
     }
 
+
+
     renderTable() {
+
+        function Get(yourUrl) {
+            var Httpreq = new XMLHttpRequest(); // a new request
+            Httpreq.open("GET", yourUrl, false);
+            Httpreq.send(null);
+            return Httpreq.responseText;
+        }
+
+        var json_obj1 = JSON.parse(Get("http://www.ipeadata.gov.br/api/odata4/Paises"));
+        var json_obj2 = JSON.parse(Get("http://www.ipeadata.gov.br/api/odata4/Metadados('WDI_PIBPPCCAPRISR')/Valores"));
+
+
+        console.log(json_obj);
+
         if (this.props.url.id == undefined) {
             return (
                 <Jumbotron>
@@ -48,7 +64,7 @@ class Content extends Component {
                 }
             }
         }
-        return <GridSerie serie={serie} div={"Grid"} url={this.props.url.id} />;
+        return <GridSerie serie={json_obj.value} div={"Grid"} url={this.props.url.id} />;
     }
 
     renderGraph() {
@@ -117,7 +133,7 @@ class Content extends Component {
                         <Tab eventKey={2} title="Grafico">
                             {this.renderGraph()}
                         </Tab>
-                        <Tab eventKey={3} title="Mapa"> 
+                        <Tab eventKey={3} title="Mapa">
                             {this.renderMap()}
                         </Tab>
                     </Tabs>

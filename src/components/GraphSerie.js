@@ -1,22 +1,22 @@
 import React, { Component } from "react";
-import {moduleGraph} from "../../script/modulesSync.js"
+import { moduleGraph } from "../../script/modulesSync.js";
 import { Link } from "react-router-dom";
-import { Redirect } from 'react-router';
+import { Redirect } from "react-router";
 
 /*import { serie1 } from "../data/serie1";*/
-
 
 class GridSerie extends Component {
     constructor() {
         super();
-/*        this.state = {
+        /*        this.state = {
             redirect: false,
             valueRedirect: -1,
             propsSerie: false,
             nextProps: ''
         };
         this.handleClick = this.handleClick.bind(this); 
-*/    }
+*/
+    }
 
     /*handleClick = () => {        
         if(getRowSelected() != -1){
@@ -27,23 +27,23 @@ class GridSerie extends Component {
         }
     }*/
 
-    componentDidMount(){
-    /*    console.log("didMount");
+    componentDidMount() {
+        /*    console.log("didMount");
         var serie = this.props.serie;
         return(        
             moduleGrid(serie, this.props.div)     
         );*/
-    }  
+    }
 
-    componentWillReceiveProps(nextProps){
-  /*      console.log('receivedProps');
+    componentWillReceiveProps(nextProps) {
+        /*      console.log('receivedProps');
         if(this.props.url !== nextProps.url){
              this.setState({propsSerie:true, nextProps: nextProps.serie});
         }*/
     }
-   
-    render() {     
-/*        console.log("render");
+
+    render() {
+        /*        console.log("render");
         console.log(this.state.redirect);
         var serie = this.props.serie;       
 
@@ -56,12 +56,12 @@ class GridSerie extends Component {
             serie = this.state.nextProps;
             this.setState({propsSerie:false});
         }*/
-        
-        return(       
+
+        return (
             <div id="container">
-                { moduleGraph(this.props.div) }
+                {moduleGraph(this.props.div)}
             </div>
-        )      
+        );
     }
 }
 

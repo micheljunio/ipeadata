@@ -31,11 +31,11 @@ class App extends Component {
   render() {
     //console.log(this.props.match.params)
     var menu = this.props.match.params.id;
-    if (this.props.match.params.id !== "macroeconomico" )
-      if (this.props.match.params.id !== "regional" )
-        if (this.props.match.params.id !== "social"){
-        menu = "macroeconomico";
-    }
+    if (this.props.match.params.id !== "macroeconomico")
+      if (this.props.match.params.id !== "regional")
+        if (this.props.match.params.id !== "social") {
+          menu = "macroeconomico";
+        }
 
     return (
       <Grid fluid="true">
@@ -51,29 +51,38 @@ class App extends Component {
           <Col className="nopadding" xs={12} md={12}>
 
             {/*menuleft*/}
-            <Col className="menu-left" xs={2} md={2} > 
+            <Col className="menu-left" xs={2} md={2}>
               <MenuLeft
-              itens={itensTabs}
-              menuname={menu}
-              menucolor={menu + "-nav-sidebar"}
-              sidecolor={menu + "-sidebar"}
-          />
+                itens={itensTabs}
+                menuname={menu}
+                menucolor={menu + "-nav-sidebar"}
+                sidecolor={menu + "-sidebar"}
+              />
             </Col>
 
             {/*rightarea*/}
             <Col className="nopadding" xs={10} md={10}>
 
               {/*menutop*/}
-              <Col className="nopadding menu-top" xs={12} md={12} >
+              <Col className="nopadding menu-top" xs={12} md={12}>
                 <MenuTop
-              itens={itensTabs}
-              tabcolor={this.props.match.params.id + "-dropdown"}
-              togle={this.props.match.params.id + "-dropdown-toggle"}/>
+                  itens={itensTabs}
+                  tabcolor={this.props.match.params.id + "-dropdown"}
+                  togle={this.props.match.params.id + "-dropdown-toggle"}
+                />
               </Col>
 
               {/*content*/}
-              <Col className="nopadding content" xs={12} md={12} > 
-                <Content url={this.props.match.params} serie1={serie1} serie2={serie2} serie3={serie3} seriemacro={seriemacro} serieregional={serieregional} seriesocial={seriesocial}/>
+              <Col className="nopadding content" xs={12} md={12}>
+                <Content
+                  url={this.props.match.params}
+                  serie1={serie1}
+                  serie2={serie2}
+                  serie3={serie3}
+                  seriemacro={seriemacro}
+                  serieregional={serieregional}
+                  seriesocial={seriesocial}
+                />
               </Col>
 
             </Col>
@@ -87,24 +96,6 @@ class App extends Component {
       </Grid>
     );
   }
-}
-{
-  /*<MenuLeft
-              itens={itensTabs}
-              menuname={this.props.match.params.id}
-              menucolor={this.props.match.params.id + "-nav-sidebar"}
-              sidecolor={this.props.match.params.id + "-sidebar"}
-          />*/
-}
-{
-  /*<MenuTop
-              itens={itensTabs}
-              tabcolor={this.props.match.params.id + "-dropdown"}
-              togle={this.props.match.params.id + "-dropdown-toggle"}/>
-*/
-}
-{
-  /*<Navbar itens={itensDropMenu} navname={"Ipeadata"} />*/
 }
 
 export default App;
