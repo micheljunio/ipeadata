@@ -4,6 +4,9 @@ import GridSerie from "./GridSerie";
 import GraphSerie from "./GraphSerie";
 import MapaSerie from "./MapaSerie";
 import { metadadosSeries } from "../data/metadadosSeries";
+import {metadados} from "../data/metados";
+import {metadadoGeral} from "../data/metadadoGeral";
+import {metadadoSerieGeral} from "../data/metadadoSerieGeral";
 
 //css
 import "../css/content.css";
@@ -12,6 +15,8 @@ import img from "../imgs/Screenshot_2.png";
 
 var serie;
 var text = "";
+var json_obj2 = "";
+var serieName = "";
 
 class Content extends Component {
     constructor() {
@@ -19,9 +24,10 @@ class Content extends Component {
         this.renderTable = this.renderTable.bind(this);
         this.renderGraph = this.renderGraph.bind(this);
         this.renderMap = this.renderMap.bind(this);
-
-        this.handleSelect = this.handleSelect.bind(this);
-
+        this.renderDescricao = this.renderDescricao.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);  
+        this.getValues = this.getValues.bind(this);
+        this.renderComponents = this.renderComponents.bind(this);     
         this.state = {
             key: 1
         };
@@ -32,22 +38,23 @@ class Content extends Component {
         this.setState({ key });
     }
 
-
-
-    renderTable() {
-
+    getValues(){
         function Get(yourUrl) {
             var Httpreq = new XMLHttpRequest(); // a new request
             Httpreq.open("GET", yourUrl, false);
             Httpreq.send(null);
             return Httpreq.responseText;
         }
-
-        var json_obj1 = JSON.parse(Get("http://www.ipeadata.gov.br/api/odata4/Paises"));
-        var json_obj2 = JSON.parse(Get("http://www.ipeadata.gov.br/api/odata4/Metadados('WDI_PIBPPCCAPRISR')/Valores"));
-
-
-        console.log(json_obj);
+        var string = "http://www.ipeadata.gov.br/api/odata4/Metadados('" + this.props.url.id + "')/Valores";        
+        json_obj2 = JSON.parse(Get(string));
+        console.log(json_obj2.value);
+        if(json_obj2.value.length == 0){
+            json_obj2 = metadados;
+        }    
+        return json_obj2;   
+    }
+    
+    renderTable(jsonView) {  
 
         if (this.props.url.id == undefined) {
             return (
@@ -64,18 +71,47 @@ class Content extends Component {
                 }
             }
         }
-        return <GridSerie serie={json_obj.value} div={"Grid"} url={this.props.url.id} />;
+        var columns = metadadoSerieGeral;
+        if(jsonView == metadados){
+            columns = metadadoGeral;
+        }
+        return <GridSerie serie={jsonView.value} div={"Grid"} columns={columns} url={this.props.url.id} />;
     }
 
-    renderGraph() {
-        return <GraphSerie div={"container"} />;
+    renderGraph(jsonView) {
+        return <GraphSerie div={"container"} serie={jsonView.value} serieName = {serieName} />;
+    }
+
+    renderDescricao(jsonView){
+        var descr = "";
+        console.log(jsonView.value);
+        for (var key in metadados.value) {
+            if (metadados.value[key].SERCODIGO == this.props.url.id) {
+                descr = metadados.value[key].SERCOMENTARIO;
+                serieName = metadados.value[key].SERNOME;
+            }
+        }
+        return (descr);
     }
 
     renderMap() {
         return <MapaSerie />;
     }
 
+    renderComponents(){
+
+    }
     render() {
+        var jsonView = this.getValues();
+        if(json_obj2 == metadados){
+            return  (
+                <div>
+                    {this.renderTable(json_obj2)}
+                </div>
+                );
+        }
+        else{
+            
         if (this.props.url.id !== undefined) {
             text = this.props.url.id;
             if (this.props.url.submenu !== undefined) {
@@ -94,9 +130,16 @@ class Content extends Component {
                 }
 
         var descriçãocolor = "";
-        if (this.props.url.id == "macroeconomico") descriçãocolor = "primary";
-        if (this.props.url.id == "regional") descriçãocolor = "success";
-        if (this.props.url.id == "social") descriçãocolor = "danger";
+        if (this.props.url.id == "macroeconomico") 
+            descriçãocolor = "primary"
+        else
+            if (this.props.url.id == "regional") 
+                descriçãocolor = "success"
+            else
+                if (this.props.url.id == "social") 
+                    descriçãocolor = "danger"
+                else
+                    descriçãocolor = "primary"
 
         return (
             <div>
@@ -116,7 +159,8 @@ class Content extends Component {
 
                 <div className="descrição">
                     <Panel bsStyle={descriçãocolor} header={text}>
-                        <p>Descrição</p>
+                        <h3>Descrição</h3>
+                        <p>{this.renderDescricao(jsonView)}</p>
                     </Panel>
                 </div>
 
@@ -128,10 +172,10 @@ class Content extends Component {
                         id="controlled-tab-example"
                     >
                         <Tab eventKey={1} title="Tabela">
-                            {this.renderTable()}
+                            {this.renderTable(json_obj2)}
                         </Tab>
                         <Tab eventKey={2} title="Grafico">
-                            {this.renderGraph()}
+                            {this.renderGraph(json_obj2)}
                         </Tab>
                         <Tab eventKey={3} title="Mapa">
                             {this.renderMap()}
@@ -140,6 +184,7 @@ class Content extends Component {
                 </div>
             </div>
         );
+        }
     }
 }
 

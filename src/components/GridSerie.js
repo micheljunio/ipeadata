@@ -17,10 +17,12 @@ class GridSerie extends Component {
 	}
 
 	handleClick = () => {
-		if (getRowSelected() != -1) {
+        var clickRow = getRowSelected();
+        console.log(this.props.url);
+		if (clickRow != -1 && this.props.url != clickRow ) {
 			this.setState({
 				redirect: true,
-				valueRedirect: getRowSelected()
+				valueRedirect: clickRow
 			});
 		}
 	};
@@ -28,7 +30,7 @@ class GridSerie extends Component {
 	componentDidMount() {
 		console.log("didMount");
 		var serie = this.props.serie;
-		return moduleGrid(serie, this.props.div);
+		return moduleGrid(serie, this.props.div, this.props.columns);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -55,7 +57,7 @@ class GridSerie extends Component {
 
 		return (
 			<div id="Grid" onClick={this.handleClick}>
-				{moduleGrid(serie, this.props.div)}
+				{moduleGrid(serie, this.props.div, this.props.columns)}
 			</div>
 		);
 	}

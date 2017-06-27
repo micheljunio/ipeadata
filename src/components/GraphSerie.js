@@ -59,7 +59,7 @@ class GridSerie extends Component {
 
         return (
             <div id="container">
-                {moduleGraph(this.props.div)}
+                {moduleGraph(this.props.div, this.props.serie, this.props.serieName)}
             </div>
         );
     }
