@@ -4,9 +4,9 @@ import GridSerie from "./GridSerie";
 import GraphSerie from "./GraphSerie";
 import MapaSerie from "./MapaSerie";
 import { metadadosSeries } from "../data/metadadosSeries";
-import {metadados} from "../data/metados";
-import {metadadoGeral} from "../data/metadadoGeral";
-import {metadadoSerieGeral} from "../data/metadadoSerieGeral";
+import { metadados } from "../data/metados";
+import { metadadoGeral } from "../data/metadadoGeral";
+import { metadadoSerieGeral } from "../data/metadadoSerieGeral";
 
 //css
 import "../css/content.css";
@@ -25,9 +25,9 @@ class Content extends Component {
         this.renderGraph = this.renderGraph.bind(this);
         this.renderMap = this.renderMap.bind(this);
         this.renderDescricao = this.renderDescricao.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);  
+        this.handleSelect = this.handleSelect.bind(this);
         this.getValues = this.getValues.bind(this);
-        this.renderComponents = this.renderComponents.bind(this);     
+        this.renderComponents = this.renderComponents.bind(this);
         this.state = {
             key: 1
         };
@@ -38,24 +38,26 @@ class Content extends Component {
         this.setState({ key });
     }
 
-    getValues(){
+    getValues() {
         function Get(yourUrl) {
             var Httpreq = new XMLHttpRequest(); // a new request
             Httpreq.open("GET", yourUrl, false);
             Httpreq.send(null);
             return Httpreq.responseText;
         }
-        var string = "http://www.ipeadata.gov.br/api/odata4/Metadados('" + this.props.url.id + "')/Valores";        
+        var string =
+            "http://www.ipeadata.gov.br/api/odata4/Metadados('" +
+            this.props.url.id +
+            "')/Valores";
         json_obj2 = JSON.parse(Get(string));
         console.log(json_obj2.value);
-        if(json_obj2.value.length == 0){
+        if (json_obj2.value.length == 0) {
             json_obj2 = metadados;
-        }    
-        return json_obj2;   
+        }
+        return json_obj2;
     }
-    
-    renderTable(jsonView) {  
 
+    renderTable(jsonView) {
         if (this.props.url.id == undefined) {
             return (
                 <Jumbotron>
@@ -72,17 +74,30 @@ class Content extends Component {
             }
         }
         var columns = metadadoSerieGeral;
-        if(jsonView == metadados){
+        if (jsonView == metadados) {
             columns = metadadoGeral;
         }
-        return <GridSerie serie={jsonView.value} div={"Grid"} columns={columns} url={this.props.url.id} />;
+        return (
+            <GridSerie
+                serie={jsonView.value}
+                div={"Grid"}
+                columns={columns}
+                url={this.props.url.id}
+            />
+        );
     }
 
     renderGraph(jsonView) {
-        return <GraphSerie div={"container"} serie={jsonView.value} serieName = {serieName} />;
+        return (
+            <GraphSerie
+                div={"container"}
+                serie={jsonView.value}
+                serieName={serieName}
+            />
+        );
     }
 
-    renderDescricao(jsonView){
+    renderDescricao(jsonView) {
         var descr = "";
         console.log(jsonView.value);
         for (var key in metadados.value) {
@@ -91,99 +106,163 @@ class Content extends Component {
                 serieName = metadados.value[key].SERNOME;
             }
         }
-        return (descr);
+        return descr;
     }
 
     renderMap() {
         return <MapaSerie />;
     }
 
-    renderComponents(){
-
-    }
+    renderComponents() {}
     render() {
         var jsonView = this.getValues();
-        if(json_obj2 == metadados){
-            return  (
+
+        if (this.props.url.id == "fontes") {
+            return (
+                <div>
+                    <h1>Fontes</h1>
+                </div>
+            );
+        }
+
+        if (this.props.url.id == "catalogo") {
+            return (
+                <div>
+                    <h1>catalogo</h1>
+                </div>
+            );
+        }
+
+        if (this.props.url.id == "estatística") {
+            return (
+                <div>
+                    <h1>estatística</h1>
+                </div>
+            );
+        }
+        if (this.props.url.id == "O_que_e") {
+            return (
+                <div>
+                    <h1>O_que_e</h1>
+                </div>
+            );
+        }
+        if (this.props.url.id == "Equipe") {
+            return (
+                <div>
+                    <Jumbotron>
+                        <p>Equipe Responsável</p>
+                        <p>Coordenação </p>
+
+                        <p>Gerência operacional </p>
+                        <p> Análise, padronização e atualização de dados </p>
+                        <p> Suporte e manutenção do sistema </p>
+                    </Jumbotron>
+                </div>
+            );
+        }
+        if (this.props.url.id == "direitos") {
+            return (
+                <div>
+                    <Jumbotron>
+                        <p>
+                            <br />
+                            <br />
+                            Leia atentamente os termos e condições de uso deste
+                            site. Caso não concorde, por favor,
+                            {" "}
+                            não utilize o Ipeadata.
+                            Este site é administrado pelo Instituto de Pesquisa
+                            Econômica Aplicada (Ipea), que,
+                            {" "}
+                            empenhado em prover informação de alta qualidade,
+                            recorreu a fontes de dados de confiança reconhecida.
+                            {" "}
+                            Apesar disso, o Ipea não garante a exatidão das
+                            informações reunidas no
+                            {" "}
+                            Ipeadata para qualquer finalidade particular.
+                        </p>
+                    </Jumbotron>
+                </div>
+            );
+        }
+
+        if (json_obj2 == metadados) {
+            return (
                 <div>
                     {this.renderTable(json_obj2)}
                 </div>
-                );
-        }
-        else{
-            
-        if (this.props.url.id !== undefined) {
-            text = this.props.url.id;
-            if (this.props.url.submenu !== undefined) {
-                text = this.props.url.submenu;
-                if (this.props.url.submenu2 !== undefined) {
-                    text = this.props.url.submenu2;
+            );
+        } else {
+            if (this.props.url.id !== undefined) {
+                text = this.props.url.id;
+                if (this.props.url.submenu !== undefined) {
+                    text = this.props.url.submenu;
+                    if (this.props.url.submenu2 !== undefined) {
+                        text = this.props.url.submenu2;
+                    }
                 }
             }
-        }
 
-        var menu = this.props.url.id;
-        if (this.props.url.id !== "macroeconomico")
-            if (this.props.url.id !== "regional")
-                if (this.props.url.id !== "social") {
-                    menu = "macroeconomico";
-                }
+            var menu = this.props.url.id;
+            if (this.props.url.id !== "macroeconomico")
+                if (this.props.url.id !== "regional")
+                    if (this.props.url.id !== "social") {
+                        menu = "macroeconomico";
+                    }
 
-        var descriçãocolor = "";
-        if (this.props.url.id == "macroeconomico") 
-            descriçãocolor = "primary"
-        else
-            if (this.props.url.id == "regional") 
-                descriçãocolor = "success"
-            else
-                if (this.props.url.id == "social") 
-                    descriçãocolor = "danger"
-                else
-                    descriçãocolor = "primary"
+            var descriçãocolor = "";
+            if (this.props.url.id == "macroeconomico")
+                descriçãocolor = "primary";
+            else if (this.props.url.id == "regional")
+                descriçãocolor = "success";
+            else if (this.props.url.id == "social") descriçãocolor = "danger";
+            else descriçãocolor = "primary";
 
-        return (
-            <div>
-                <div className="breadcrumb">
-                    <Breadcrumb className={"breadcrumb-" + menu}>
-                        <Breadcrumb.Item href="#">
-                            {this.props.url.id}
-                        </Breadcrumb.Item>
-                        <Breadcrumb.Item href="#">
-                            {this.props.url.submenu}
-                        </Breadcrumb.Item>
-                        <Breadcrumb.Item active>
-                            {this.props.url.submenu2}
-                        </Breadcrumb.Item>
-                    </Breadcrumb>
+            return (
+                <div>
+                    <div className="breadcrumb">
+                        <Breadcrumb className={"breadcrumb-" + menu}>
+                            <Breadcrumb.Item href="#">
+                                {this.props.url.id}
+                            </Breadcrumb.Item>
+                            <Breadcrumb.Item href="#">
+                                {this.props.url.submenu}
+                            </Breadcrumb.Item>
+                            <Breadcrumb.Item active>
+                                {this.props.url.submenu2}
+                            </Breadcrumb.Item>
+                        </Breadcrumb>
+                    </div>
+
+                    <div className="descrição">
+                        <Panel bsStyle={descriçãocolor} header={text}>
+                            <h3>Descrição</h3>
+                            <p>{this.renderDescricao(jsonView)}</p>
+                        </Panel>
+                    </div>
+
+                    <div className="tabs">
+                        <Tabs
+                            activeKey={this.state.key}
+                            onSelect={this.handleSelect}
+                            animation={false}
+                            id="controlled-tab-example"
+                        >
+                            <Tab eventKey={1} title="Tabela">
+                                {this.renderTable(json_obj2)}
+                            </Tab>
+                            <Tab eventKey={2} title="Grafico">
+                                {this.renderGraph(json_obj2)}
+                            </Tab>
+                            <Tab eventKey={3} title="Mapa">
+                                {this.renderMap()}
+                            </Tab>
+                        </Tabs>
+                    </div>
                 </div>
-
-                <div className="descrição">
-                    <Panel bsStyle={descriçãocolor} header={text}>
-                        <h3>Descrição</h3>
-                        <p>{this.renderDescricao(jsonView)}</p>
-                    </Panel>
-                </div>
-
-                <div className="tabs">
-                    <Tabs
-                        activeKey={this.state.key}
-                        onSelect={this.handleSelect}
-                        animation={false}
-                        id="controlled-tab-example"
-                    >
-                        <Tab eventKey={1} title="Tabela">
-                            {this.renderTable(json_obj2)}
-                        </Tab>
-                        <Tab eventKey={2} title="Grafico">
-                            {this.renderGraph(json_obj2)}
-                        </Tab>
-                        <Tab eventKey={3} title="Mapa">
-                            {this.renderMap()}
-                        </Tab>
-                    </Tabs>
-                </div>
-            </div>
-        );
+            );
         }
     }
 }

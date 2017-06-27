@@ -74,3 +74,35 @@
   .navbar-custom .navbar-link:hover {
       color: #bdcedd;
   }
+
+  .botaonavbar{
+    background-color: #00396c;
+  }
+
+  .botaonavbar>a{
+    color: white;
+  }
+
+  .botaonavbar>a>li{
+    color: #00396c;
+  }
+
+.botaonavbar>a>li>a{
+    color: white;
+  }
+.botaonavbar:hover{
+    background-color: #00396c;
+}
+
+  .dropdown:hover .dropdown-menu{
+background-color: #00396c;
+  }
+
+  .dropdown:hover .dropdown-menu>li>a>a{
+color: white;
+background-color: #00396c;
+  }
+
+  .navbar-custom .navbar-nav:hover > li > a{
+    background-color: #00396c;
+  }

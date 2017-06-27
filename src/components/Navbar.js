@@ -6,9 +6,13 @@ import { Link } from "react-router-dom";
 //css
 import "../css/navbar.css";
 
-import img1 from "../imgs/logo.gif";
-import img2 from "../imgs/logo_ipea.gif";
-import img3 from "../imgs/ico_inglaterra.gif";
+import img1 from '../imgs/logo.gif';
+import img2 from '../imgs/logo_ipea.gif';
+import img3 from '../imgs/ico_inglaterra.gif';
+
+/*import Metadados from "./Metadados";
+import Equipe from "./Equipe";
+import Content from "./Content";*/
 
 class Navbar extends Component {
     constructor() {
@@ -58,7 +62,9 @@ class Navbar extends Component {
                             aria-controls="navbar"
                         >
                             <span className="sr-only">Toggle navigation</span>
-
+                            <span className="icon-bar" />
+                            <span className="icon-bar" />
+                            <span className="icon-bar" />
                         </button>
 
                         <a
@@ -82,6 +88,12 @@ class Navbar extends Component {
                                 <img alt="imagem" src={img2} />
                             </a>
                         </ul>
+
+                        <Button className="navbar-form navbar-right botaonavbar">
+                            {itensNames.map((a, i) =>
+                                this.renderDropdownButton(a, i, itensSub[i])
+                            )}
+                        </Button>
 
                         <form className="navbar-form navbar-right">
                             <input
