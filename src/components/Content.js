@@ -50,7 +50,7 @@ class Content extends Component {
             this.props.url.id +
             "')/Valores";
         json_obj2 = JSON.parse(Get(string));
-        console.log(json_obj2.value);
+        //console.log(json_obj2.value);
         if (json_obj2.value.length == 0) {
             json_obj2 = metadados;
         }
@@ -99,7 +99,7 @@ class Content extends Component {
 
     renderDescricao(jsonView) {
         var descr = "";
-        console.log(jsonView.value);
+        //console.log(jsonView.value);
         for (var key in metadados.value) {
             if (metadados.value[key].SERCODIGO == this.props.url.id) {
                 descr = metadados.value[key].SERCOMENTARIO;
@@ -359,4 +359,4 @@ setState() {
                 var result = jsonQuery('value[*PAICODIGO=ZAF].PAINOME',{
                     data: json_obj
                 });
-                console.log(result)*/
+                //console.log(result)*/

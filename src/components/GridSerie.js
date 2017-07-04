@@ -18,7 +18,7 @@ class GridSerie extends Component {
 
 	handleClick = () => {
         var clickRow = getRowSelected();
-        console.log(this.props.url);
+        //console.log(this.props.url);
 		if (clickRow != -1 && this.props.url != clickRow ) {
 			this.setState({
 				redirect: true,
@@ -28,21 +28,21 @@ class GridSerie extends Component {
 	};
 
 	componentDidMount() {
-		console.log("didMount");
+		//console.log("didMount");
 		var serie = this.props.serie;
 		return moduleGrid(serie, this.props.div, this.props.columns);
 	}
 
 	componentWillReceiveProps(nextProps) {
-		console.log("receivedProps");
+		//console.log("receivedProps");
 		if (this.props.url !== nextProps.url) {
 			this.setState({ propsSerie: true, nextProps: nextProps.serie });
 		}
 	}
 
 	render() {
-		console.log("render");
-		console.log(this.state.redirect);
+		//console.log("render");
+		//console.log(this.state.redirect);
 		var serie = this.props.serie;
 
 		if (this.state.redirect) {

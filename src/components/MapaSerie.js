@@ -25,7 +25,7 @@ export default class MapaSerie extends React.Component {
 
   render() {
     const { state } = this.state;
-    console.log(statesData);
+    //console.log(statesData);
     return (
       <Map
         width='100%'
