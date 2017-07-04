@@ -40,6 +40,10 @@ module.exports = {
 
     moduleGraph: function (div, serie, nameSerie) {
 
+        var jsonQ=require("jsonq");
+        var obj = jsonQ.order(serie);
+        console.log(obj);
+
         /*function sortByKey(array, key) {
             return array.sort(function (a, b) {
                 var x = a[key]; var y = b[key];
@@ -69,8 +73,7 @@ module.exports = {
                 "x":serie[i].VALDATA,
                 "y":serie[i].VALVALOR
             })
-            flag = item;
-            
+            flag = item;            
         }
 
         serieJson = sortByKey(serieJson, 'points.x');*/
@@ -98,7 +101,7 @@ module.exports = {
                 {
                     type: 'line', enableAnimation: true,
                     tooltip: { visible: true, template: 'Tooltip' },
-                    marker:
+                    /*marker:
                     {
                         shape: 'circle',
                         size:
@@ -106,7 +109,7 @@ module.exports = {
                             height: 10, width: 10
                         },
                         visible: true
-                    },
+                    },*/
                     border: { width: 2 }
                 },
 

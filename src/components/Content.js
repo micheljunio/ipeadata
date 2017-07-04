@@ -46,9 +46,7 @@ class Content extends Component {
             return Httpreq.responseText;
         }
         var string =
-            "http://www.ipeadata.gov.br/api/odata4/Metadados('" +
-            this.props.url.id +
-            "')/Valores";
+            "http://www.ipeadata.gov.br/api/odata4/Metadados('" + this.props.url.id + "')/Valores";
         json_obj2 = JSON.parse(Get(string));
         console.log(json_obj2.value);
         if (json_obj2.value.length == 0) {
