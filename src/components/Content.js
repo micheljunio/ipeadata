@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Breadcrumb, Panel, Jumbotron, Tabs, Tab } from "react-bootstrap";
+import { Breadcrumb, Panel, Jumbotron, Tabs, Tab, DropdownButton, MenuItem, ButtonGroup } from "react-bootstrap";
 import GridSerie from "./GridSerie";
 import GraphSerie from "./GraphSerie";
 import MapaSerie from "./MapaSerie";
@@ -50,7 +50,7 @@ class Content extends Component {
             this.props.url.id +
             "')/Valores";
         json_obj2 = JSON.parse(Get(string));
-        //console.log(json_obj2.value);
+        console.log(json_obj2.value);
         if (json_obj2.value.length == 0) {
             json_obj2 = metadados;
         }
@@ -99,7 +99,7 @@ class Content extends Component {
 
     renderDescricao(jsonView) {
         var descr = "";
-        //console.log(jsonView.value);
+        console.log(jsonView.value);
         for (var key in metadados.value) {
             if (metadados.value[key].SERCODIGO == this.props.url.id) {
                 descr = metadados.value[key].SERCOMENTARIO;
@@ -240,8 +240,66 @@ class Content extends Component {
                         <Panel bsStyle={descriçãocolor} header={text}>
                             <h3>Descrição</h3>
                             <p>{this.renderDescricao(jsonView)}</p>
+                            <ButtonGroup horizontal>
+                            <DropdownButton title="Nivel Geografico" id="1">
+                                <MenuItem eventkey=""> Brasil </MenuItem>
+                                <MenuItem eventkey=""> Regiões </MenuItem>
+                                <MenuItem eventkey=""> Estados </MenuItem>
+                            </DropdownButton>    
+
+                            <DropdownButton title="Abrangencia" id="2">
+                                <MenuItem eventkey=""> Regial Centro-Oeste </MenuItem>
+                                <MenuItem eventkey=""> Regial Nordeste </MenuItem>
+                                <MenuItem eventkey=""> Regial Norte </MenuItem>
+                                <MenuItem eventkey=""> Regial Sudeste </MenuItem>
+                                <MenuItem eventkey=""> Regial Sul </MenuItem>
+                            </DropdownButton>    
+
+                            <DropdownButton title="inicio" id="3">
+                                <MenuItem eventkey=""> 1985 </MenuItem>
+                                <MenuItem eventkey=""> 1986 </MenuItem>
+                                <MenuItem eventkey=""> 1987 </MenuItem>
+                                <MenuItem eventkey=""> 1988 </MenuItem>
+                                <MenuItem eventkey=""> 1989 </MenuItem>
+                                <MenuItem eventkey=""> 1990 </MenuItem>
+                                <MenuItem eventkey=""> 1991 </MenuItem>
+                                <MenuItem eventkey=""> 1992 </MenuItem>
+                                <MenuItem eventkey=""> 1993 </MenuItem>
+                                <MenuItem eventkey=""> 1994 </MenuItem>
+                                <MenuItem eventkey=""> 1995 </MenuItem>
+                                <MenuItem eventkey=""> 1996 </MenuItem>
+                                <MenuItem eventkey=""> 1997 </MenuItem>
+                                <MenuItem eventkey=""> 1998 </MenuItem>
+                                <MenuItem eventkey=""> 1999 </MenuItem>
+                                <MenuItem eventkey=""> 2000 </MenuItem>
+                                <MenuItem eventkey=""> 2001 </MenuItem>
+                                <MenuItem eventkey=""> 2003 </MenuItem>
+                                <MenuItem eventkey=""> 2004 </MenuItem>
+                                <MenuItem eventkey=""> 2005 </MenuItem>
+                                <MenuItem eventkey=""> 2006 </MenuItem>
+                                <MenuItem eventkey=""> 2007 </MenuItem>
+                                <MenuItem eventkey=""> 2008 </MenuItem>
+                                <MenuItem eventkey=""> 2009 </MenuItem>
+                                <MenuItem eventkey=""> 2010 </MenuItem>
+                                <MenuItem eventkey=""> 2011 </MenuItem>                               
+                                
+                            </DropdownButton>    
+                            
+                            <DropdownButton title="Fim" id="1">
+                                <MenuItem eventkey="1"> Item 1 </MenuItem>
+                            </DropdownButton>    
+
+                            </ButtonGroup>
                         </Panel>
                     </div>
+
+                    {/* <div className="descrição">
+                        <Panel bsStyle={descriçãocolor}>
+                            <h3>Configurações</h3>
+                            
+                        </Panel>
+                    </div>*/}
+
 
                     <div className="tabs">
                         <Tabs
@@ -359,4 +417,4 @@ setState() {
                 var result = jsonQuery('value[*PAICODIGO=ZAF].PAINOME',{
                     data: json_obj
                 });
-                //console.log(result)*/
+                console.log(result)*/
