@@ -21,7 +21,7 @@ Faça o Download através do link https://jenkins.io/download/
 
 acesse o instalador
 
-[Imgur](http://i.imgur.com/aD7JH1f.png)
+![Imgur](http://i.imgur.com/aD7JH1f.png)
 
 siga a instalação normalmente
 
@@ -29,14 +29,14 @@ Abra o Jenkins em http://localhost:8080
 
 **Pronto!** você tem agora o Jenkins funcionando!!
 
-[Imgur](http://i.imgur.com/Ov9L4Jc.png)
+![Imgur](http://i.imgur.com/Ov9L4Jc.png)
 
 ## Instalação Node
 Faça o Download através do link https://nodejs.org/en/download/
 
 acesse o instalador
 
-[Imgur](http://i.imgur.com/NewL0wT.png)
+![Imgur](http://i.imgur.com/NewL0wT.png)
 
 siga a instalação normalmente
 
@@ -68,14 +68,14 @@ Caso seja nescessário adicione um Branch específica em `Branches to build`
 
 `Para este projeto adicione a branch: ipeadata_refactor`
 
-[Imgur](http://i.imgur.com/g6KW4Fm.png)
+![Imgur](http://i.imgur.com/g6KW4Fm.png)
 
 4. Gatilhos de Build
 **Formato:** MINUTE (0-59), HOUR (0-23), DAY (1-31), MONTH (1-12), DAY OF THE WEEK (0-6)
 
 Coloque @midnight para executar a build todos os dias a meia noite
 
-[Imgur](http://i.imgur.com/6FeHErj.png)
+![Imgur](http://i.imgur.com/6FeHErj.png)
 
 5. Build
 Neste passo é onde "compilamos" o projeto React
@@ -88,7 +88,7 @@ Adicione o código abaixo:
 C:\Users\03062795174\Documents\npm install && C:\Users\03062795174\Documents\npm run build
 ```
 
-[Imgur](http://i.imgur.com/H0MBIrL.png)
+![Imgur](http://i.imgur.com/H0MBIrL.png)
 
 **Pronto!** agora você integrou seu projeto React com o Jenkins e suas builds serão feitas automaticamente.
 
