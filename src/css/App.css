@@ -28,9 +28,13 @@ body{
 } */
 
 .navbarnew {
-	background-color: blue;
+	/* background-color: blue; */
 	    height: 50px; 
 	/* position: relative;*/
+}
+
+.barranew{
+    height: 32px;
 }
 
 .menu-left {
@@ -79,4 +83,33 @@ body{
 	padding-left: 0 !important;
 	padding-right: 0 !important;
 	margin: 0 !important;
+}
+
+
+.barra1{
+    background:#7F7F7F; 
+    height: 20px; 
+    padding:0 0 0 10px;
+    display:block;
+}
+.barra2{
+    list-style:none;
+}
+.barra3{
+    display:inline; 
+    float:left; 
+    padding-right:10px; 
+    margin-right:10px; 
+    border-right:1px solid #EDEDED;
+}
+.barra4{
+    font-family:sans,sans-serif;
+    text-decoration:none; 
+    color:white;
+}
+
+.barra5{
+    font-family:sans,sans-serif; 
+    text-decoration:none; 
+    color:white;
 }

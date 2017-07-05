@@ -14,6 +14,8 @@ import MenuTop from "./MenuTop";
 import Content from "./Content";
 /*import Content2 from "./Content2";*/
 import Footer from "./Footer";
+import BarraGoverno from "./BarraGoverno";
+
 /*import GridSerie from "./GridSerie";*/
 /*import Datatable from "./Datatable";*/
 
@@ -27,6 +29,8 @@ import { seriemacro } from "../data/seriemacro";
 import { seriesocial } from "../data/seriesocial";
 import { serieregional } from "../data/serieregional";
 
+import a11y from "react-a11y"
+
 class App extends Component {
   render() {
     //console.log(this.props.match.params)
@@ -37,9 +41,17 @@ class App extends Component {
           menu = "macroeconomico";
         }
 
+        
+      a11y(React);
+
     return (
       <Grid fluid="true">
         {/*navbar*/}
+{/*        <Row>
+          <Col className="nopadding barranew" xs={12} md={12}>
+            <BarraGoverno/>
+          </Col>
+        </Row>*/}
         <Row>
           <Col className="nopadding navbarnew" xs={12} md={12}>
             <Navbar itens={itensDropMenu} navname={"Ipeadata"} />
@@ -90,9 +102,10 @@ class App extends Component {
           </Col>
         </Row>
         {/*footer*/}
-        <Row className=" footernew">
+        {/*<Row >
           <Col xs={12} md={12} />
-        </Row>
+          <Footer/>
+        </Row>*/}
       </Grid>
     );
   }

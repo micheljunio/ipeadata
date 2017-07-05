@@ -50,7 +50,7 @@ class Navbar extends Component {
         const itensSub = Object.keys(itens).map(keys => itens[keys].itens);
 
         return (
-            <nav className="navbar navbar-custom navbar-fixed-top">
+            <nav className="navbar navbar-custom navbar-static-top">
                 <div className="container-fluid">
                     <div className="navbar-header">
                         <button
