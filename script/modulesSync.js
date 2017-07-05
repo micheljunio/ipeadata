@@ -40,78 +40,88 @@ module.exports = {
 
     moduleGraph: function (div, serie, nameSerie) {
 
-        var jsonQ=require("jsonq");
+        var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie);
 
         var serieJson = [];
 
         for (var i in obj) {
             var item = obj[i].TERCODIGO;
-            if(item == ""){
+            if (item == "") {
                 item = obj[i].SERCODIGO;
             };
             let nameSerie = jsonQ(serieJson),
                 name = nameSerie.find('name');
             var index = name.index(function () {
-                            return this == item;
-                        });
-            if(index == -1){      
+                return this == item;
+            });
+            if (index == -1) {
                 serieJson.push({
                     "name": item,
-                    "points": []
-                    
+                    "points": [],
+                    tooltip:{
+                        visible: true,
+                        format: "#point.x# : #point.y#"
+                    }
                 });
-            }    
+            }
         }
-        for (var i in obj){
+        for (var i in obj) {
             var item = obj[i].TERCODIGO;
-            if(item == ""){
+            if (item == "") {
                 item = obj[i].SERCODIGO;
             };
             let nameSerie = jsonQ(serieJson),
                 name = nameSerie.find('name');
             var index = name.index(function () {
-                            return this == item;
-                        });
+                return this == item;
+            });
             serieJson[index].points.push({
-                "x": parseInt(obj[i].VALDATA[0]+obj[i].VALDATA[1]+obj[i].VALDATA[2]+obj[i].VALDATA[3]) ,
+                "x": parseInt(obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3]),
                 "y": obj[i].VALVALOR
             });
 
         }
-    
-        $("#" + div).ejChart(
-            {	
-		    primaryXAxis:
-            {
-                title: { text: 'Year' },
-				valueType:'category'
-            },		
-            primaryYAxis:
-            {
-                title: { text: nameSerie}
-            },	
-                commonSeriesOptions:
-                {
-                    type: 'line', enableAnimation: true,
-                    tooltip: { visible: true, template: 'Tooltip' },
-                    /*marker:
-                    {
-                        shape: 'circle',
-                        size:
-                        {
-                            height: 10, width: 10
-                        },
-                        visible: true
-                    },*/
-                    border: { width: 2 }
-                },			
-                series: serieJson,
-                isResponsive: true,
-                load: "loadTheme",
-                title: { text: nameSerie },
-                size: { height: "600" },
-                legend: { visible: true }
-            });
+
+        $("#" + div).ejChart({
+            theme: "gradientlight",
+            primaryXAxis: {
+                title: { text: 'Ano' }
+            },
+            primaryYAxis: {
+                title: { text: nameSerie }
+            },
+            commonSeriesOptions: {
+                type: 'line',
+                enableAnimation: true,
+                border: { width: 2 }
+            },
+            series: serieJson,
+            isResponsive: true,
+            load: "loadTheme",
+            title: { text: nameSerie },
+            legend: { visible: true },
+            zooming: {
+                enable: true,
+                type: 'xy',
+                enableMouseWheel: true,
+                enableScrollbar: true,
+                enableDeferredZoom: true
+            },
+            crosshair: {
+                visible: true,
+                type: 'trackball',
+                trackballTooltipSettings: {
+                    mode: 'grouping',
+                    border: {
+                        width: 1,
+                        color: 'grey'
+                    },
+                    rx: 3,
+                    ry: 3,
+                    fill: 'whitesmoke'
+                }
+            }
+        });
     }
 }

@@ -29,7 +29,6 @@ import { seriemacro } from "../data/seriemacro";
 import { seriesocial } from "../data/seriesocial";
 import { serieregional } from "../data/serieregional";
 
-import a11y from "react-a11y"
 
 class App extends Component {
   render() {
@@ -42,16 +41,15 @@ class App extends Component {
         }
 
         
-      a11y(React);
 
     return (
       <Grid fluid="true">
         {/*navbar*/}
-{/*        <Row>
+      <Row>
           <Col className="nopadding barranew" xs={12} md={12}>
             <BarraGoverno/>
           </Col>
-        </Row>*/}
+        </Row>
         <Row>
           <Col className="nopadding navbarnew" xs={12} md={12}>
             <Navbar itens={itensDropMenu} navname={"Ipeadata"} />
@@ -102,10 +100,10 @@ class App extends Component {
           </Col>
         </Row>
         {/*footer*/}
-        {/*<Row >
+        <Row >
           <Col xs={12} md={12} />
           <Footer/>
-        </Row>*/}
+        </Row>
       </Grid>
     );
   }
