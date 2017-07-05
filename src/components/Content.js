@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Breadcrumb, Panel, Jumbotron, Tabs, Tab, DropdownButton, MenuItem, ButtonGroup } from "react-bootstrap";
+import { Breadcrumb, Panel, Jumbotron, Tabs, Tab, DropdownButton, MenuItem, ButtonGroup, SplitButton } from "react-bootstrap";
 import GridSerie from "./GridSerie";
 import GraphSerie from "./GraphSerie";
 import MapaSerie from "./MapaSerie";
@@ -28,9 +28,14 @@ class Content extends Component {
         this.handleSelect = this.handleSelect.bind(this);
         this.getValues = this.getValues.bind(this);
         this.renderComponents = this.renderComponents.bind(this);
+        this.eventobotao = this.eventobotao.bind(this);
         this.state = {
             key: 1
         };
+    }
+
+    eventobotao(){
+        console.log("botão clicado");
     }
 
     handleSelect(key) {
@@ -240,56 +245,56 @@ class Content extends Component {
                         <Panel bsStyle={descriçãocolor} header={text}>
                             <h3>Descrição</h3>
                             <p>{this.renderDescricao(jsonView)}</p>
-                            <ButtonGroup horizontal>
-                            <DropdownButton title="Nivel Geografico" id="1">
-                                <MenuItem eventkey=""> Brasil </MenuItem>
-                                <MenuItem eventkey=""> Regiões </MenuItem>
-                                <MenuItem eventkey=""> Estados </MenuItem>
-                            </DropdownButton>    
-
-                            <DropdownButton title="Abrangencia" id="2">
-                                <MenuItem eventkey=""> Regial Centro-Oeste </MenuItem>
-                                <MenuItem eventkey=""> Regial Nordeste </MenuItem>
-                                <MenuItem eventkey=""> Regial Norte </MenuItem>
-                                <MenuItem eventkey=""> Regial Sudeste </MenuItem>
-                                <MenuItem eventkey=""> Regial Sul </MenuItem>
-                            </DropdownButton>    
-
-                            <DropdownButton title="inicio" id="3">
-                                <MenuItem eventkey=""> 1985 </MenuItem>
-                                <MenuItem eventkey=""> 1986 </MenuItem>
-                                <MenuItem eventkey=""> 1987 </MenuItem>
-                                <MenuItem eventkey=""> 1988 </MenuItem>
-                                <MenuItem eventkey=""> 1989 </MenuItem>
-                                <MenuItem eventkey=""> 1990 </MenuItem>
-                                <MenuItem eventkey=""> 1991 </MenuItem>
-                                <MenuItem eventkey=""> 1992 </MenuItem>
-                                <MenuItem eventkey=""> 1993 </MenuItem>
-                                <MenuItem eventkey=""> 1994 </MenuItem>
-                                <MenuItem eventkey=""> 1995 </MenuItem>
-                                <MenuItem eventkey=""> 1996 </MenuItem>
-                                <MenuItem eventkey=""> 1997 </MenuItem>
-                                <MenuItem eventkey=""> 1998 </MenuItem>
-                                <MenuItem eventkey=""> 1999 </MenuItem>
-                                <MenuItem eventkey=""> 2000 </MenuItem>
-                                <MenuItem eventkey=""> 2001 </MenuItem>
-                                <MenuItem eventkey=""> 2003 </MenuItem>
-                                <MenuItem eventkey=""> 2004 </MenuItem>
-                                <MenuItem eventkey=""> 2005 </MenuItem>
-                                <MenuItem eventkey=""> 2006 </MenuItem>
-                                <MenuItem eventkey=""> 2007 </MenuItem>
-                                <MenuItem eventkey=""> 2008 </MenuItem>
-                                <MenuItem eventkey=""> 2009 </MenuItem>
-                                <MenuItem eventkey=""> 2010 </MenuItem>
-                                <MenuItem eventkey=""> 2011 </MenuItem>                               
-                                
-                            </DropdownButton>    
                             
-                            <DropdownButton title="Fim" id="1">
-                                <MenuItem eventkey="1"> Item 1 </MenuItem>
-                            </DropdownButton>    
+                            <SplitButton bsStyle="primary" key="1" id="split-button-basic-1" title="Nivel Geografico">
+                                <MenuItem onClick={this.eventobotao}> Brasil </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> Regiões </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> Estados </MenuItem>
+                            </SplitButton>    
 
-                            </ButtonGroup>
+                            <SplitButton bsStyle="primary" key="2" id="split-button-basic-1" title="Abrangencia">
+                                <MenuItem onClick={this.eventobotao}> Regial Centro-Oeste </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> Regial Nordeste </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> Regial Norte </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> Regial Sudeste </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> Regial Sul </MenuItem>
+                            </SplitButton>    
+
+                            <SplitButton bsStyle="primary" key="3" id="split-button-basic-1" title="inicio">
+                                <MenuItem onClick={this.eventobotao}> 1985 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1986 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1987 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1988 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1989 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1990 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1991 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1992 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1993 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1994 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1995 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1996 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1997 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1998 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 1999 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 2000 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 2001 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 2003 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 2004 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 2005 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 2006 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 2007 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 2008 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 2009 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 2010 </MenuItem>
+                                <MenuItem onClick={this.eventobotao}> 2011 </MenuItem>                               
+                                
+                            </SplitButton>    
+                            
+                            <SplitButton bsStyle="primary" key="4" id="split-button-basic-1" title="Fim">
+                                <MenuItem onClick={this.eventobotao}> Item 1 </MenuItem>
+                            </SplitButton>    
+
+                            
                         </Panel>
                     </div>
 

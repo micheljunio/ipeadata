@@ -18,6 +18,7 @@
     "jsrender": "^0.9.84",
     "leaflet": "^1.0.3",
     "react": "^15.5.4",
+    "react-a11y": "^0.3.4",
     "react-bootstrap": "^0.30.9",
     "react-bootstrap-table": "^3.3.7",
     "react-dom": "^15.5.4",
