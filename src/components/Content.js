@@ -17,6 +17,8 @@ var serie;
 var text = "";
 var json_obj2 = "";
 var serieName = "";
+var serieOld = "";
+var serieData = "";
 
 class Content extends Component {
     constructor() {
@@ -45,6 +47,7 @@ class Content extends Component {
             Httpreq.send(null);
             return Httpreq.responseText;
         }
+        serieOld = this.props.url.id;
         var string =
             "http://www.ipeadata.gov.br/api/odata4/Metadados('" + this.props.url.id + "')/Valores";
         json_obj2 = JSON.parse(Get(string));
@@ -113,7 +116,14 @@ class Content extends Component {
 
     renderComponents() {}
     render() {
-        var jsonView = this.getValues();
+        var jsonView = "";
+        if(serieOld != this.props.url.id){
+            jsonView = this.getValues();
+            serieData = jsonView;
+        }
+        else{
+            jsonView = serieData;
+        }
 
         if (this.props.url.id == "fontes") {
             return (

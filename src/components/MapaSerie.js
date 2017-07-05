@@ -83,4 +83,3 @@ function InfoContent (feature) {
      </div>
   );
 }
-

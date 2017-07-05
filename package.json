@@ -15,6 +15,7 @@
     "jquery": "^3.2.1",
     "jquery-ui": "^1.12.1",
     "json-query": "^2.2.2",
+    "jsonq": "^1.1.0",
     "jsrender": "^0.9.84",
     "leaflet": "^1.0.3",
     "react": "^15.5.4",
@@ -36,7 +37,7 @@
     "react-scripts": "0.9.5"
   },
   "scripts": {
-    "start": "react-scripts start --max_old_space_size=1024",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
