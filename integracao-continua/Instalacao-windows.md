@@ -60,13 +60,13 @@ No menu `Source Code Management` escolha a opção `Git`
 
 Em `Repositories` adicione a url do projeto Git em `Repository URL`
 
-`Para este projeto adicione o repositório: https://gitlab.com/ipeadata/ipeadata2-desenv.git `
+Para este projeto ` adicione o repositório: https://gitlab.com/ipeadata/ipeadata2-desenv.git `
 
-` adicione as suas Credentials `
+adicione as suas Credentials
 
 Caso seja nescessário adicione um Branch específica em `Branches to build`
 
-`Para este projeto adicione a branch: ipeadata_refactor`
+Para este projeto `adicione a branch: ipeadata_refactor`
 
 ![Imgur](http://i.imgur.com/g6KW4Fm.png)
 
