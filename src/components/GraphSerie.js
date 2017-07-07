@@ -1,65 +1,45 @@
 import React, { Component } from "react";
-import { moduleGraph } from "../../script/modulesSync.js";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router";
+import { moduleGraph, moduleGraphJson } from "../../script/modulesSync.js";
 
 /*import { serie1 } from "../data/serie1";*/
 
 class GridSerie extends Component {
     constructor() {
         super();
-        /*        this.state = {
-            redirect: false,
-            valueRedirect: -1,
+        this.state = {
             propsSerie: false,
             nextProps: ''
         };
-        this.handleClick = this.handleClick.bind(this); 
-*/
     }
 
-    /*handleClick = () => {        
-        if(getRowSelected() != -1){
-            this.setState({
-                redirect: true,
-                valueRedirect: getRowSelected()
-            });
-        }
-    }*/
-
     componentDidMount() {
-        /*    console.log("didMount");
-        var serie = this.props.serie;
+        console.log("didMountGraph");
+        var serie = moduleGraphJson(this.props.serie);
         return(        
-            moduleGrid(serie, this.props.div)     
-        );*/
+            moduleGraph(this.props.div, serie, this.props.serieName)    
+        );
     }
 
     componentWillReceiveProps(nextProps) {
-        /*      console.log('receivedProps');
+        console.log('receivedPropsGraph');
+        console.log(this.props.url + " - " + nextProps.url);
         if(this.props.url !== nextProps.url){
              this.setState({propsSerie:true, nextProps: nextProps.serie});
-        }*/
+        }
     }
 
     render() {
-        /*        console.log("render");
-        console.log(this.state.redirect);
-        var serie = this.props.serie;       
-
-        if (this.state.redirect) { 
-            this.setState({redirect:false});   
-            return <Redirect push to={`/${this.state.valueRedirect}`} />;
-        }
-
-         if(this.state.propsSerie){
-            serie = this.state.nextProps;
+        console.log("renderGraph");
+        if(this.state.propsSerie){
+            var serie = this.state.nextProps;
             this.setState({propsSerie:false});
-        }*/
-
+            var serieData =  moduleGraphJson(this.props.serie);
+        }       
         return (
             <div id="container">
-                {moduleGraph(this.props.div, this.props.serie, this.props.serieName)}
+                {
+                    moduleGraph(this.props.div, serieData, this.props.serieName)
+                }
             </div>
         );
     }

@@ -104,6 +104,7 @@ class Content extends Component {
                 div={"container"}
                 serie={jsonView.value}
                 serieName={serieName}
+                url={this.props.url.id}
             />
         );
     }
