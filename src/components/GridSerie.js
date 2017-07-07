@@ -11,7 +11,8 @@ class GridSerie extends Component {
 			redirect: false,
 			valueRedirect: -1,
 			propsSerie: false,
-			nextProps: ""
+			nextProps: "", 
+			loading: true
 		};
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -29,8 +30,13 @@ class GridSerie extends Component {
 
 	componentDidMount() {
 		//console.log("didMount");
-		var serie = this.props.serie;
-		return moduleGrid(serie, this.props.div, this.props.columns);
+		var serie = this.props.serie;		
+		return (
+			moduleGrid(serie, this.props.div, this.props.columns),
+			this.setState({loading: false}),
+			console.log("mudou pra falso")
+			);
+
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -44,6 +50,12 @@ class GridSerie extends Component {
 		//console.log("render");
 		//console.log(this.state.redirect);
 		var serie = this.props.serie;
+		const {loading} = this.state;
+
+		if (loading){
+			console.log("nao entrou");
+			return null;
+		}	
 
 		if (this.state.redirect) {
 			this.setState({ redirect: false });

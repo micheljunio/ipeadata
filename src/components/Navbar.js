@@ -1,7 +1,7 @@
 //react
 import React, { Component } from "react";
 import { NavDropdown, MenuItem, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 //css
 import "../css/navbar.css";
@@ -66,13 +66,13 @@ class Navbar extends Component {
                             <span className="icon-bar" />
                             <span className="icon-bar" />
                         </button>
-
+                <Link to={`/`} >
                         <a
-                            href={"/" + this.props.navname}
-                            className="navbar-brand"
+                             className="navbar-brand"
                         >
                             <img alt="imagem" src={img1} />
                         </a>
+                                    </Link>
                         <a href="#" className="navbar-icone">
                             <img alt="imagem" src={img3} />
                         </a>
@@ -80,13 +80,14 @@ class Navbar extends Component {
                     <div id="navbar" className="navbar-collapse collapse">
                         <ul className="nav navbar-nav navbar-right">
                             <li><a href="#">Fale Conosco</a></li>
-
+                            <Link to={`/`} >
                             <a
-                                href={"/" + this.props.navname}
+                                
                                 className="navbar-brand"
                             >
-                                <img alt="imagem" src={img2} />
+                                <img alt="imagem" src={img2} />                                
                             </a>
+                            </Link>
                         </ul>
 
                         <Button className="navbar-form navbar-right botaonavbar">

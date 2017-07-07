@@ -32,8 +32,13 @@ class Content extends Component {
         this.renderComponents = this.renderComponents.bind(this);
         this.eventobotao = this.eventobotao.bind(this);
         this.state = {
-            key: 1
+            key: 1,
+            loading: true
         };
+    }
+
+    componentDidMount() {
+        this.setState({loading: false});
     }
 
     eventobotao(){
@@ -121,6 +126,7 @@ class Content extends Component {
 
     renderComponents() {}
     render() {
+        const {loading} = this.state;
         var jsonView = "";
         if(serieOld != this.props.url.id){
             jsonView = this.getValues();
@@ -128,6 +134,12 @@ class Content extends Component {
         }
         else{
             jsonView = serieData;
+        }
+
+        if(loading){
+            return (
+                <h1>Carregando!!!</h1>
+                );
         }
 
         if (this.props.url.id == "fontes") {

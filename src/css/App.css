@@ -60,7 +60,7 @@ body{
 
 .content {
     /* background-color: #dce8f1; */
-    height: calc(100vh - 90px);
+    height: calc(100vh - 150px);
     padding-top: 50px;	
     width: 98%;    
     bottom: 4px;
