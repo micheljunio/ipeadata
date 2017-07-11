@@ -30,7 +30,8 @@ class GridSerie extends Component {
 
 	componentDidMount() {
 		//console.log("didMount");
-		var serie = moduleGridJson(this.props.serie);		
+
+		var serie = moduleGridJson(this.props.serie);	
 		return (
 			moduleGrid(serie, this.props.div, this.props.columns),
 			this.setState({loading: false}),
@@ -50,6 +51,7 @@ class GridSerie extends Component {
 		//console.log("render");
 		//console.log(this.state.redirect);
 		var serie = this.props.serie;
+
 		serie = moduleGridJson(this.props.serie);
 		const {loading} = this.state;
 
