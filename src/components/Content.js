@@ -8,6 +8,7 @@ import { metadados } from "../data/metados";
 import { metadadoGeral } from "../data/metadadoGeral";
 import { metadadoSerieGeral } from "../data/metadadoSerieGeral";
 import { metadadoSerieAnoColuna } from "../data/metadadoSerieAnoColuna";
+import { moduleColumnJson } from "../../script/modulesSync.js";
 
 //css
 import "../css/content.css";
@@ -90,10 +91,14 @@ class Content extends Component {
                 }
             }
         }
-        var columns = metadadoSerieGeral;
-        columns = metadadoSerieAnoColuna;
+        var columns = "";
+        
         if (jsonView == metadados) {
             columns = metadadoGeral;
+        }
+        else{
+            columns = moduleColumnJson(jsonView.value);
+
         }
         return (
             <GridSerie

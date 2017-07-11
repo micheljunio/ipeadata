@@ -159,9 +159,48 @@ module.exports = {
             var index = name.index(function () {
                 return this == item;
             });
-            var ano = parseInt(obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3]);
+            var ano = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3]+ obj[i].VALDATA[4] + obj[i].VALDATA[5] + obj[i].VALDATA[6]);
             serieJson[index][ano] = obj[i].VALVALOR;
         }
+        return serieJson;
+    },
+
+    moduleColumnJson: function (serie) {
+        var jsonQ = require("jsonq");
+        var obj = jsonQ.order(serie);
+
+        var serieJson = [];
+        serieJson.push({
+                field: "SERCODIGO", 
+                headerText: "Série"
+                });
+        serieJson.push({
+                field: "NIVNOME", 
+                headerText: "Nível Geográfico"
+                });
+        serieJson.push({
+                field: "TERCODIGO", 
+                headerText: "Código Territorial"
+                });
+
+        for (var i in obj) {
+            var data = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3] + obj[i].VALDATA[4] + obj[i].VALDATA[5] + obj[i].VALDATA[6]); 
+            var item = data;
+            var nameSerie = jsonQ(serieJson),
+                name = nameSerie.find('field');
+            var index = name.index(function () {
+                return this == ""+item+"";
+            });
+            if (index == -1) {
+                serieJson.push({
+                    field: ""+data+"",
+                    headerText: ""+data+"",
+                    format: "{0:n2}",
+                    width: 100
+                });
+            }
+        }
+        console.log(serieJson);
         return serieJson;
     }
 }
