@@ -51,10 +51,9 @@ class GridSerie extends Component {
 		//console.log("render");
 		//console.log(this.state.redirect);
 		var serie = this.props.serie;
-
-		serie = moduleGridJson(this.props.serie);
+                serie = moduleGridJson(this.props.serie);
 		const {loading} = this.state;
-
+                
 		if (loading){
 			console.log("nao entrou");
 			return null;

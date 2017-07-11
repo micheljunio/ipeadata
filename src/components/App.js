@@ -29,8 +29,6 @@ import { seriemacro } from "../data/seriemacro";
 import { seriesocial } from "../data/seriesocial";
 import { serieregional } from "../data/serieregional";
 
-
-
 class App extends Component {
   render() {
     //console.log(this.props.match.params)
@@ -40,9 +38,6 @@ class App extends Component {
         if (this.props.match.params.id !== "social") {
           menu = "macroeconomico";
         }
-
-        
-
 
     return (
       <Grid fluid="true">
