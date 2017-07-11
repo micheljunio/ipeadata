@@ -3,6 +3,7 @@ import fetch from 'isomorphic-fetch';
 import { Map, TileLayer, Choropleth, InfoControl } from 'react-leaflet-wrapper';
 import {statesData} from "../data/Coord.Mapa"
 import "../css/mapa.css";
+import { DropdownButton, MenuItem} from "react-bootstrap";
 
 const STATES_URL = 'dist/states.json';
 const date=statesData
@@ -11,30 +12,53 @@ export default class MapaSerie extends React.Component {
 
   constructor (props) {
     super(props);
-
+    
     this.state = {
-      states: null
+      states: null,
+      
+     
     };
+    this.handleClick = this.handleClick.bind(this);
   }
-
+handleClick = () => {
+        console.log("chamou");
+	};
   componentWillMount () {
     fetch(STATES_URL)
     .then(response => response.json())
     .then(geojson =>  this.setState({ states: geojson }));
+    
   }
 
   render() {
     const { state } = this.state;
-    //console.log(statesData);
+    var items = [{ valor: 500 }, { valor: 600 }, { valor: 700 }];
     return (
+            
+    <div>
+       
+     <DropdownButton className="filter" title="Densidade" onClick={this.handleClick} >
+     {
+                items.map(function (item) {
+                    
+                    return (<MenuItem eventKey="1"> {item.valor} </MenuItem>);
+                })
+            }
+        
+         
+    </DropdownButton>
+   
       <Map
+          
         width='100%'
         height={500}
         center={[ -15.7801, -47.9292]}
         zoom={4}
         >
+      
         <TileLayer />
         <InfoControl position='topright'> 
+      
           <Choropleth
             data={date}
             legend='bottomright'
@@ -62,6 +86,7 @@ export default class MapaSerie extends React.Component {
           />
         </InfoControl>
       </Map>
+      </div>
     );
   }
 }
@@ -81,5 +106,7 @@ function InfoContent (feature) {
               <span>Passe o mouse sobre um estado...</span>
        }
      </div>
+     
   );
 }
+ 

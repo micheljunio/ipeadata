@@ -29,7 +29,7 @@ import { seriemacro } from "../data/seriemacro";
 import { seriesocial } from "../data/seriesocial";
 import { serieregional } from "../data/serieregional";
 
-import a11y from "react-a11y"
+//import a11y from "react-a11y"
 
 class App extends Component {
   render() {
@@ -42,7 +42,7 @@ class App extends Component {
         }
 
         
-      a11y(React);
+      //a11y(React);
 
     return (
       <Grid fluid="true">
