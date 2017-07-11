@@ -12,7 +12,7 @@ class GridSerie extends Component {
 			valueRedirect: -1,
 			propsSerie: false,
 			nextProps: "", 
-			loading: true
+			tipoGrid: ""
 		};
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -30,12 +30,18 @@ class GridSerie extends Component {
 
 	componentDidMount() {
 		//console.log("didMount");
-
-		var serie = moduleGridJson(this.props.serie);	
+		if(this.props.tipoGrid){
+			console.log("teste true");
+			var serie = this.props.serie;
+			this.setState({tipoGrid: true})
+		}
+		else{
+			var serie = moduleGridJson(this.props.serie);
+			this.setState({tipoGrid: false})
+		}
+			
 		return (
-			moduleGrid(serie, this.props.div, this.props.columns),
-			this.setState({loading: false}),
-			console.log("mudou pra falso")
+			moduleGrid(serie, this.props.div, this.props.columns)
 			);
 
 	}
@@ -50,14 +56,14 @@ class GridSerie extends Component {
 	render() {
 		//console.log("render");
 		//console.log(this.state.redirect);
-		var serie = this.props.serie;
-                serie = moduleGridJson(this.props.serie);
-		const {loading} = this.state;
-                
-		if (loading){
-			console.log("nao entrou");
-			return null;
-		}	
+		var serie = "";
+		if(this.props.tipoGrid){
+			serie = this.props.serie;
+		}
+		else{
+			console.log("render module json");
+			serie = moduleGridJson(this.props.serie);
+		}
 
 		if (this.state.redirect) {
 			this.setState({ redirect: false });

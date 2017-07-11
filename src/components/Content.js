@@ -20,6 +20,7 @@ var json_obj2 = "";
 var serieName = "";
 var serieOld = "";
 var serieData = "";
+var tipoGrid = "";
 
 class Content extends Component {
     constructor() {
@@ -65,6 +66,10 @@ class Content extends Component {
         //json_obj2 = metadadoAnoColuna;
         if (json_obj2.value.length == 0) {
             json_obj2 = metadados;
+            tipoGrid = true;
+        }
+        else{
+            tipoGrid = false;
         }
         return json_obj2;
     }
@@ -96,6 +101,7 @@ class Content extends Component {
                 div={"Grid"}
                 columns={columns}
                 url={this.props.url.id}
+                tipoGrid = {tipoGrid}
             />
         );
     }
