@@ -26,7 +26,7 @@ module.exports = {
             //console.log(args.data.id)
         }
     },
-
+ //Função responsável para idendificar o linha da Grid que foi selecionada
     getRowSelected: function () {
         var grid = $("#Grid").data("ejGrid");
 
@@ -79,6 +79,8 @@ module.exports = {
             }
         });
     },
+
+//Funcao responsavel para criar  a legendas da coluna de forma dinamica
 
     moduleGraphJson: function (serie) {
         var jsonQ = require("jsonq");
