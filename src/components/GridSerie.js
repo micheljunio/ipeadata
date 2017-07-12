@@ -56,9 +56,13 @@ class GridSerie extends Component {
 		//console.log("render");
 		//console.log(this.state.redirect);
 		console.log(this.state.tipoGrid);
+		if(!this.state.tipoGrid)
+			console.log('true');
+		else
+			console.log('false');
 		var serie = this.props.serie;
 		var metaConfigs = this.props.metaConfigs;
-		if(!this.state.tipoGrid){
+		if(this.state.tipoGrid){
 			serie = moduleGridJson(this.props.serie);
 		}
 

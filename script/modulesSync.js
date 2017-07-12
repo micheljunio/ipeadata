@@ -1,9 +1,7 @@
 module.exports = {
     moduleGrid: function (data, div, columns, metaConfigs) {
-        console.log(metaConfigs);
         metaConfigs["dataSource"] = data;
         metaConfigs["columns"] = columns;
-        console.log(metaConfigs);
         console.log(columns);
         console.log("Serie na grid:");
         console.log(data);
@@ -19,50 +17,14 @@ module.exports = {
             return grid.getSelectedRecords()[0].SERCODIGO;
         else
             return -1;
-
     },
 
-    moduleGraph: function (div, serie, nameSerie) {
-        $("#" + div).ejChart({
-            theme: "gradientlight",
-            primaryXAxis: {
-                title: { text: 'Ano' }
-            },
-            primaryYAxis: {
-                title: { text: nameSerie }
-            },
-            commonSeriesOptions: {
-                type: 'line',
-                enableAnimation: true,
-                border: { width: 2 }
-            },
-            series: serie,
-            isResponsive: true,
-            load: "loadTheme",
-            title: { text: nameSerie },
-            legend: { visible: true },
-            zooming: {
-                enable: true,
-                type: 'xy',
-                enableMouseWheel: true,
-                enableScrollbar: true,
-                enableDeferredZoom: true
-            },
-            crosshair: {
-                visible: true,
-                type: 'trackball',
-                trackballTooltipSettings: {
-                    mode: 'grouping',
-                    border: {
-                        width: 1,
-                        color: 'grey'
-                    },
-                    rx: 3,
-                    ry: 3,
-                    fill: 'whitesmoke'
-                }
-            }
-        });
+    moduleGraph: function (div, serie, nameSerie, metaConfigs) {
+        metaConfigs["series"] = serie;
+        metaConfigs["title"] = { text: nameSerie },
+        metaConfigs["primaryXAxis"] =  {title: { text: 'Ano' }},
+        metaConfigs["primaryYAxis"] = {title: { text: nameSerie }};
+        $("#" + div).ejChart(metaConfigs);
     },
 
     moduleGraphJson: function (serie) {
