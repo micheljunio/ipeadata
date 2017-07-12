@@ -13,6 +13,7 @@ class GridSerie extends Component {
 			propsSerie: false,
 			nextProps: "", 
 			tipoGrid: ""
+
 		};
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -30,6 +31,12 @@ class GridSerie extends Component {
 
 	componentDidMount() {
 		//console.log("didMount");
+
+		//var serie = this.props.serie;		
+		//var serie = moduleGridJson(this.props.serie);
+		/*return (
+			moduleGrid(serie, this.props.div);*/
+
 		if(this.props.tipoGrid){
 			console.log("teste true");
 			var serie = this.props.serie;
@@ -56,6 +63,10 @@ class GridSerie extends Component {
 	render() {
 		//console.log("render");
 		//console.log(this.state.redirect);
+
+		//var serie = this.props.serie;
+		//var serie = moduleGridJson(this.props.serie);
+
 		var serie = "";
 		if(this.props.tipoGrid){
 			serie = this.props.serie;
@@ -64,6 +75,7 @@ class GridSerie extends Component {
 			console.log("render module json");
 			serie = moduleGridJson(this.props.serie);
 		}
+
 
 		if (this.state.redirect) {
 			this.setState({ redirect: false });
@@ -77,7 +89,7 @@ class GridSerie extends Component {
 
 		return (
 			<div id="Grid" onClick={this.handleClick}>
-				{moduleGrid(serie, this.props.div, this.props.columns)}
+				{moduleGrid(serie, this.props.div)}
 			</div>
 		);
 	}

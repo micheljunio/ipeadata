@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Breadcrumb, Panel, Jumbotron, Tabs, Tab, DropdownButton, MenuItem, ButtonGroup, SplitButton } from "react-bootstrap";
+import { Grid, Col, Row, Well } from "react-bootstrap";
 import GridSerie from "./GridSerie";
 import GraphSerie from "./GraphSerie";
 import MapaSerie from "./MapaSerie";
@@ -35,14 +36,11 @@ class Content extends Component {
         this.renderComponents = this.renderComponents.bind(this);
         this.eventobotao = this.eventobotao.bind(this);
         this.state = {
-            key: 1,
-            loading: true
+            key: 1
         };
     }
 
-    componentDidMount() {
-        this.setState({loading: false});
-    }
+    
 
     eventobotao(){
         console.log("botão clicado");
@@ -139,7 +137,6 @@ class Content extends Component {
 
     renderComponents() {}
     render() {
-        const {loading} = this.state;
         var jsonView = "";
         if(serieOld != this.props.url.id){
             jsonView = this.getValues();
@@ -147,12 +144,6 @@ class Content extends Component {
         }
         else{
             jsonView = serieData;
-        }
-
-        if(loading){
-            return (
-                <h1>Carregando!!!</h1>
-                );
         }
 
         if (this.props.url.id == "fontes") {
@@ -279,11 +270,30 @@ class Content extends Component {
                             <h3>Descrição</h3>
                             <p>{this.renderDescricao(jsonView)}</p>
                             
+                            <Well>
+                            <h4>Configurações:</h4>
+                            <Grid fluid="true">
+                            {/*navbar*/}
+                            <Row >                            
+                            
+                            <Col xs={3} md={3}>
+                                <p>Nível Geográfico</p>
+                            </Col>
+                            <Col xs={3} md={3}>
                             <SplitButton bsStyle="primary" key="1" id="split-button-basic-1" title="Nivel Geografico">
                                 <MenuItem onClick={this.eventobotao}> Brasil </MenuItem>
                                 <MenuItem onClick={this.eventobotao}> Regiões </MenuItem>
                                 <MenuItem onClick={this.eventobotao}> Estados </MenuItem>
                             </SplitButton>    
+                            </Col>
+
+                            </Row>
+                            <Row>                           
+                            
+                            <Col xs={3} md={3}>
+                                <p>Abrangencia</p>
+                            </Col>
+                            <Col xs={3} md={3}>
 
                             <SplitButton bsStyle="primary" key="2" id="split-button-basic-1" title="Abrangencia">
                                 <MenuItem onClick={this.eventobotao}> Regial Centro-Oeste </MenuItem>
@@ -292,6 +302,15 @@ class Content extends Component {
                                 <MenuItem onClick={this.eventobotao}> Regial Sudeste </MenuItem>
                                 <MenuItem onClick={this.eventobotao}> Regial Sul </MenuItem>
                             </SplitButton>    
+
+                            </Col>    
+                            </Row>
+                            <Row >                            
+                            
+                            <Col xs={3} md={3}>
+                                <p>inicio</p>
+                            </Col>
+                            <Col xs={3} md={3}>
 
                             <SplitButton bsStyle="primary" key="3" id="split-button-basic-1" title="inicio">
                                 <MenuItem onClick={this.eventobotao}> 1985 </MenuItem>
@@ -322,12 +341,24 @@ class Content extends Component {
                                 <MenuItem onClick={this.eventobotao}> 2011 </MenuItem>                               
                                 
                             </SplitButton>    
+
+                            </Col>    
+                            
+                            
+                            <Col xs={3} md={3}>
+                                <p>Fim</p>
+                            </Col>
+                            <Col xs={3} md={3}>
                             
                             <SplitButton bsStyle="primary" key="4" id="split-button-basic-1" title="Fim">
                                 <MenuItem onClick={this.eventobotao}> Item 1 </MenuItem>
                             </SplitButton>    
 
-                            
+                            </Col>    
+                            </Row>
+                            </Grid>
+
+                            </Well>
                         </Panel>
                     </div>
 
@@ -364,95 +395,3 @@ class Content extends Component {
 }
 
 export default Content;
-/*
-setState() {
-        if (this.props.url.id !== undefined) {
-            text = this.props.url.id;
-            
-            if (this.props.url.submenu !== undefined) {
-                text = this.props.url.submenu;
-            
-                if (this.props.url.submenu2 !== undefined) {
-                    text = this.props.url.submenu2;
-            
-                }
-            }
-        }
-
-        if (this.props.url.id !== undefined) {
-            if (this.props.url.id == "macroeconomico") {
-                serie = this.props.seriemacro;
-                return (this.serie);
-                if (this.props.url.submenu == "temas") {
-                    if (this.props.url.submenu2 == "balanco-de-pagamentos") {
-                        serie = this.props.serie1;
-                        return (this.serie);
-                    }
-                    if (this.props.url.submenu2 == "cambio") {
-                        serie = this.props.serie2;
-                        return (this.serie);
-                    }
-                    if (this.props.url.submenu2 == "comercio-exterior") {
-                        serie = this.props.serie3;
-                        return (this.serie);
-                    }
-                }
-            }
-
-            if (this.props.url.id == "regional") {
-                serie = this.props.serieregional;
-                if (this.props.url.submenu == "temas") {
-                    if (this.props.url.submenu2 == "balanco-de-pagamentos") {
-                        serie = this.props.serie4;
-                        return (this.serie);
-                    }
-                    if (this.props.url.submenu2 == "cambio") {
-                        serie = this.props.serie4;
-                        return (this.serie);
-                    }
-                    if (this.props.url.submenu2 == "comercio-exterior") {
-                        serie = this.props.serie4;
-                        return (this.serie);
-                    }
-                }
-            }
-
-            if (this.props.url.id == "social") {
-                serie = this.props.seriesocial;
-                return (this.serie);
-                if (this.props.url.submenu == "temas") {
-                    if (this.props.url.submenu2 == "balanco-de-pagamentos") {
-                        serie = this.props.serie4;
-                        return (this.serie);
-                    }
-                    if (this.props.url.submenu2 == "cambio") {
-                        serie = this.props.serie4;
-                        return (this.serie);
-                    }
-                    if (this.props.url.submenu2 == "comercio-exterior") {
-                        serie = this.props.serie4;
-                        return (this.serie);
-                    }
-                }
-            }
-        }
-    }*/
-
-//console.log(this.props.url)
-/*{this.props.url === "Equipe" && <Equipe />}
-                {this.props.url === "Metadados" && <Metadados />}
-                {this.props.url === "fontes" && <Fontes />}
-                {this.props.url === "direitos" && <DireitosUso />}
-                {this.props.url === "macroeconomico" && <Series />}*/
-/*
-                function Get(yourUrl) {
-                    var Httpreq = new XMLHttpRequest(); // a new request
-                    Httpreq.open("GET", yourUrl, false);
-                    Httpreq.send(null);
-                    return Httpreq.responseText;
-                }
-                var json_obj = JSON.parse(Get("http://www.ipeadata.gov.br/api/odata4/Paises"));
-                var result = jsonQuery('value[*PAICODIGO=ZAF].PAINOME',{
-                    data: json_obj
-                });
-                console.log(result)*/
