@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { moduleGrid, getRowSelected } from "../../script/modulesSync.js";
+import { moduleGrid, getRowSelected, moduleGridJson } from "../../script/modulesSync.js";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 
@@ -11,8 +11,7 @@ class GridSerie extends Component {
 			redirect: false,
 			valueRedirect: -1,
 			propsSerie: false,
-			nextProps: "", 
-			loading: true
+			nextProps: ""
 		};
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -30,11 +29,10 @@ class GridSerie extends Component {
 
 	componentDidMount() {
 		//console.log("didMount");
-		var serie = this.props.serie;		
+		//var serie = this.props.serie;		
+		var serie = moduleGridJson(this.props.serie);
 		return (
-			moduleGrid(serie, this.props.div, this.props.columns),
-			this.setState({loading: false}),
-			console.log("mudou pra falso")
+			moduleGrid(serie, this.props.div)
 			);
 
 	}
@@ -49,13 +47,8 @@ class GridSerie extends Component {
 	render() {
 		//console.log("render");
 		//console.log(this.state.redirect);
-		var serie = this.props.serie;
-		const {loading} = this.state;
-
-		if (loading){
-			console.log("nao entrou");
-			return null;
-		}	
+		//var serie = this.props.serie;
+		var serie = moduleGridJson(this.props.serie);
 
 		if (this.state.redirect) {
 			this.setState({ redirect: false });
@@ -69,7 +62,7 @@ class GridSerie extends Component {
 
 		return (
 			<div id="Grid" onClick={this.handleClick}>
-				{moduleGrid(serie, this.props.div, this.props.columns)}
+				{moduleGrid(serie, this.props.div)}
 			</div>
 		);
 	}

@@ -1,8 +1,34 @@
 module.exports = {
-    moduleGrid: function (data, div, columns) {
-        console.log(columns);
-        console.log("Serie na grid:");
-        console.log(data);
+
+    moduleGridJson: function (serie) {
+        
+        var jsonQ = require("jsonq");
+        console.log(serie)
+ 
+        var family = jsonQ(serie);
+        
+        
+        var filterdHub = family.filter({
+            "NIVNOME": "Brasil"
+        });
+        
+        
+        filterdHub.each(function (index, path, value) {
+            console.log(value);
+        });
+        return filterdHub;
+
+        
+/*    var serieJson = serie;*/
+    },
+
+
+
+
+    moduleGrid: function (data, div) {
+        /*console.log(columns);*/
+        /*console.log("Serie na grid:");
+        console.log(data);*/
         window.baseurl = "http://js.syncfusion.com/ExportingServices/api/";
         if ($("#" + div).data("ejGrid"))
             $("#" + div).ejGrid("destroy");
@@ -19,7 +45,7 @@ module.exports = {
             allowResizeToFit: true,
             filterSettings: { filterType: "excel" },
             rowSelected: "window.rowSelected",
-            columns: columns
+            
         });
         console.log("montando grid");
         rowSelected = function (args) {
@@ -91,7 +117,7 @@ module.exports = {
             if (item == "") {
                 item = obj[i].SERCODIGO;
             };
-            let nameSerie = jsonQ(serieJson),
+            var nameSerie = jsonQ(serieJson),
                 name = nameSerie.find('name');
             var index = name.index(function () {
                 return this == item;
@@ -112,7 +138,7 @@ module.exports = {
             if (item == "") {
                 item = obj[i].SERCODIGO;
             };
-            let nameSerie = jsonQ(serieJson),
+            var nameSerie = jsonQ(serieJson),
                 name = nameSerie.find('name');
             var index = name.index(function () {
                 return this == item;

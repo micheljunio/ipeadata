@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Breadcrumb, Panel, Jumbotron, Tabs, Tab, DropdownButton, MenuItem, ButtonGroup, SplitButton } from "react-bootstrap";
+import { Grid, Col, Row, Well } from "react-bootstrap";
 import GridSerie from "./GridSerie";
 import GraphSerie from "./GraphSerie";
 import MapaSerie from "./MapaSerie";
@@ -32,14 +33,11 @@ class Content extends Component {
         this.renderComponents = this.renderComponents.bind(this);
         this.eventobotao = this.eventobotao.bind(this);
         this.state = {
-            key: 1,
-            loading: true
+            key: 1
         };
     }
 
-    componentDidMount() {
-        this.setState({loading: false});
-    }
+    
 
     eventobotao(){
         console.log("botão clicado");
@@ -127,7 +125,6 @@ class Content extends Component {
 
     renderComponents() {}
     render() {
-        const {loading} = this.state;
         var jsonView = "";
         if(serieOld != this.props.url.id){
             jsonView = this.getValues();
@@ -135,12 +132,6 @@ class Content extends Component {
         }
         else{
             jsonView = serieData;
-        }
-
-        if(loading){
-            return (
-                <h1>Carregando!!!</h1>
-                );
         }
 
         if (this.props.url.id == "fontes") {
@@ -267,11 +258,30 @@ class Content extends Component {
                             <h3>Descrição</h3>
                             <p>{this.renderDescricao(jsonView)}</p>
                             
+                            <Well>
+                            <h4>Configurações:</h4>
+                            <Grid fluid="true">
+                            {/*navbar*/}
+                            <Row >                            
+                            
+                            <Col xs={3} md={3}>
+                                <p>Nível Geográfico</p>
+                            </Col>
+                            <Col xs={3} md={3}>
                             <SplitButton bsStyle="primary" key="1" id="split-button-basic-1" title="Nivel Geografico">
                                 <MenuItem onClick={this.eventobotao}> Brasil </MenuItem>
                                 <MenuItem onClick={this.eventobotao}> Regiões </MenuItem>
                                 <MenuItem onClick={this.eventobotao}> Estados </MenuItem>
                             </SplitButton>    
+                            </Col>
+
+                            </Row>
+                            <Row>                           
+                            
+                            <Col xs={3} md={3}>
+                                <p>Abrangencia</p>
+                            </Col>
+                            <Col xs={3} md={3}>
 
                             <SplitButton bsStyle="primary" key="2" id="split-button-basic-1" title="Abrangencia">
                                 <MenuItem onClick={this.eventobotao}> Regial Centro-Oeste </MenuItem>
@@ -280,6 +290,15 @@ class Content extends Component {
                                 <MenuItem onClick={this.eventobotao}> Regial Sudeste </MenuItem>
                                 <MenuItem onClick={this.eventobotao}> Regial Sul </MenuItem>
                             </SplitButton>    
+
+                            </Col>    
+                            </Row>
+                            <Row >                            
+                            
+                            <Col xs={3} md={3}>
+                                <p>inicio</p>
+                            </Col>
+                            <Col xs={3} md={3}>
 
                             <SplitButton bsStyle="primary" key="3" id="split-button-basic-1" title="inicio">
                                 <MenuItem onClick={this.eventobotao}> 1985 </MenuItem>
@@ -310,12 +329,24 @@ class Content extends Component {
                                 <MenuItem onClick={this.eventobotao}> 2011 </MenuItem>                               
                                 
                             </SplitButton>    
+
+                            </Col>    
+                            
+                            
+                            <Col xs={3} md={3}>
+                                <p>Fim</p>
+                            </Col>
+                            <Col xs={3} md={3}>
                             
                             <SplitButton bsStyle="primary" key="4" id="split-button-basic-1" title="Fim">
                                 <MenuItem onClick={this.eventobotao}> Item 1 </MenuItem>
                             </SplitButton>    
 
-                            
+                            </Col>    
+                            </Row>
+                            </Grid>
+
+                            </Well>
                         </Panel>
                     </div>
 
