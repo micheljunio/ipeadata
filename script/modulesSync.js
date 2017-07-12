@@ -1,30 +1,15 @@
 module.exports = {
-    moduleGrid: function (data, div, columns) {
+    moduleGrid: function (data, div, columns, metaConfigs) {
+        console.log(metaConfigs);
+        metaConfigs["dataSource"] = data;
+        metaConfigs["columns"] = columns;
+        console.log(metaConfigs);
         console.log(columns);
         console.log("Serie na grid:");
         console.log(data);
-        window.baseurl = "http://js.syncfusion.com/ExportingServices/api/";
         if ($("#" + div).data("ejGrid"))
             $("#" + div).ejGrid("destroy");
-        $("#" + div).ejGrid({
-            dataSource: data,
-            exportToExcelAction: "http://js.syncfusion.com/ExportingServices/api/JSGridExport/ExcelExport",
-            toolbarSettings: { showToolbar: true, toolbarItems: [ej.Grid.ToolBarItems.ExcelExport] },
-            allowPaging: true,
-            allowSorting: true,
-            allowGrouping: false,
-            allowFiltering: true,
-            allowReordering: true,
-            allowMultiSorting: true,
-            allowResizeToFit: true,
-            filterSettings: { filterType: "excel" },
-            rowSelected: "window.rowSelected",
-            columns: columns
-        });
-        console.log("montando grid");
-        rowSelected = function (args) {
-            //console.log(args.data.id)
-        }
+        $("#" + div).ejGrid(metaConfigs);
     },
 
     getRowSelected: function () {

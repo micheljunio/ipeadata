@@ -12,7 +12,9 @@ class GridSerie extends Component {
 			valueRedirect: -1,
 			propsSerie: false,
 			nextProps: "", 
-			tipoGrid: ""
+			nextConfigs:"",
+			nextColumns:"",
+			tipoGrid: 1
 		};
 		this.handleClick = this.handleClick.bind(this);
 	}
@@ -31,17 +33,14 @@ class GridSerie extends Component {
 	componentDidMount() {
 		//console.log("didMount");
 		if(this.props.tipoGrid){
-			console.log("teste true");
 			var serie = this.props.serie;
-			this.setState({tipoGrid: true})
 		}
 		else{
 			var serie = moduleGridJson(this.props.serie);
-			this.setState({tipoGrid: false})
 		}
 			
 		return (
-			moduleGrid(serie, this.props.div, this.props.columns)
+			moduleGrid(serie, this.props.div, this.props.columns, this.props.metaConfigs)
 			);
 
 	}
@@ -49,19 +48,17 @@ class GridSerie extends Component {
 	componentWillReceiveProps(nextProps) {
 		//console.log("receivedProps");
 		if (this.props.url !== nextProps.url) {
-			this.setState({ propsSerie: true, nextProps: nextProps.serie });
+			this.setState({ propsSerie: true, nextProps: nextProps.serie, tipoGrid: nextProps.tipoGrid, metaConfigs: nextProps.tipoGrid });
 		}
 	}
 
 	render() {
 		//console.log("render");
 		//console.log(this.state.redirect);
-		var serie = "";
-		if(this.props.tipoGrid){
-			serie = this.props.serie;
-		}
-		else{
-			console.log("render module json");
+		console.log(this.state.tipoGrid);
+		var serie = this.props.serie;
+		var metaConfigs = this.props.metaConfigs;
+		if(!this.state.tipoGrid){
 			serie = moduleGridJson(this.props.serie);
 		}
 
@@ -72,12 +69,13 @@ class GridSerie extends Component {
 
 		if (this.state.propsSerie) {
 			serie = this.state.nextProps;
+			metaConfigs = this.state.metaConfigs;
 			this.setState({ propsSerie: false });
 		}
 
 		return (
 			<div id="Grid" onClick={this.handleClick}>
-				{moduleGrid(serie, this.props.div, this.props.columns)}
+				{moduleGrid(serie, this.props.div, this.props.columns, metaConfigs)}
 			</div>
 		);
 	}

@@ -9,6 +9,7 @@ import { metadadoGeral } from "../data/metadadoGeral";
 import { metadadoSerieGeral } from "../data/metadadoSerieGeral";
 import { metadadoSerieAnoColuna } from "../data/metadadoSerieAnoColuna";
 import { moduleColumnJson } from "../../script/modulesSync.js";
+import { metaConfigs } from "../data/metaConfigsComponents";
 
 //css
 import "../css/content.css";
@@ -67,10 +68,10 @@ class Content extends Component {
         //json_obj2 = metadadoAnoColuna;
         if (json_obj2.value.length == 0) {
             json_obj2 = metadados;
-            tipoGrid = true;
+            tipoGrid = 1;
         }
         else{
-            tipoGrid = false;
+            tipoGrid = 0;
         }
         return json_obj2;
     }
@@ -100,6 +101,7 @@ class Content extends Component {
             columns = moduleColumnJson(jsonView.value);
 
         }
+        console.log(metaConfigs.grid);
         return (
             <GridSerie
                 serie={jsonView.value}
@@ -107,6 +109,7 @@ class Content extends Component {
                 columns={columns}
                 url={this.props.url.id}
                 tipoGrid = {tipoGrid}
+                metaConfigs = {metaConfigs.grid}
             />
         );
     }
