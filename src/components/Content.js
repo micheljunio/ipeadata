@@ -8,6 +8,8 @@ import { metadadosSeries } from "../data/metadadosSeries";
 import { metadados } from "../data/metados";
 import { metadadoGeral } from "../data/metadadoGeral";
 import { metadadoSerieGeral } from "../data/metadadoSerieGeral";
+import { metadadoSerieAnoColuna } from "../data/metadadoSerieAnoColuna";
+import { moduleColumnJson } from "../../script/modulesSync.js";
 
 //css
 import "../css/content.css";
@@ -20,6 +22,7 @@ var json_obj2 = "";
 var serieName = "";
 var serieOld = "";
 var serieData = "";
+var tipoGrid = "";
 
 class Content extends Component {
     constructor() {
@@ -59,9 +62,13 @@ class Content extends Component {
         var string =
             "http://www.ipeadata.gov.br/api/odata4/Metadados('" + this.props.url.id + "')/Valores";
         json_obj2 = JSON.parse(Get(string));
-        console.log(json_obj2.value);
+        //json_obj2 = metadadoAnoColuna;
         if (json_obj2.value.length == 0) {
             json_obj2 = metadados;
+            tipoGrid = true;
+        }
+        else{
+            tipoGrid = false;
         }
         return json_obj2;
     }
@@ -82,9 +89,14 @@ class Content extends Component {
                 }
             }
         }
-        var columns = metadadoSerieGeral;
+        var columns = "";
+        
         if (jsonView == metadados) {
             columns = metadadoGeral;
+        }
+        else{
+            columns = moduleColumnJson(jsonView.value);
+
         }
         return (
             <GridSerie
@@ -92,6 +104,7 @@ class Content extends Component {
                 div={"Grid"}
                 columns={columns}
                 url={this.props.url.id}
+                tipoGrid = {tipoGrid}
             />
         );
     }
@@ -109,7 +122,6 @@ class Content extends Component {
 
     renderDescricao(jsonView) {
         var descr = "";
-        console.log(jsonView.value);
         for (var key in metadados.value) {
             if (metadados.value[key].SERCODIGO == this.props.url.id) {
                 descr = metadados.value[key].SERCOMENTARIO;
@@ -383,95 +395,3 @@ class Content extends Component {
 }
 
 export default Content;
-/*
-setState() {
-        if (this.props.url.id !== undefined) {
-            text = this.props.url.id;
-            
-            if (this.props.url.submenu !== undefined) {
-                text = this.props.url.submenu;
-            
-                if (this.props.url.submenu2 !== undefined) {
-                    text = this.props.url.submenu2;
-            
-                }
-            }
-        }
-
-        if (this.props.url.id !== undefined) {
-            if (this.props.url.id == "macroeconomico") {
-                serie = this.props.seriemacro;
-                return (this.serie);
-                if (this.props.url.submenu == "temas") {
-                    if (this.props.url.submenu2 == "balanco-de-pagamentos") {
-                        serie = this.props.serie1;
-                        return (this.serie);
-                    }
-                    if (this.props.url.submenu2 == "cambio") {
-                        serie = this.props.serie2;
-                        return (this.serie);
-                    }
-                    if (this.props.url.submenu2 == "comercio-exterior") {
-                        serie = this.props.serie3;
-                        return (this.serie);
-                    }
-                }
-            }
-
-            if (this.props.url.id == "regional") {
-                serie = this.props.serieregional;
-                if (this.props.url.submenu == "temas") {
-                    if (this.props.url.submenu2 == "balanco-de-pagamentos") {
-                        serie = this.props.serie4;
-                        return (this.serie);
-                    }
-                    if (this.props.url.submenu2 == "cambio") {
-                        serie = this.props.serie4;
-                        return (this.serie);
-                    }
-                    if (this.props.url.submenu2 == "comercio-exterior") {
-                        serie = this.props.serie4;
-                        return (this.serie);
-                    }
-                }
-            }
-
-            if (this.props.url.id == "social") {
-                serie = this.props.seriesocial;
-                return (this.serie);
-                if (this.props.url.submenu == "temas") {
-                    if (this.props.url.submenu2 == "balanco-de-pagamentos") {
-                        serie = this.props.serie4;
-                        return (this.serie);
-                    }
-                    if (this.props.url.submenu2 == "cambio") {
-                        serie = this.props.serie4;
-                        return (this.serie);
-                    }
-                    if (this.props.url.submenu2 == "comercio-exterior") {
-                        serie = this.props.serie4;
-                        return (this.serie);
-                    }
-                }
-            }
-        }
-    }*/
-
-//console.log(this.props.url)
-/*{this.props.url === "Equipe" && <Equipe />}
-                {this.props.url === "Metadados" && <Metadados />}
-                {this.props.url === "fontes" && <Fontes />}
-                {this.props.url === "direitos" && <DireitosUso />}
-                {this.props.url === "macroeconomico" && <Series />}*/
-/*
-                function Get(yourUrl) {
-                    var Httpreq = new XMLHttpRequest(); // a new request
-                    Httpreq.open("GET", yourUrl, false);
-                    Httpreq.send(null);
-                    return Httpreq.responseText;
-                }
-                var json_obj = JSON.parse(Get("http://www.ipeadata.gov.br/api/odata4/Paises"));
-                var result = jsonQuery('value[*PAICODIGO=ZAF].PAINOME',{
-                    data: json_obj
-                });
-                console.log(result)*/
