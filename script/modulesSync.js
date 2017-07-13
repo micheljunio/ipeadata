@@ -1,34 +1,59 @@
 module.exports = {
 
-    moduleGridJson: function (serie) {
+    filteredGrid: function (serie, type) {
         
         var jsonQ = require("jsonq");
-        console.log(serie)
- 
-        var family = jsonQ(serie);
         
+  /*      var family = jsonQ(serie.value);
         
-        var filterdHub = family.filter({
-            "NIVNOME": "Brasil"
+        var filtered_json = family.filter({
+            "NIVNOME": "Estados"
         });
         
-        
-        filterdHub.each(function (index, path, value) {
+        filtered_json.each(function (index, path, value) {
             console.log(value);
-        });
-        return filterdHub;
-
+        });*/
         
-/*    var serieJson = serie;*/
+        /*return filterdHub;*/
+
+        //We do that to ensure to get a correct JSON
+        //var my_json = JSON.stringify(serie);
+        //We can use {'name': 'Lenovo Thinkpad 41A429ff8'} as criteria too
+        //var filtered_json = find_in_object(my_json, {NIVNOME: 'Brasil'});
+
+        /*function find_in_object(my_object, my_criteria){
+
+            return my_object.filter(function(obj) {
+                return Object.keys(my_criteria).every(function(c) {
+                    return obj[c] == my_criteria[c];
+                });
+            });
+        }*/
+
+        /*serie.value = serie.value.filter(function(entry){
+            return entry.NIVSERIE === "Brasil";
+        });*/
+
+        /*var filtered_json = JSON.stringify(serie).filter(function (entry) {
+            return entry.value.NIVNOME === 'Brasil';
+        })*/
+
+        var obj = jsonQ.order(serie.value);
+        console.log(obj);
+        var json = [];
+            for(var key in obj) {
+                if(obj[key].NIVNOME == type) {
+                json.push(obj[key]);
+                }
+            }
+
+        console.log(json);
+        return json;
+
+
     },
 
-
-
-
-    moduleGrid: function (data, div) {
-        /*console.log(columns);*/
-        /*console.log("Serie na grid:");
-        console.log(data);*/
+    moduleGrid: function (data, div, columns) {
         window.baseurl = "http://js.syncfusion.com/ExportingServices/api/";
         if ($("#" + div).data("ejGrid"))
             $("#" + div).ejGrid("destroy");
@@ -45,6 +70,7 @@ module.exports = {
             allowResizeToFit: true,
             filterSettings: { filterType: "excel" },
             rowSelected: "window.rowSelected",
+            columns: columns
             
         });
         console.log("montando grid");
