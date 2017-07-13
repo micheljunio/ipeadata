@@ -9,7 +9,7 @@ import { metadados } from "../data/metados";
 import { metadadoGeral } from "../data/metadadoGeral";
 import { metadadoSerieGeral } from "../data/metadadoSerieGeral";
 import { metadadoSerieAnoColuna } from "../data/metadadoSerieAnoColuna";
-import { moduleColumnJson } from "../../script/modulesSync.js";
+import { moduleColumnJson, filteredGrid } from "../../script/modulesSync.js";
 
 //css
 import "../css/content.css";
@@ -24,6 +24,7 @@ var serieOld = "";
 var serieData = "";
 var tipoGrid = "";
 
+
 class Content extends Component {
     constructor() {
         super();
@@ -34,16 +35,30 @@ class Content extends Component {
         this.handleSelect = this.handleSelect.bind(this);
         this.getValues = this.getValues.bind(this);
         this.renderComponents = this.renderComponents.bind(this);
-        this.eventobotao = this.eventobotao.bind(this);
+        this.eventobotao1 = this.eventobotao1.bind(this);
+        this.eventobotao2 = this.eventobotao2.bind(this);
+        this.eventobotao3 = this.eventobotao3.bind(this);
         this.state = {
-            key: 1
+            key: 1,
+            type: "Brasil"
         };
     }
 
     
 
-    eventobotao(){
-        console.log("botão clicado");
+    eventobotao1(){
+        this.setState({type: "Brasil"});
+        console.log(this.state.type);
+    }
+
+    eventobotao2(){
+        this.setState({type: "Regiões"});
+        console.log(this.state.type);
+    }
+
+    eventobotao3(){
+        this.setState({type: "Estados"});
+        console.log(this.state.type);
     }
 
     handleSelect(key) {
@@ -70,6 +85,11 @@ class Content extends Component {
         else{
             tipoGrid = false;
         }
+        
+        /*
+        json_obj2 = filteredGrid(json_obj2);
+        console.log(json_obj2);    
+        //console.log(json_obj2);*/
         return json_obj2;
     }
 
@@ -82,6 +102,7 @@ class Content extends Component {
                 </Jumbotron>
             );
         }
+        
         for (var key in metadadosSeries) {
             if (metadadosSeries.hasOwnProperty(key)) {
                 if (metadadosSeries[key].var == this.props.url.id) {
@@ -89,18 +110,29 @@ class Content extends Component {
                 }
             }
         }
-        var columns = "";
+        var columns = metadadoSerieGeral;
+        columns = metadadoSerieAnoColuna
         
         if (jsonView == metadados) {
             columns = metadadoGeral;
         }
-        else{
+        /*else{
             columns = moduleColumnJson(jsonView.value);
 
+        }*/
+        
+        var dados = jsonView.value;
+        console.log(dados);
+        console.log(dados[0].NIVNOME);
+
+        if (dados[0].NIVNOME != undefined && dados[0].NIVNOME != "") {
+            dados = filteredGrid(jsonView, this.state.type); 
+                       
         }
-        return (
+
+        return (            
             <GridSerie
-                serie={jsonView.value}
+                serie={dados}
                 div={"Grid"}
                 columns={columns}
                 url={this.props.url.id}
@@ -136,6 +168,8 @@ class Content extends Component {
     }
 
     renderComponents() {}
+
+    
     render() {
         var jsonView = "";
         if(serieOld != this.props.url.id){
@@ -281,9 +315,9 @@ class Content extends Component {
                             </Col>
                             <Col xs={3} md={3}>
                             <SplitButton bsStyle="primary" key="1" id="split-button-basic-1" title="Nivel Geografico">
-                                <MenuItem onClick={this.eventobotao}> Brasil </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> Regiões </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> Estados </MenuItem>
+                                <MenuItem onClick={this.eventobotao1}> Brasil </MenuItem>
+                                <MenuItem onClick={this.eventobotao2}> Regiões </MenuItem>
+                                <MenuItem onClick={this.eventobotao3}> Estados </MenuItem>
                             </SplitButton>    
                             </Col>
 
