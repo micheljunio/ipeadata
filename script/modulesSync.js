@@ -11,6 +11,38 @@ module.exports = {
         $("#" + div).ejGrid(metaConfigs);
     },
 
+    filteredGrid: function (serie, ter, abrang, inicio, fim ) {
+        var datainicio = inicio, datafim = fim;
+        var jsonQ = require("jsonq");
+        var obj = jsonQ.order(serie.value);
+        var auxAbrang = "";
+        console.log(obj);
+        var json = [];
+        for(var key in obj) {
+            for (keyy in obj[key]){
+                auxAbrang = obj[key].TERCODIGO;
+                if(abrang == -1)
+                    auxAbrang = abrang;
+                    if(obj[key][keyy] == ter && auxAbrang == abrang) {
+                        var iData = "";
+                        if(datafim > 0){
+                            var iData = datafim - datainicio;
+                            for(var i = 0; iData >= i; i++){
+                                var data = obj[key].VALDATA[0] + obj[key].VALDATA[1] + obj[key].VALDATA[2] + obj[key].VALDATA[3];
+                                if(data == (datainicio + i)) {
+                                    json.push(obj[key]);
+                                }
+                            }
+                        } 
+                        else{
+                            json.push(obj[key]);
+                        }                        
+                    }
+                }                
+            }
+        return json;
+    },
+
     getRowSelected: function () {
         var grid = $("#Grid").data("ejGrid");
 
@@ -118,7 +150,7 @@ module.exports = {
         return serieJson;
     },
 
-    moduleColumnJson: function (serie) {
+    moduleColumnJson: function (serie, anoInicio, anoFim) {
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie);
 
@@ -138,6 +170,8 @@ module.exports = {
 
         for (var i in obj) {
             var data = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3] + obj[i].VALDATA[4] + obj[i].VALDATA[5] + obj[i].VALDATA[6]); 
+            var dataAux = parseInt(obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3]);
+            if(dataAux >= anoInicio && dataAux <= anoFim){
             var item = data;
             var nameSerie = jsonQ(serieJson),
                 name = nameSerie.find('field');
@@ -151,6 +185,7 @@ module.exports = {
                     format: "{0:n2}",
                     width: 100
                 });
+            }
             }
         }
         console.log(serieJson);
