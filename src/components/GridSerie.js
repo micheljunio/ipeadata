@@ -12,7 +12,9 @@ class GridSerie extends Component {
 			valueRedirect: -1,
 			propsSerie: false,
 			nextProps: "", 
-			tipoGrid: ""
+			nextConfigs:"",
+			nextColumns:"",
+			tipoGrid: 1
 
 		};
 		this.handleClick = this.handleClick.bind(this);
@@ -38,17 +40,14 @@ class GridSerie extends Component {
 			moduleGrid(serie, this.props.div);*/
 
 		if(this.props.tipoGrid){
-			console.log("teste true");
 			var serie = this.props.serie;
-			this.setState({tipoGrid: true})
 		}
 		else{
 			var serie = moduleGridJson(this.props.serie);
-			this.setState({tipoGrid: false})
 		}
 			
 		return (
-			moduleGrid(serie, this.props.div, this.props.columns)
+			moduleGrid(serie, this.props.div, this.props.columns, this.props.metaConfigs)
 			);
 
 	}
@@ -56,7 +55,7 @@ class GridSerie extends Component {
 	componentWillReceiveProps(nextProps) {
 		//console.log("receivedProps");
 		if (this.props.url !== nextProps.url) {
-			this.setState({ propsSerie: true, nextProps: nextProps.serie });
+			this.setState({ propsSerie: true, nextProps: nextProps.serie, tipoGrid: nextProps.tipoGrid, metaConfigs: nextProps.tipoGrid });
 		}
 	}
 
@@ -64,18 +63,17 @@ class GridSerie extends Component {
 		//console.log("render");
 		//console.log(this.state.redirect);
 
-		//var serie = this.props.serie;
-		//var serie = moduleGridJson(this.props.serie);
-
-		var serie = "";
-		if(this.props.tipoGrid){
-			serie = this.props.serie;
-		}
-		else{
-			console.log("render module json");
+		console.log(this.state.tipoGrid);
+		if(!this.state.tipoGrid)
+			console.log('true');
+		else
+			console.log('false');
+		var serie = this.props.serie;
+		var metaConfigs = this.props.metaConfigs;
+		var columns = this.props.columns;
+		if(this.state.tipoGrid){
 			serie = moduleGridJson(this.props.serie);
 		}
-
 
 		if (this.state.redirect) {
 			this.setState({ redirect: false });
@@ -84,12 +82,16 @@ class GridSerie extends Component {
 
 		if (this.state.propsSerie) {
 			serie = this.state.nextProps;
+			columns = this.nextProps.columns;
+			metaConfigs = this.state.metaConfigs;
+
 			this.setState({ propsSerie: false });
 		}
 
 		return (
 			<div id="Grid" onClick={this.handleClick}>
-				{moduleGrid(serie, this.props.div)}
+				{moduleGrid(serie, this.props.div, columns, metaConfigs)}
+
 			</div>
 		);
 	}

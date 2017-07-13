@@ -9,6 +9,7 @@ import { metadados } from "../data/metados";
 import { metadadoGeral } from "../data/metadadoGeral";
 import { metadadoSerieGeral } from "../data/metadadoSerieGeral";
 import { metadadoSerieAnoColuna } from "../data/metadadoSerieAnoColuna";
+import { metaConfigs } from "../data/metaConfigsComponents";
 import { moduleColumnJson, filteredGrid } from "../../script/modulesSync.js";
 
 //css
@@ -35,30 +36,19 @@ class Content extends Component {
         this.handleSelect = this.handleSelect.bind(this);
         this.getValues = this.getValues.bind(this);
         this.renderComponents = this.renderComponents.bind(this);
-        this.eventobotao1 = this.eventobotao1.bind(this);
-        this.eventobotao2 = this.eventobotao2.bind(this);
-        this.eventobotao3 = this.eventobotao3.bind(this);
+        this.eventobotao = this.eventobotao.bind(this);
         this.state = {
             key: 1,
-            type: "Brasil"
+            ter: "Regiões",
+            abrang: 3,
+            inicio: 1991,
+            fim: 2006   
         };
     }
 
-    
-
-    eventobotao1(){
-        this.setState({type: "Brasil"});
-        console.log(this.state.type);
-    }
-
-    eventobotao2(){
-        this.setState({type: "Regiões"});
-        console.log(this.state.type);
-    }
-
-    eventobotao3(){
-        this.setState({type: "Estados"});
-        console.log(this.state.type);
+    eventobotao(event,eventKey){
+        console.log(event);
+        this.setState({type: event});
     }
 
     handleSelect(key) {
@@ -77,13 +67,11 @@ class Content extends Component {
         var string =
             "http://www.ipeadata.gov.br/api/odata4/Metadados('" + this.props.url.id + "')/Valores";
         json_obj2 = JSON.parse(Get(string));
+        tipoGrid = 0;
         //json_obj2 = metadadoAnoColuna;
         if (json_obj2.value.length == 0) {
             json_obj2 = metadados;
-            tipoGrid = true;
-        }
-        else{
-            tipoGrid = false;
+            tipoGrid = 1;
         }
         
         /*
@@ -116,17 +104,17 @@ class Content extends Component {
         if (jsonView == metadados) {
             columns = metadadoGeral;
         }
-        /*else{
-            columns = moduleColumnJson(jsonView.value);
+        else{
+            columns = moduleColumnJson(jsonView.value, this.state.inicio, this.state.fim);
 
-        }*/
+        }
         
         var dados = jsonView.value;
         console.log(dados);
         console.log(dados[0].NIVNOME);
 
         if (dados[0].NIVNOME != undefined && dados[0].NIVNOME != "") {
-            dados = filteredGrid(jsonView, this.state.type); 
+            dados = filteredGrid(jsonView, this.state.ter, this.state.abrang, this.state.inicio, this.state.fim); 
                        
         }
 
@@ -137,6 +125,7 @@ class Content extends Component {
                 columns={columns}
                 url={this.props.url.id}
                 tipoGrid = {tipoGrid}
+                metaConfigs = {metaConfigs.grid}
             />
         );
     }
@@ -148,6 +137,7 @@ class Content extends Component {
                 serie={jsonView.value}
                 serieName={serieName}
                 url={this.props.url.id}
+                metaConfigs = {metaConfigs.graph}
             />
         );
     }
@@ -314,10 +304,10 @@ class Content extends Component {
                                 <p>Nível Geográfico</p>
                             </Col>
                             <Col xs={3} md={3}>
-                            <SplitButton bsStyle="primary" key="1" id="split-button-basic-1" title="Nivel Geografico">
-                                <MenuItem onClick={this.eventobotao1}> Brasil </MenuItem>
-                                <MenuItem onClick={this.eventobotao2}> Regiões </MenuItem>
-                                <MenuItem onClick={this.eventobotao3}> Estados </MenuItem>
+                            <SplitButton  bsStyle="primary" key="1" id="split-button-basic-1" onSelect={this.eventobotao} title="Nivel Geografico">
+                                <MenuItem eventKey={"Brasil"}> Brasil </MenuItem>
+                                <MenuItem eventKey={"Regiões"} > Regiões </MenuItem>
+                                <MenuItem eventKey={"Estados"}> Estados </MenuItem>
                             </SplitButton>    
                             </Col>
 
@@ -346,33 +336,33 @@ class Content extends Component {
                             </Col>
                             <Col xs={3} md={3}>
 
-                            <SplitButton bsStyle="primary" key="3" id="split-button-basic-1" title="inicio">
-                                <MenuItem onClick={this.eventobotao}> 1985 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1986 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1987 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1988 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1989 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1990 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1991 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1992 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1993 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1994 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1995 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1996 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1997 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1998 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 1999 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 2000 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 2001 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 2003 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 2004 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 2005 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 2006 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 2007 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 2008 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 2009 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 2010 </MenuItem>
-                                <MenuItem onClick={this.eventobotao}> 2011 </MenuItem>                               
+                            <SplitButton bsStyle="primary" onSelect={this.eventobotao} key="3" id="split-button-basic-1" title="inicio">
+                                <MenuItem eventKey={"1985"}> 1985 </MenuItem>
+                                <MenuItem eventKey={"1986"}> 1986 </MenuItem>
+                                <MenuItem eventKey={"1987"}> 1987 </MenuItem>
+                                <MenuItem eventKey={"1988"}> 1988 </MenuItem>
+                                <MenuItem eventKey={"1989"}> 1989 </MenuItem>
+                                <MenuItem eventKey={"1990"}> 1990 </MenuItem>
+                                <MenuItem eventKey={"1991"}> 1991 </MenuItem>
+                                <MenuItem eventKey={"1992"}> 1992 </MenuItem>
+                                <MenuItem eventKey={"1993"}> 1993 </MenuItem>
+                                <MenuItem eventKey={"1994"}> 1994 </MenuItem>
+                                <MenuItem eventKey={"1995"}> 1995 </MenuItem>
+                                <MenuItem eventKey={"1996"}> 1996 </MenuItem>
+                                <MenuItem eventKey={"1997"}> 1997 </MenuItem>
+                                <MenuItem eventKey={"1998"}> 1998 </MenuItem>
+                                <MenuItem eventKey={"1999"}> 1999 </MenuItem>
+                                <MenuItem eventKey={"2000"}> 2000 </MenuItem>
+                                <MenuItem eventKey={"2001"}> 2001 </MenuItem>
+                                <MenuItem eventKey={"2003"}> 2003 </MenuItem>
+                                <MenuItem eventKey={"2004"}> 2004 </MenuItem>
+                                <MenuItem eventKey={"2005"}> 2005 </MenuItem>
+                                <MenuItem eventKey={"2006"}> 2006 </MenuItem>
+                                <MenuItem eventKey={"2007"}> 2007 </MenuItem>
+                                <MenuItem eventKey={"2008"}> 2008 </MenuItem>
+                                <MenuItem eventKey={"2009"}> 2009 </MenuItem>
+                                <MenuItem eventKey={"2010"}> 2010 </MenuItem>
+                                <MenuItem eventKey={"2011"}> 2011 </MenuItem>                               
                                 
                             </SplitButton>    
 

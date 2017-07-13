@@ -8,6 +8,7 @@ class GridSerie extends Component {
         super();
         this.state = {
             propsSerie: false,
+            nextConfigs:"",
             nextProps: ''
         };
     }
@@ -16,7 +17,7 @@ class GridSerie extends Component {
         console.log("didMountGraph");
         var serie = moduleGraphJson(this.props.serie);
         return(        
-            moduleGraph(this.props.div, serie, this.props.serieName)    
+            moduleGraph(this.props.div, serie, this.props.serieName, this.props.metaConfigs)    
         );
     }
 
@@ -24,21 +25,23 @@ class GridSerie extends Component {
         console.log('receivedPropsGraph');
         console.log(this.props.url + " - " + nextProps.url);
         if(this.props.url !== nextProps.url){
-             this.setState({propsSerie:true, nextProps: nextProps.serie});
+             this.setState({propsSerie: true, nextProps: nextProps.serie, metaConfigs: nextProps.tipoGrid });
         }
     }
 
     render() {
         console.log("renderGraph");
+        var metaConfigs = this.props.metaConfigs;
         if(this.state.propsSerie){
             var serie = this.state.nextProps;
+            metaConfigs = this.state.metaConfigs;
             this.setState({propsSerie:false});
             var serieData =  moduleGraphJson(this.props.serie);
         }       
         return (
             <div id="container">
                 {
-                    moduleGraph(this.props.div, serieData, this.props.serieName)
+                    moduleGraph(this.props.div, serieData, this.props.serieName, metaConfigs)
                 }
             </div>
         );
