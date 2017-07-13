@@ -1,4 +1,5 @@
 module.exports = {
+
     moduleGrid: function (data, div, columns, metaConfigs) {
         metaConfigs["dataSource"] = data;
         metaConfigs["columns"] = columns;
@@ -38,7 +39,7 @@ module.exports = {
             if (item == "") {
                 item = obj[i].SERCODIGO;
             };
-            let nameSerie = jsonQ(serieJson),
+            var nameSerie = jsonQ(serieJson),
                 name = nameSerie.find('name');
             var index = name.index(function () {
                 return this == item;
@@ -59,7 +60,7 @@ module.exports = {
             if (item == "") {
                 item = obj[i].SERCODIGO;
             };
-            let nameSerie = jsonQ(serieJson),
+            var nameSerie = jsonQ(serieJson),
                 name = nameSerie.find('name');
             var index = name.index(function () {
                 return this == item;
@@ -106,8 +107,13 @@ module.exports = {
             var index = name.index(function () {
                 return this == item;
             });
-            var ano = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3]+ obj[i].VALDATA[4] + obj[i].VALDATA[5] + obj[i].VALDATA[6]);
-            serieJson[index][ano] = obj[i].VALVALOR;
+            if(obj[i].VALDATA != undefined){
+                var ano = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3]+ obj[i].VALDATA[4] + obj[i].VALDATA[5] + obj[i].VALDATA[6]);
+                serieJson[index][ano] = obj[i].VALVALOR;
+            }
+            else{
+                serieJson = serie;
+            }
         }
         return serieJson;
     },

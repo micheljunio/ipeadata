@@ -1,4 +1,8 @@
 node_modules/
 /nbproject/private/
 orbit-root/
+<<<<<<< HEAD
 npm-debug.log
+=======
+build/*
+>>>>>>> 02561446d3b90cd67008b868582edd43bf4f2b6e
