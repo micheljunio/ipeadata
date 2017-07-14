@@ -8,7 +8,6 @@
 
 
 
-
 **IPEADATA 2.0**
 
 **        Especificação da API**
@@ -95,118 +94,111 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
 
 ## 3.1Definindo o modelo de Dados
 
+### 3.1.1
 
 
-Componente:
 
 **  GridSérie:**
 
-    type: object
+   [
+  {
+    "1985": 3.78,
+    "1986": 0.78,
+    "1987": 1.78,
+    "1988": 2.78,
+    "1989": 4.78,
+    "1990": 5.78,
+    "SERCODIGO": "PIBPCE",
+    "NIVNOME": "Estados",
+    "TERCODIGO": "10"
+  },
 
-    Propriedades:
-
-       Série:
-
-         type: string
-
-       Nível Geográfico:
-
-         type: string
-
-       Código Territorial:
-
-           id:
-
-            type:interger
-
-           Ano:
-
-            type: string
-
-            format: date
-
- Componente:
 
 **  ListarSéries:**
 
-    type: object
+[
+  {
+    "field": "SERCODIGO",
+    "headerText": "Código",
+    "isPrimaryKey": true
+  },
+  {
+    "field": "SERNOME",
+    "headerText": "Nome"
+  },
+  {
+    "field": "UNINOME",
+    "headerText": "Unidade"
+  },
+  {
+    "field": "PERNOME",
+    "headerText": "Frequência"
+  }
+]    
 
-    Propriedades:
-
-       Código:
-
-          type: string
-
-       Nome:
-
-          type: string
-
-       Unidade:
-
-          type:interger
-
-       Frequência:
-
-          type:interger
-
- Componente:
 
 **  GráficoSérie:**
-
-    type: object
-
-    Propriedades:
-
-       Nome:
-
-          type: string
-
-       Pontos:
-
-          x:
-
-          type: integer
-
-          y:
-
-          type: integer
+ [
+  {
+    "Nome": "teste",
+    "Pontos": [
+      {
+        "x": 10
+      },
+      {
+        "y": 20
+      }
+    ]
+  }
+]
 
 
-
-
-
-
-
-
-
-
-
-Componente:
 
 **  MapaSérie:**
 
-    type: object
+  [
+  {
+    "type": "Feature",
+    "id": "01",
+    "propriedades": {
+      "nome": "Acre",
+      "valor": 94.65
+    },
+    "geometria": [
+      {
+        "type": "Polygon"
+      },
+      {
+        "coordenadas": [
+          {
+            "y": 20
+          },
+          {
+            "x": 10
+          }
+        ]
+      }
+    ]
+  }
+]
 
-    Propriedades:
+**  MenuDropdow:**
+[
+    name:  "macroeconomico",
+    active: true,
+    itens: [
+        {
+        name: "Temas",
+        fantasia: "temas"},
+        subItens: [
+                {
+                name: "Balanço de pagamentos",
+                fantasia: "balanco-de-pagamentos"},
+                subItens: [
+                        {
+                        name: "(Todas)",
+                        fantasia: "todas"}
+                     ]]]] 
 
-       id:
 
-         type: integer
 
-       Nome:
-
-         type: string
-
-       valor:
-
-         type: string
-
-       Geometria:
-
-          Tipo:
-
-            type:MultiPolygon
-
-          Coordenada:
-
-            type: integer
