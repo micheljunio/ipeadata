@@ -3,7 +3,6 @@
 
 
 
-
 # IPEADATA 2.0
 
 # Especificação da API
@@ -259,7 +258,7 @@ graph: {
         zoom={4} //zoom padrão do mapa
         position='topright'
         data={date}  
-        legend='bottomright' //defini a posição da legenda
+        legend='bottomright' //define a posição da legenda
         legendClass=''     //configurações de estilo para legenda
         valueProperty='density' //variavel utilizada como tema do mapa
         steps={8}
@@ -272,7 +271,7 @@ graph: {
               dashArray: 3,
               fillOpacity: 0.7
             }}
-            //estilo quando insdicado pelo cursor so mouse
+            //estilo quando indicado pelo cursor so mouse
             highlightStyle={
               weight: 5, 
               color: '#666', 
