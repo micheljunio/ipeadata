@@ -40,15 +40,15 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
 **GridSérie:**
 ```sh
   {
-    "SERCODIGO": "PIBPCE",
-    "NIVNOME": "Estados",
-    "TERCODIGO": "10",
-    "1985": 3.78,
-    "1986": 0.78,
-    "1987": 1.78,
-    "1988": 2.78,
-    "1989": 4.78,
-    "1990": 5.78,
+    "SERCODIGO" : "PIBPCE",
+    "NIVNOME" : "Estados",
+    "TERCODIGO" : "10",
+    "1985" : 3.78,
+    "1986" : 0.78,
+    "1987" : 1.78,
+    "1988" : 2.78,
+    "1989" : 4.78,
+    "1990" : 5.78,
     ...
   }
 
@@ -56,11 +56,10 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
 
 **ListarSéries:**
 ```sh
-[
   {
     "field": "SERCODIGO",
     "headerText": "Código",
-    "isPrimaryKey": true
+    "isPrimaryKey": true   \\É necessário existir uma coluna que defina uma chave primária.
   },
   {
     "field": "SERNOME",
@@ -73,8 +72,7 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
   {
     "field": "PERNOME",
     "headerText": "Frequência"
-  }
-]    
+  } 
 ```
 **GráficoSérie:**
 ```sh
