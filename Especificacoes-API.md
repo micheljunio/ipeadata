@@ -6,9 +6,9 @@
 
 
 
-**IPEADATA 2.0**
+# IPEADATA 2.0
 
-**Especificação da API**
+# Especificação da API**
 
 
 
@@ -61,13 +61,13 @@
 
 
 
-# 1.Introdução
+## 1.Introdução
 
-## Propósito
+### Propósito
 
 Este documento contém as especificações necessárias para o desenvolvimento da API que será responsável pela alimentação do porta do IpeaData 2.0.
 
-## Público Alvo
+### Público Alvo
 
 Este documento se destina aos usuários, engenheiros de software, testadores que pretendem entender a solução proposta/desenvolvida.
 
@@ -91,11 +91,7 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
 
 
 
-## 3.1Definindo o modelo de Dados
-
-### 3.1.1
-
-
+### 3.1 Definindo o modelo de Dados
 
 **GridSérie:**
 ```sh
@@ -200,5 +196,95 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
                         fantasia: "todas"}
                      ]]]] 
 ```
+
+### 3.1Definindo o modelo de configuração dos componentes
+
+**Grid**
+
+```sh
+{
+		serie: "xxx",
+		grid: {
+	     	exportToExcelAction:"xx",
+			allowPaging: true,
+			allowSorting: true,
+			allowGrouping: false,
+			allowFiltering: true,
+			allowReordering: true,
+			allowMultiSorting: true,
+			allowResizeToFit: true,
+			filterSettings: { filterType: "excel" },
+			rowSelected: "window.rowSelected"
+		},
+```
+**Gráfico**
+```sh
+graph: {			
+            theme: "gradientlight",            
+            commonSeriesOptions: {
+                type: 'line',
+                enableAnimation: true,
+                border: { width: 2 }
+            },
+            isResponsive: true,
+            load: "loadTheme",            
+            legend: { visible: true },
+            zooming: {
+                enable: true,
+                type: 'xy',
+                enableMouseWheel: true,
+                enableScrollbar: true,
+                enableDeferredZoom: true
+            },
+            crosshair: {
+                visible: true,
+                type: 'trackball',
+                trackballTooltipSettings: {
+                    mode: 'grouping',
+                    border: {
+                        width: 1,
+                        color: 'grey'
+                    },
+                    rx: 3,
+                    ry: 3,
+                    fill: 'whitesmoke'
+                }
+            }        
+		},
+```
+**Mapa**
+```sh
+ map: {
+        width='100%' //
+        height={500} 
+        center={[ -15.7801, -47.9292]} //coordenada para centralizar o mapa
+        zoom={4} //zoom padrão do mapa
+        position='topright'
+        data={date}  
+        legend='bottomright' //defini a posição da legenda
+        legendClass=''     //configurações de estilo para legenda
+        valueProperty='density' //variavel utilizada como tema do mapa
+        steps={8}
+        buckets={[0, 10, 20, 50, 100, 200, 500, 1000, 'inf']} //intervalos da legenda
+        colors={['#FFEDA0', '#FED976', '#FEB24C', '#FD8D3C', '#FC4E2A']} // cores para a legenda
+        style={{
+              weight: 2,
+              opacity: 1,
+              color: '#EE9A49',
+              dashArray: 3,
+              fillOpacity: 0.7
+            }}
+            //estilo quando insdicado pelo cursor so mouse
+            highlightStyle={
+              weight: 5, 
+              color: '#666', 
+              dashArray: '', 
+              fillOpacity: 0.7  
+            }
+    );
+  }
+}
+```
+
 
 
