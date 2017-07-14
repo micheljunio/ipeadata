@@ -7,7 +7,6 @@
 
 
 
-
 **IPEADATA 2.0**
 
 **        Especificação da API**
@@ -99,20 +98,22 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
 
 
 **  GridSérie:**
+<br>
+   [<br>
+  {<br>
+    "1985": 3.78,<br>
+    "1986": 0.78,<br>
+    "1987": 1.78,<br>
+    "1988": 2.78,<br>
+    "1989": 4.78,<br>
+    "1990": 5.78,<br>
+    "SERCODIGO": "PIBPCE",<br>
+    "NIVNOME": "Estados",<br>
+    "TERCODIGO": "10"<br>
+  },<br>
 
-   [
-  {
-    "1985": 3.78,
-    "1986": 0.78,
-    "1987": 1.78,
-    "1988": 2.78,
-    "1989": 4.78,
-    "1990": 5.78,
-    "SERCODIGO": "PIBPCE",
-    "NIVNOME": "Estados",
-    "TERCODIGO": "10"
-  },
-
+<br>
+<br>
 
 **  ListarSéries:**
 
