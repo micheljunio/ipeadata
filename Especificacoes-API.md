@@ -1,68 +1,20 @@
 
-
-
-
-
 # IPEADATA 2.0
 
 # Especificação da API
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 **Histórico de Revisões**
-
-
 
 | **Data** | **Versão** | **Descrição** | **Autor** |
 | --- | --- | --- | --- |
 | 14/07/2017 | 1.00 | Criação | Bruno Rangel |
 |   |   |   |   |
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## 1.Introdução
 
 ### Propósito
 
-Este documento contém as especificações necessárias para o desenvolvimento da API que será responsável pela alimentação do porta do IpeaData 2.0.
+Este documento contém as especificações necessárias para o desenvolvimento da API que será responsável pela alimentação do portal IpeaData 2.0.
 
 ### Público Alvo
 
@@ -71,8 +23,6 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
 ## 2.Escopo
 
 ### Informações iniciais
-
-
 
 **info:**
 ```sh
@@ -85,25 +35,23 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
     - https
 ```
 
-
-
-
-### 3.1 Definindo o modelo de Dados
+### 3.1 Definindo o modelo de dados
 
 **GridSérie:**
 ```sh
-   [
   {
+    "SERCODIGO": "PIBPCE",
+    "NIVNOME": "Estados",
+    "TERCODIGO": "10",
     "1985": 3.78,
     "1986": 0.78,
     "1987": 1.78,
     "1988": 2.78,
     "1989": 4.78,
     "1990": 5.78,
-    "SERCODIGO": "PIBPCE",
-    "NIVNOME": "Estados",
-    "TERCODIGO": "10"
-  },
+    ...
+  }
+
 ```
 
 **ListarSéries:**
