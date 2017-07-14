@@ -4,7 +4,6 @@
 
 
 
-
 # IPEADATA 2.0
 
 # Especificação da API
@@ -196,7 +195,7 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
                      ]]]] 
 ```
 
-### 3.1Definindo o modelo de configuração dos componentes
+### 3.1 Definindo o modelo de configuração dos componentes
 
 **Grid**
 
@@ -204,7 +203,7 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
 {
 		serie: "xxx",
 		grid: {
-	     	exportToExcelAction:"xx",
+	     	exportToExcelAction:"xx", 
 			allowPaging: true,
 			allowSorting: true,
 			allowGrouping: false,
