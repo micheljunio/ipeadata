@@ -206,8 +206,8 @@ class Content extends Component {
 
     renderConfig(jsonView) {
 
-   /* var dados = jsonView.value;
-        if (dados[0].NIVNOME != undefined && dados[0].NIVNOME != ""){    */
+    var dados = jsonView.value;
+        if (dados[0].NIVNOME != undefined && dados[0].NIVNOME != ""){    
 /*
         this.setState({ ter: "Brasil"});
         this.setState({ abrang: -1});
@@ -663,7 +663,7 @@ class Content extends Component {
                 </Grid>
             );
         }
-    
+    }
         
     }
 
