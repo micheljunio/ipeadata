@@ -6,10 +6,9 @@
 
 
 
-
 **IPEADATA 2.0**
 
-**        Especificação da API**
+**Especificação da API**
 
 
 
@@ -64,7 +63,7 @@
 
 # 1.Introdução
 
-##  Propósito
+## Propósito
 
 Este documento contém as especificações necessárias para o desenvolvimento da API que será responsável pela alimentação do porta do IpeaData 2.0.
 
@@ -79,6 +78,7 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
 
 
 **info:**
+```sh
    Título: IpeaData
    Descrição: Metadados para o Portal IpeaData
    Versão: 1.0.0
@@ -86,7 +86,7 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
   schemes:
     - http
     - https
-
+```
 
 
 
@@ -97,26 +97,24 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
 
 
 
-**  GridSérie:**
-<br>
-   [<br>
-  {<br>
-    "1985": 3.78,<br>
-    "1986": 0.78,<br>
-    "1987": 1.78,<br>
-    "1988": 2.78,<br>
-    "1989": 4.78,<br>
-    "1990": 5.78,<br>
-    "SERCODIGO": "PIBPCE",<br>
-    "NIVNOME": "Estados",<br>
-    "TERCODIGO": "10"<br>
-  },<br>
+**GridSérie:**
+```sh
+   [
+  {
+    "1985": 3.78,
+    "1986": 0.78,
+    "1987": 1.78,
+    "1988": 2.78,
+    "1989": 4.78,
+    "1990": 5.78,
+    "SERCODIGO": "PIBPCE",
+    "NIVNOME": "Estados",
+    "TERCODIGO": "10"
+  },
+```
 
-<br>
-<br>
-
-**  ListarSéries:**
-
+**ListarSéries:**
+```sh
 [
   {
     "field": "SERCODIGO",
@@ -136,9 +134,9 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
     "headerText": "Frequência"
   }
 ]    
-
-
-**  GráficoSérie:**
+```
+**GráficoSérie:**
+```sh
  [
   {
     "Nome": "teste",
@@ -152,25 +150,25 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
     ]
   }
 ]
+```
 
 
-
-**  MapaSérie:**
-
+**MapaSérie:**
+```sh
   [
   {
     "type": "Feature",
     "id": "01",
-    "propriedades": {
-      "nome": "Acre",
-      "valor": 94.65
+    "properties": {
+      "name": "Acre",
+      "density": 94.65
     },
-    "geometria": [
+    "geometry": [
       {
         "type": "Polygon"
       },
       {
-        "coordenadas": [
+        "coordinates": [
           {
             "y": 20
           },
@@ -182,8 +180,9 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
     ]
   }
 ]
-
-**  MenuDropdow:**
+```
+**MenuDropdow:**
+```sh
 [
     name:  "macroeconomico",
     active: true,
@@ -200,6 +199,6 @@ Este documento se destina aos usuários, engenheiros de software, testadores que
                         name: "(Todas)",
                         fantasia: "todas"}
                      ]]]] 
-
+```
 
 
