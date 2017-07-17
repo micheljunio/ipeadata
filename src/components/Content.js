@@ -22,6 +22,10 @@ import { metadadoSerieAnoColuna } from "../data/metadadoSerieAnoColuna";
 import { metaConfigs } from "../data/metaConfigsComponents";
 import { moduleColumnJson, filteredGrid } from "../../script/modulesSync.js";
 
+import $ from "jquery";
+
+
+
 //css
 import "../css/content.css";
 
@@ -94,17 +98,41 @@ class Content extends Component {
 
     getValues() {
         function Get(yourUrl) {
-            var Httpreq = new XMLHttpRequest(); // a new request
+            /*var Httpreq = new XMLHttpRequest(); // a new request
             Httpreq.open("GET", yourUrl, false);
-            Httpreq.send(null);
-            return Httpreq.responseText;
+            Httpreq.send(null);*/
+
+            var yql_url = 'https://query.yahooapis.com/v1/public/yql';
+            var url = yourUrl;
+            var responseGet = "";
+            $.ajax({
+              url: yql_url,
+              data: {
+                q: 'SELECT * FROM json WHERE url="'+url+'"',
+                format: 'json',
+                jsonCompat: 'new'
+              },
+              async:false,
+              success: function (response) {
+                responseGet = response.query.results.json;
+              }
+            });
+            
+         return responseGet;
+
+        /*console.log(teste());*/
+        /*return response;*/
+
+/*            return Httpreq.responseText;*/
         }
+
         serieOld = this.props.url.id;
         var string =
-            "http://www.ipeadata.gov.br/api/odata4/Metadados('" +
+            "http://ipeadata.gov.br/api/odata4/Metadados('" +
             this.props.url.id +
             "')/Valores";
-        json_obj2 = JSON.parse(Get(string));
+        json_obj2 = Get(string);
+        console.log(json_obj2);
         tipoGrid = 0;
         //json_obj2 = metadadoAnoColuna;
         if (json_obj2.value.length == 0) {
