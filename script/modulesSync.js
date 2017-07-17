@@ -192,5 +192,19 @@ module.exports = {
         }
         console.log(serieJson);
         return serieJson;
-    }
+    },
+
+  moduleDownload: function (serie) {
+console.log("funciomou nada");
+
+var csv = serie;
+    var data = new Blob([csv]);
+    console.log(data);
+    var a = document.getElementById('a');
+    a.href = URL.createObjectURL(data);
+   
+
+  }
+
+
 }
