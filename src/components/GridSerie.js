@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { moduleGrid, getRowSelected, moduleGridJson } from "../../script/modulesSync.js";
+import { moduleGrid, getRowSelected, moduleGridJson,moduleDownload } from "../../script/modulesSync.js";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 
@@ -88,10 +88,17 @@ class GridSerie extends Component {
 			this.setState({ propsSerie: false });
 		}
 
+
+		
 		return (
+			
+			<div>
+			 <a id="a" download="Download.csv" type="text/csv"onClick={()=>moduleDownload(serie)}> Download </a>
+
 			<div id="Grid" onClick={this.handleClick}>
 				{moduleGrid(serie, this.props.div, columns, metaConfigs)}
 
+			</div>
 			</div>
 		);
 	}

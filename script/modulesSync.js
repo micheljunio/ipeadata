@@ -42,7 +42,7 @@ module.exports = {
             }
         return json;
     },
-
+ //Função responsável para idendificar o linha da Grid que foi selecionada
     getRowSelected: function () {
         var grid = $("#Grid").data("ejGrid");
 
@@ -59,6 +59,8 @@ module.exports = {
         metaConfigs["primaryYAxis"] = {title: { text: nameSerie }};
         $("#" + div).ejChart(metaConfigs);
     },
+
+//Funcao responsavel para criar  a legendas da coluna de forma dinamica
 
     moduleGraphJson: function (serie) {
         var jsonQ = require("jsonq");
@@ -190,5 +192,19 @@ module.exports = {
         }
         console.log(serieJson);
         return serieJson;
-    }
+    },
+
+  moduleDownload: function (serie) {
+console.log("funciomou nada");
+
+var csv = serie;
+    var data = new Blob([csv]);
+    console.log(data);
+    var a = document.getElementById('a');
+    a.href = URL.createObjectURL(data);
+   
+
+  }
+
+
 }
