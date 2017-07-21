@@ -133,6 +133,36 @@ export var territorio =
 	"ID": "17",
 	"Sigla": "TO",
 	"Nome": "Tocantins"
+},
+     {
+	"ID": "1",
+	"Sigla": "",
+	"Nome": "Norte"
+},
+     {
+	"ID": "2",
+	"Sigla": "",
+	"Nome": "Nordeste"
+},
+     {
+	"ID": "3",
+	"Sigla": "",
+	"Nome": "Sudeste"
+},
+     {
+	"ID": "4",
+	"Sigla": "",
+	"Nome": "Sul"
+},
+     {
+	"ID": "5",
+	"Sigla": "",
+	"Nome": "Centro-Oeste"
+},
+     {
+	"ID": "0",
+	"Sigla": "",
+	"Nome": "Brasil"
 }
 
 ];

@@ -165,10 +165,13 @@ module.exports = {
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie);
         var serieJson = [];
-        serieJson.push({
+        if(serie[0].TERCODIGO !== ""){
+            serieJson.push({
             field: "TERCODIGO",
-            headerText: "UF"
-        });
+            headerText: "Nível Territorial",
+            width: 140
+            });
+        }
         for (var i in obj) {
             var data = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3] + obj[i].VALDATA[4] + obj[i].VALDATA[5] + obj[i].VALDATA[6]);
             var dataAux = parseInt(obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3]);
