@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { moduleGrid, getRowSelected, moduleGridJson,moduleDownload } from "../../script/modulesSync.js";
+import { moduleGrid, getRowSelected, moduleGridJson,moduleDownloadExcel,moduleDownloadZip,moduleDownloadCSV1,moduleDownloadCSV2 } from "../../script/modulesSync.js";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
-
+import { Button } from "react-bootstrap";
 
 class GridSerie extends Component {
 	constructor() {
@@ -93,8 +93,12 @@ class GridSerie extends Component {
 		return (
 			
 			<div>
-			 <a id="a" download="Download.csv" type="text/csv"onClick={()=>moduleDownload(serie)}> Download </a>
 
+				<Button bsStyle="info"> <a id="a" download="ipea.xls" type="text/csv"onClick={()=>moduleDownloadExcel(serie)}> Download Excel </a></Button>
+				<Button bsStyle="info"> <a id="a1" download="ipea.zip" type="text/zip"onClick={()=>moduleDownloadZip(serie)}> Download Zip </a></Button>
+				<Button bsStyle="info"> <a id="a2" download="ipea.csv" type="text/csv"onClick={()=>moduleDownloadCSV1(serie)}> Download CSV(,) </a></Button>
+			   <Button bsStyle="info"> <a id="a3" download="ipea.csv" type="text/csv"onClick={()=>moduleDownloadCSV2(serie)}> Download CSV(;) </a></Button>
+            
 			<div id="Grid" onClick={this.handleClick}>
 				{moduleGrid(serie, this.props.div, columns, metaConfigs)}
 

@@ -194,17 +194,69 @@ module.exports = {
         return serieJson;
     },
 
-  moduleDownload: function (serie) {
-console.log("funciomou nada");
-
-var csv = serie;
+moduleDownloadCSV1: function (serie) {
+    
+    
+    var csv = Papa.unparse(serie);
     var data = new Blob([csv]);
-    console.log(data);
-    var a = document.getElementById('a');
-    a.href = URL.createObjectURL(data);
+    var a2 = document.getElementById('a2');
+    a2.href = URL.createObjectURL(data);
    
+  },
 
-  }
+moduleDownloadExcel: function (serie) {
+ 
+ var xls = Papa.unparse(serie);
+
+ while(xls.includes(','))
+    {
+        xls = xls.replace(',', '; ');
+    }
+  
+var data = new Blob([xls]); 
+var a = document.getElementById('a');
+ a.href = URL.createObjectURL(data);
+
+  },
+moduleDownloadZip: function (serie) {
+
+var JSZip = require("jszip");
+var FileSaver = require('file-saver');
+var csv = Papa.unparse(serie);
+
+ while(csv.includes(','))
+    {
+        csv = csv.replace(',', '; ');
+    }
+
+  var zip = new JSZip();
+  zip.file("ipea.csv", csv);
+  var blob = new Blob([csv], {type: "text/plain;charset=utf-8"});
+  zip.generateAsync({type:"blob"})
+    .then(function(content) {
+    FileSaver.saveAs(content, "ipea.zip");
+});
+  
+},
 
 
+moduleDownloadCSV2: function(serie){
+
+    var csv = Papa.unparse(serie);
+
+ while(csv.includes(','))
+    {
+        csv = csv.replace(',', '; ');
+    }
+
+var data = new Blob([csv]); 
+var a3 = document.getElementById('a3');
+a3.href = URL.createObjectURL(data);
+
+
+}
+
+
+
+  
 }
