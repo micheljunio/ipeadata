@@ -193,14 +193,18 @@ module.exports = {
         return serieJson;
     },
 
-    moduleDownloadCSV1: function (serie) {
+    moduleDownloadCSV1: function (div) {
+        var gridObj = $("#"+div).data("ejGrid");
+        var serie = gridObj.getCurrentViewData(); 
         var csv = Papa.unparse(serie);
         var data = new Blob([csv]);
         var a2 = document.getElementById('a2');
         a2.href = URL.createObjectURL(data);
     },
 
-    moduleDownloadExcel: function (serie) {
+    moduleDownloadExcel: function (div) {
+        var gridObj = $("#"+div).data("ejGrid");
+        var serie = gridObj.getCurrentViewData();
         var xls = Papa.unparse(serie);
         while (xls.includes(',')) {
             xls = xls.replace(',', '; ');
@@ -210,7 +214,9 @@ module.exports = {
         a.href = URL.createObjectURL(data);
 
     },
-    moduleDownloadZip: function (serie) {
+    moduleDownloadZip: function (div) {
+        var gridObj = $("#"+div).data("ejGrid");
+        var serie = gridObj.getCurrentViewData();
         var JSZip = require("jszip");
         var FileSaver = require('file-saver');
         var csv = Papa.unparse(serie);
@@ -226,7 +232,9 @@ module.exports = {
             });
     },
 
-    moduleDownloadCSV2: function (serie) {
+    moduleDownloadCSV2: function (div) {
+        var gridObj = $("#"+div).data("ejGrid");
+        var serie = gridObj.getCurrentViewData();
         var csv = Papa.unparse(serie);
         while (csv.includes(',')) {
             csv = csv.replace(',', '; ');
