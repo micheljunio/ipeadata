@@ -186,12 +186,7 @@ module.exports = {
                 if (index == -1) {
                     var dataTipo = (obj[i].VALDATA[5] + obj[i].VALDATA[6]);
                     var dataAno = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3] );
-                    if(periodo === "Mensal"){
-                       var periodicidade = (obj[i].VALDATA[5] + obj[i].VALDATA[6]);
-                    }
-                    else{
-                       var periodicidade = codigosTemporais[periodo].tipo[dataTipo];
-                    }
+                    var periodicidade = codigosTemporais[periodo].tipo[dataTipo];
                     serieJson.push({
                         field: "" + data + "",
                         headerText: "" + dataAno + " " + periodicidade + "",
