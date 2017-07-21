@@ -3,3 +3,4 @@ orbit-root/
 npm-debug.log
 .vscode/
 build/
+/nbproject/private/
