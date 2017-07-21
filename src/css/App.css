@@ -43,6 +43,7 @@ body{
     padding-left:  5px;
     padding-right:  5px;    
     height: calc(100vh - 80px);
+    overflow-y: auto;
     /* position: relative;
     width: 16.6667%;
      */
@@ -113,3 +114,52 @@ body{
     text-decoration:none; 
     color:white;
 }
+
+.metismenu>.metismenu-container>.metismenu-item>.metismenu-link{
+    font-size: 12px;
+}
+
+.metismenu-container.visible>.metismenu-item>.metismenu-link {
+ font-size: 12px;   
+}
+
+.metismenu-link.has-active-child {
+    color: gray;
+}
+
+.metismenu-link.active {
+    background: #8198fb;
+
+}
+
+/* .metismenu{
+} */
+
+.testenew1{
+    /* background-color: #024e9b; */
+    background-color: black;
+    color: black;
+}
+
+.testenew2{
+    background-color: #7AA623;
+    color: white;
+}
+
+
+.testenew3{
+    background-color: #990303;
+    color: white;
+}
+
+.metismenu-link{
+    color: white;
+}
+
+.metismenu-link:hover{
+    color: #4f6ffc;
+    
+}
+
+
+

@@ -15,6 +15,7 @@ import Content from "./Content";
 /*import Content2 from "./Content2";*/
 import Footer from "./Footer";
 import BarraGoverno from "./BarraGoverno";
+import NewMenu from "./NewMenu";
 
 /*import GridSerie from "./GridSerie";*/
 /*import Datatable from "./Datatable";*/
@@ -29,6 +30,8 @@ import { seriemacro } from "../data/seriemacro";
 import { seriesocial } from "../data/seriesocial";
 import { serieregional } from "../data/serieregional";
 
+import { newmenumacro } from "../data/newmenumacro";
+
 class App extends Component {
   render() {
     //console.log(this.props.match.params)
@@ -42,9 +45,9 @@ class App extends Component {
     return (
       <Grid fluid="true">
         {/*navbar*/}
-      <Row>
+        <Row>
           <Col className="nopadding barranew" xs={12} md={12}>
-            <BarraGoverno/>
+            <BarraGoverno />
           </Col>
         </Row>
         <Row>
@@ -58,26 +61,28 @@ class App extends Component {
           <Col className="nopadding" xs={12} md={12}>
 
             {/*menuleft*/}
-            <Col className="menu-left" xs={2} md={2}>
-              <MenuLeft
+            <Col className="menu-left" xs={3} sm={3} md={3} lg={3}>
+              <NewMenu url={this.props.match.params}  itensMacro={newmenumacro} />
+
+              {/*<MenuLeft
                 itens={itensTabs}
                 menuname={menu}
                 menucolor={menu + "-nav-sidebar"}
                 sidecolor={menu + "-sidebar"}
-              />
+              />*/}
             </Col>
 
             {/*rightarea*/}
-            <Col className="nopadding" xs={10} md={10}>
+            <Col className="nopadding" xs={9} md={9}>
 
               {/*menutop*/}
-              <Col className="nopadding menu-top" xs={12} md={12}>
+              {/*<Col className="nopadding menu-top" xs={12} md={12}>
                 <MenuTop
                   itens={itensTabs}
                   tabcolor={this.props.match.params.id + "-dropdown"}
                   togle={this.props.match.params.id + "-dropdown-toggle"}
                 />
-              </Col>
+              </Col>*/}
 
               {/*content*/}
               <Col className="nopadding content" xs={12} md={12}>
@@ -97,9 +102,9 @@ class App extends Component {
           </Col>
         </Row>
         {/*footer*/}
-        <Row >
+        <Row>
           <Col xs={12} md={12} />
-          <Footer/>
+          <Footer />
         </Row>
       </Grid>
     );

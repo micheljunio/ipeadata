@@ -6,9 +6,9 @@ import { Link, Redirect } from "react-router-dom";
 //css
 import "../css/navbar.css";
 
-import img1 from '../imgs/logo.gif';
-import img2 from '../imgs/logo_ipea.gif';
-import img3 from '../imgs/ico_inglaterra.gif';
+import img1 from "../imgs/logo.gif";
+import img2 from "../imgs/logo_ipea.gif";
+import img3 from "../imgs/ico_inglaterra.gif";
 
 /*import Metadados from "./Metadados";
 import Equipe from "./Equipe";
@@ -66,27 +66,46 @@ class Navbar extends Component {
                             <span className="icon-bar" />
                             <span className="icon-bar" />
                         </button>
-                <Link to={`/`} >
-                        <a
-                             className="navbar-brand"
-                        >
-                            <img alt="imagem" src={img1} />
-                        </a>
-                                    </Link>
-                        <a href="#" className="navbar-icone">
+
+                        <Link to={`/`}>
+                            <a className="navbar-brand">
+                                <img alt="imagem" src={img1} />
+                            </a>
+                        </Link>
+                        {/*<a href="#" className="navbar-icone">
                             <img alt="imagem" src={img3} />
-                        </a>
+                        </a>*/}
+
+                        {/*<Link to={`/social`}>
+                        <ul className="nav navbar-nav navbar-right">
+                            <li><a>Social</a></li>
+                        </ul>
+                        <Link to={`/regional`}>
+                        <ul className="nav navbar-nav navbar-right">
+                            <li><a>Regional</a></li>
+                        </ul>
+
+                        <Link to={`/macroeconomico`}>
+                        <ul className="nav navbar-nav navbar-right">
+                            <li><a>Macroeconomico</a></li>
+                        </ul>
+
+                        </Link>
+
+
+                        </Link>
+
+                        </Link>
+*/}
+
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
                         <ul className="nav navbar-nav navbar-right">
                             <li><a href="#">Fale Conosco</a></li>
-                            <Link to={`/`} >
-                            <a
-                                
-                                className="navbar-brand"
-                            >
-                                <img alt="imagem" src={img2} />                                
-                            </a>
+                            <Link to={`/`}>
+                                <a className="navbar-brand">
+                                    <img alt="imagem" src={img2} />
+                                </a>
                             </Link>
                         </ul>
 

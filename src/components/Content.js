@@ -8,6 +8,7 @@ import {
     DropdownButton,
     MenuItem,
     ButtonGroup,
+    Glyphicon,
     SplitButton
 } from "react-bootstrap";
 import { Grid, Col, Row, Well, Modal, Button } from "react-bootstrap";
@@ -834,18 +835,12 @@ class Content extends Component {
                         </Panel>
                     </div>
 
-                    {/* <div className="descrição">
-                        <Panel bsStyle={descriçãocolor}>
-                            <h3>Configurações</h3>
-                            
-                        </Panel>
-                    </div>*/}
-
                     <div className="tabs">
                         <Tabs
                             activeKey={this.state.key}
                             onSelect={this.handleSelect}
                             animation={false}
+                            justified={true}
                             id="controlled-tab-example"
                         >
                             <Tab eventKey={1} title="Tabela">
@@ -863,6 +858,17 @@ class Content extends Component {
                 </div>
             );
         }
+        /*return(
+        <div>
+            <h1>{this.props.url.id}</h1>
+            <h1>{this.props.url.submenu}</h1>
+            <h1>{this.props.url.submenu1}</h1>
+            <h1>{this.props.url.submenu2}</h1>
+            <h1>{this.props.url.submenu3}</h1>
+            <h1>{this.props.url.submenu4}</h1>
+            <h1>{this.props.url.submenu5}</h1>
+        </div>
+        );*/
     }
 }
 
