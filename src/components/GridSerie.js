@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import { Button } from "react-bootstrap";
 import { territorio } from "../data/CodigosTerritorios";
-
+import "../css/Grid.css";
 class GridSerie extends Component {
 	constructor() {
 		super();
@@ -95,12 +95,12 @@ class GridSerie extends Component {
 		return (
 			
 			<div>
-
-				<Button bsStyle="info testeIpea"> <a id="a" download="ipea.xls" type="text/csv"onClick={()=>moduleDownloadExcel(this.props.div)}> Download Excel </a></Button>
-				<Button bsStyle="info"> <a id="a1" download="ipea.zip" type="text/zip"onClick={()=>moduleDownloadZip(this.props.div)}> Download Zip </a></Button>
-				<Button bsStyle="info"> <a id="a2" download="ipea.csv" type="text/csv"onClick={()=>moduleDownloadCSV1(this.props.div)}> Download CSV(,) </a></Button>
-			   <Button bsStyle="info"> <a id="a3" download="ipea.csv" type="text/csv"onClick={()=>moduleDownloadCSV2(this.props.div)}> Download CSV(;) </a></Button>
-            
+              <div className="botoes">
+				<Button bsStyle="info botoes"> <a id="a" download="ipea.xls" type="text/xls"onClick={()=>moduleDownloadExcel(this.props.div)}> Excel </a></Button>
+				<Button bsStyle="info botoes"> <a id="a1" download="ipea.zip" type="text/zip"onClick={()=>moduleDownloadZip(this.props.div)}> Zip </a></Button>
+				<Button bsStyle="info botoes"> <a id="a2" download="ipea.csv" type="text/csv"onClick={()=>moduleDownloadCSV1(this.props.div)}> CSV(,) </a></Button>
+			   <Button bsStyle="info botoes"> <a id="a3" download="ipea.csv" type="text/csv"onClick={()=>moduleDownloadCSV2(this.props.div)}>CSV(;) </a></Button>
+              </div>
 			<div id="Grid" onClick={this.handleClick}>
 				{moduleGrid(serie, this.props.div, columns, metaConfigs)}
 
