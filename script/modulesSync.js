@@ -11,38 +11,38 @@ module.exports = {
         $("#" + div).ejGrid(metaConfigs);
     },
 
-    filteredGrid: function (serie, ter, abrang, inicio, fim ) {
+    filteredGrid: function (serie, ter, abrang, inicio, fim) {
         var datainicio = inicio, datafim = fim;
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie.value);
         var auxAbrang = "";
         console.log(obj);
         var json = [];
-        for(var key in obj) {
-            for (keyy in obj[key]){
+        for (var key in obj) {
+            for (keyy in obj[key]) {
                 auxAbrang = obj[key].TERCODIGO;
-                if(abrang == -1)
+                if (abrang == -1)
                     auxAbrang = abrang;
-                    if(obj[key][keyy] == ter && auxAbrang == abrang) {
-                        var iData = "";
-                        if(datafim > 0){
-                            var iData = datafim - datainicio;
-                            for(var i = 0; iData >= i; i++){
-                                var data = obj[key].VALDATA[0] + obj[key].VALDATA[1] + obj[key].VALDATA[2] + obj[key].VALDATA[3];
-                                if(data == (datainicio + i)) {
-                                    json.push(obj[key]);
-                                }
+                if (obj[key][keyy] == ter && auxAbrang == abrang) {
+                    var iData = "";
+                    if (datafim > 0) {
+                        var iData = datafim - datainicio;
+                        for (var i = 0; iData >= i; i++) {
+                            var data = obj[key].VALDATA[0] + obj[key].VALDATA[1] + obj[key].VALDATA[2] + obj[key].VALDATA[3];
+                            if (data == (datainicio + i)) {
+                                json.push(obj[key]);
                             }
-                        } 
-                        else{
-                            json.push(obj[key]);
-                        }                        
+                        }
                     }
-                }                
+                    else {
+                        json.push(obj[key]);
+                    }
+                }
             }
+        }
         return json;
     },
- //Função responsável para idendificar o linha da Grid que foi selecionada
+    //Função responsável para idendificar o linha da Grid que foi selecionada
     getRowSelected: function () {
         var grid = $("#Grid").data("ejGrid");
 
@@ -55,12 +55,12 @@ module.exports = {
     moduleGraph: function (div, serie, nameSerie, metaConfigs) {
         metaConfigs["series"] = serie;
         metaConfigs["title"] = { text: nameSerie },
-        metaConfigs["primaryXAxis"] =  {title: { text: 'Ano' }},
-        metaConfigs["primaryYAxis"] = {title: { text: nameSerie }};
+            metaConfigs["primaryXAxis"] = { title: { text: 'Ano' } },
+            metaConfigs["primaryYAxis"] = { title: { text: nameSerie } };
         $("#" + div).ejChart(metaConfigs);
     },
 
-//Funcao responsavel para criar  a legendas da coluna de forma dinamica
+    //Funcao responsavel para criar  a legendas da coluna de forma dinamica
 
     moduleGraphJson: function (serie) {
         var jsonQ = require("jsonq");
@@ -107,21 +107,20 @@ module.exports = {
         return serieJson;
     },
 
-    moduleGridJson: function (serie,territorio) {
+    moduleGridJson: function (serie, territorio) {
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie);
-        ter=territorio;
-       
-    for (var i in obj) {
-         for(var j in ter){
-           if((obj[i].TERCODIGO) == (ter[j].ID)){
-              obj[i].TERCODIGO= ter[j].Nome;
-           }
-         }
-    }
+        ter = territorio;
+
+        for (var i in obj) {
+            for (var j in ter) {
+                if ((obj[i].TERCODIGO) == (ter[j].ID)) {
+                    obj[i].TERCODIGO = ter[j].Nome;
+                }
+            }
+        }
 
         var serieJson = [];
-       
         for (var i in obj) {
             var item = obj[i].TERCODIGO;
             if (item == "") {
@@ -139,7 +138,7 @@ module.exports = {
                     "TERCODIGO": item
                 });
             }
-           
+
         }
         for (var i in obj) {
             var item = obj[i].TERCODIGO;
@@ -151,125 +150,89 @@ module.exports = {
             var index = name.index(function () {
                 return this == item;
             });
-            if(obj[i].VALDATA != undefined){
-                var ano = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3]+ obj[i].VALDATA[4] + obj[i].VALDATA[5] + obj[i].VALDATA[6]);
+            if (obj[i].VALDATA != undefined) {
+                var ano = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3] + obj[i].VALDATA[4] + obj[i].VALDATA[5] + obj[i].VALDATA[6]);
                 serieJson[index][ano] = obj[i].VALVALOR;
             }
-            else{
+            else {
                 serieJson = serie;
             }
         }
-        
         return serieJson;
     },
 
     moduleColumnJson: function (serie, anoInicio, anoFim) {
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie);
-
         var serieJson = [];
-       
         serieJson.push({
-                field: "TERCODIGO", 
-                headerText: "UF"
-                });
-
+            field: "TERCODIGO",
+            headerText: "UF"
+        });
         for (var i in obj) {
-            var data = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3] + obj[i].VALDATA[4] + obj[i].VALDATA[5] + obj[i].VALDATA[6]); 
+            var data = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3] + obj[i].VALDATA[4] + obj[i].VALDATA[5] + obj[i].VALDATA[6]);
             var dataAux = parseInt(obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3]);
-            if(dataAux >= anoInicio && dataAux <= anoFim){
-            var item = data;
-            var nameSerie = jsonQ(serieJson),
-                name = nameSerie.find('field');
-            var index = name.index(function () {
-                return this == ""+item+"";
-            });
-            if (index == -1) {
-                serieJson.push({
-                    field: ""+data+"",
-                    headerText: ""+data+"",
-                    format: "{0:n2}",
-                    width: 100
+            if (dataAux >= anoInicio && dataAux <= anoFim) {
+                var item = data;
+                var nameSerie = jsonQ(serieJson),
+                    name = nameSerie.find('field');
+                var index = name.index(function () {
+                    return this == "" + item + "";
                 });
-            }
+                if (index == -1) {
+                    serieJson.push({
+                        field: "" + data + "",
+                        headerText: "" + data + "",
+                        format: "{0:n2}",
+                        width: 100
+                    });
+                }
             }
         }
         console.log(serieJson);
         return serieJson;
     },
 
-moduleDownloadCSV1: function (serie) {
-    
-    
-    var csv = Papa.unparse(serie);
-    var data = new Blob([csv]);
-    var a2 = document.getElementById('a2');
-    a2.href = URL.createObjectURL(data);
-   
-  },
+    moduleDownloadCSV1: function (serie) {
+        var csv = Papa.unparse(serie);
+        var data = new Blob([csv]);
+        var a2 = document.getElementById('a2');
+        a2.href = URL.createObjectURL(data);
+    },
 
-moduleDownloadExcel: function (serie) {
- 
- var xls = Papa.unparse(serie);
+    moduleDownloadExcel: function (serie) {
+        var xls = Papa.unparse(serie);
+        while (xls.includes(',')) {
+            xls = xls.replace(',', '; ');
+        }
+        var data = new Blob([xls]);
+        var a = document.getElementById('a');
+        a.href = URL.createObjectURL(data);
 
- while(xls.includes(','))
-    {
-        xls = xls.replace(',', '; ');
-    }
-  
-var data = new Blob([xls]); 
-var a = document.getElementById('a');
- a.href = URL.createObjectURL(data);
+    },
+    moduleDownloadZip: function (serie) {
+        var JSZip = require("jszip");
+        var FileSaver = require('file-saver');
+        var csv = Papa.unparse(serie);
+        while (csv.includes(',')) {
+            csv = csv.replace(',', '; ');
+        }
+        var zip = new JSZip();
+        zip.file("ipea.csv", csv);
+        var blob = new Blob([csv], { type: "text/plain;charset=utf-8" });
+        zip.generateAsync({ type: "blob" })
+            .then(function (content) {
+                FileSaver.saveAs(content, "ipea.zip");
+            });
+    },
 
-  },
-moduleDownloadZip: function (serie) {
-
-var JSZip = require("jszip");
-var FileSaver = require('file-saver');
-var csv = Papa.unparse(serie);
-
- while(csv.includes(','))
-    {
-        csv = csv.replace(',', '; ');
-    }
-
-  var zip = new JSZip();
-  zip.file("ipea.csv", csv);
-  var blob = new Blob([csv], {type: "text/plain;charset=utf-8"});
-  zip.generateAsync({type:"blob"})
-    .then(function(content) {
-    FileSaver.saveAs(content, "ipea.zip");
-});
-  
-},
-
-
-moduleDownloadCSV2: function(serie){
-
-    var csv = Papa.unparse(serie);
-
- while(csv.includes(','))
-    {
-        csv = csv.replace(',', '; ');
-    }
-
-var data = new Blob([csv]); 
-var a3 = document.getElementById('a3');
-a3.href = URL.createObjectURL(data);
-
-
-},
-
-moduleTerritorios: function(){
-
-      
-
-
-
-
-}
-
-
-
-  
+    moduleDownloadCSV2: function (serie) {
+        var csv = Papa.unparse(serie);
+        while (csv.includes(',')) {
+            csv = csv.replace(',', '; ');
+        }
+        var data = new Blob([csv]);
+        var a3 = document.getElementById('a3');
+        a3.href = URL.createObjectURL(data);
+    },
 }
