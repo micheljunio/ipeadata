@@ -107,12 +107,21 @@ module.exports = {
         return serieJson;
     },
 
-    moduleGridJson: function (serie) {
+    moduleGridJson: function (serie,territorio) {
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie);
+        ter=territorio;
+       
+    for (var i in obj) {
+         for(var j in ter){
+           if((obj[i].TERCODIGO) == (ter[j].ID)){
+              obj[i].TERCODIGO= ter[j].Nome;
+           }
+         }
+    }
 
         var serieJson = [];
-        console.log('teste');
+       
         for (var i in obj) {
             var item = obj[i].TERCODIGO;
             if (item == "") {
@@ -130,6 +139,7 @@ module.exports = {
                     "TERCODIGO": item
                 });
             }
+           
         }
         for (var i in obj) {
             var item = obj[i].TERCODIGO;
@@ -149,6 +159,7 @@ module.exports = {
                 serieJson = serie;
             }
         }
+        
         return serieJson;
     },
 
@@ -157,17 +168,10 @@ module.exports = {
         var obj = jsonQ.order(serie);
 
         var serieJson = [];
-        serieJson.push({
-                field: "SERCODIGO", 
-                headerText: "Série"
-                });
-        serieJson.push({
-                field: "NIVNOME", 
-                headerText: "Nível Geográfico"
-                });
+       
         serieJson.push({
                 field: "TERCODIGO", 
-                headerText: "Código Territorial"
+                headerText: "UF"
                 });
 
         for (var i in obj) {
@@ -252,6 +256,15 @@ moduleDownloadCSV2: function(serie){
 var data = new Blob([csv]); 
 var a3 = document.getElementById('a3');
 a3.href = URL.createObjectURL(data);
+
+
+},
+
+moduleTerritorios: function(){
+
+      
+
+
 
 
 }

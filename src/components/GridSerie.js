@@ -3,6 +3,7 @@ import { moduleGrid, getRowSelected, moduleGridJson,moduleDownloadExcel,moduleDo
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router";
 import { Button } from "react-bootstrap";
+import { territorio } from "../data/CodigosTerritorios";
 
 class GridSerie extends Component {
 	constructor() {
@@ -43,7 +44,8 @@ class GridSerie extends Component {
 			var serie = this.props.serie;
 		}
 		else{
-			var serie = moduleGridJson(this.props.serie);
+			
+			var serie = moduleGridJson(this.props.serie,territorio);
 		}
 			
 		return (
@@ -72,7 +74,7 @@ class GridSerie extends Component {
 		var metaConfigs = this.props.metaConfigs;
 		var columns = this.props.columns;
 		if(this.state.tipoGrid){
-			serie = moduleGridJson(this.props.serie);
+			serie = moduleGridJson(this.props.serie,territorio);
 		}
 
 		if (this.state.redirect) {

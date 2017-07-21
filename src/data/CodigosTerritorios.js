@@ -1,138 +1,138 @@
-export var territorio = [
+export var territorio = 
 	[{
-	"ID": "1",
+	"ID": "12",
 	"Sigla": "AC",
 	"Nome": "Acre"
 },
      {
-	"ID": "2",
+	"ID": "27",
 	"Sigla": "AL",
 	"Nome": "Alagoas"
 },
      {
-	"ID": "3",
+	"ID": "13",
 	"Sigla": "AM",
 	"Nome": "Amazonas"
 },
      {
-	"ID": "4",
+	"ID": "16",
 	"Sigla": "AP",
 	"Nome": "Amapá"
 },
      {
-	"ID": "5",
+	"ID": "29",
 	"Sigla": "BA",
 	"Nome": "Bahia"
 },
      {
-	"ID": "6",
+	"ID": "23",
 	"Sigla": "CE",
 	"Nome": "Ceará"
 },
      {
-	"ID": "7",
+	"ID": "53",
 	"Sigla": "DF",
 	"Nome": "Distrito Federal"
 },
      {
-	"ID": "8",
+	"ID": "32",
 	"Sigla": "ES",
 	"Nome": "Espírito Santo"
 },
      {
-	"ID": "9",
+	"ID": "52",
 	"Sigla": "GO",
 	"Nome": "Goiás"
 },
      {
-	"ID": "10",
+	"ID": "21",
 	"Sigla": "MA",
 	"Nome": "Maranhão"
 },
      {
-	"ID": "11",
+	"ID": "31",
 	"Sigla": "MG",
 	"Nome": "Minas Gerais"
 },
      {
-	"ID": "12",
+	"ID": "50",
 	"Sigla": "MS",
 	"Nome": "Mato Grosso do Sul"
 },
      {
-	"ID": "13",
+	"ID": "51",
 	"Sigla": "MT",
 	"Nome": "Mato Grosso"
 },
      {
-	"ID": "14",
+	"ID": "15",
 	"Sigla": "PA",
 	"Nome": "Pará"
 },
      {
-	"ID": "15",
+	"ID": "25",
 	"Sigla": "PB",
 	"Nome": "Paraíba"
 },
      {
-	"ID": "16",
+	"ID": "26",
 	"Sigla": "PE",
 	"Nome": "Pernambuco"
 },
      {
-	"ID": "17",
+	"ID": "22",
 	"Sigla": "PI",
 	"Nome": "Piauí"
 },
      {
-	"ID": "18",
+	"ID": "41",
 	"Sigla": "PR",
 	"Nome": "Paraná"
 },
      {
-	"ID": "19",
+	"ID": "33",
 	"Sigla": "RJ",
 	"Nome": "Rio de Janeiro"
 },
      {
-	"ID": "20",
+	"ID": "24",
 	"Sigla": "RN",
 	"Nome": "Rio Grande do Norte"
 },
      {
-	"ID": "21",
+	"ID": "11",
 	"Sigla": "RO",
 	"Nome": "Rondônia"
 },
      {
-	"ID": "22",
+	"ID": "14",
 	"Sigla": "RR",
 	"Nome": "Roraima"
 },
      {
-	"ID": "23",
+	"ID": "43",
 	"Sigla": "RS",
 	"Nome": "Rio Grande do Sul"
 },
      {
-	"ID": "24",
+	"ID": "42",
 	"Sigla": "SC",
 	"Nome": "Santa Catarina"
 },
      {
-	"ID": "25",
+	"ID": "28",
 	"Sigla": "SE",
 	"Nome": "Sergipe"
 },
      {
-	"ID": "26",
+	"ID": "35",
 	"Sigla": "SP",
 	"Nome": "São Paulo"
 },
      {
-	"ID": "27",
+	"ID": "17",
 	"Sigla": "TO",
 	"Nome": "Tocantins"
-}]
-];
+}
 
+];
