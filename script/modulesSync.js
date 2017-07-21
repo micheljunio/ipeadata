@@ -161,10 +161,11 @@ module.exports = {
         return serieJson;
     },
 
-    moduleColumnJson: function (serie, anoInicio, anoFim) {
+    moduleColumnJson: function (serie, anoInicio, anoFim, codigosTemporais, periodo) {
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie);
-        var serieJson = [];
+        var serieJson = [];         
+        console.log(codigosTemporais["Semestral"]);
         if(serie[0].TERCODIGO !== ""){
             serieJson.push({
             field: "TERCODIGO",
@@ -183,9 +184,13 @@ module.exports = {
                     return this == "" + item + "";
                 });
                 if (index == -1) {
+                    var dataTipo = (obj[i].VALDATA[5] + obj[i].VALDATA[6]);
+                    var dataAno = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3] );
+                    console.log(periodo);
+                    var periodicidade = codigosTemporais[periodo].tipo[dataTipo];
                     serieJson.push({
                         field: "" + data + "",
-                        headerText: "" + data + "",
+                        headerText: "" + dataAno + " " + periodicidade + "",
                         format: "{0:n2}",
                         width: 100
                     });

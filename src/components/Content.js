@@ -21,6 +21,7 @@ import { metadadoSerieGeral } from "../data/metadadoSerieGeral";
 import { metadadoSerieAnoColuna } from "../data/metadadoSerieAnoColuna";
 import { metaConfigs } from "../data/metaConfigsComponents";
 import { moduleColumnJson, filteredGrid } from "../../script/modulesSync.js";
+import { codigosTemporais } from "../data/codigosTemporais";
 
 import $ from "jquery";
 
@@ -35,6 +36,7 @@ var serie;
 var text = "";
 var json_obj2 = "";
 var serieName = "";
+var periodicidade = "";
 var serieOld = "";
 var serieData = "";
 var tipoGrid = "";
@@ -173,7 +175,9 @@ class Content extends Component {
             columns = moduleColumnJson(
                 jsonView.value,
                 this.state.inicio,
-                this.state.fim
+                this.state.fim,
+                codigosTemporais,
+                periodicidade
             );
         }
 
@@ -221,6 +225,7 @@ class Content extends Component {
             if (metadados.value[key].SERCODIGO == this.props.url.id) {
                 descr = metadados.value[key].SERCOMENTARIO;
                 serieName = metadados.value[key].SERNOME;
+                periodicidade = metadados.value[key].PERNOME;
             }
         }
         return descr;
