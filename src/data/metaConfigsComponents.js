@@ -12,6 +12,7 @@ var metaConfigs =
 			allowReordering: true,
 			allowMultiSorting: true,
 			allowResizeToFit: true,
+            dataSource: "dataManager",
 			filterSettings: { filterType: "excel" },
 			rowSelected: "window.rowSelected"
 		},

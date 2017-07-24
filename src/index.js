@@ -15,8 +15,7 @@ class Root extends Component {
           <Route exact path="/:id/:submenu/:submenu2/:submenu3/:submenu4" component={App} />
           <Route exact path="/:id/:submenu/:submenu2/:submenu3" component={App} />
           <Route exact path="/:id/:submenu/:submenu2" component={App} />          
-          <Route exact path="/:id/:submenu" component={App} />
-          <Route exact path="/:id/:serie" component={App} />
+          <Route exact path="/:id/:submenu" component={App} />          
           <Route exact path="/:id"component={App} />
           
         </div>

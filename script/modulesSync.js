@@ -3,11 +3,17 @@ module.exports = {
     moduleGrid: function (data, div, columns, metaConfigs) {
         metaConfigs["dataSource"] = data;
         metaConfigs["columns"] = columns;
-        console.log(columns);
+
+/*        console.log(columns);
         console.log("Serie na grid:");
-        console.log(data);
+        console.log(data);*/
         if ($("#" + div).data("ejGrid"))
             $("#" + div).ejGrid("destroy");
+        
+        var dataManager = ej.DataManager({
+            offline:true
+        });
+
         $("#" + div).ejGrid(metaConfigs);
     },
 
@@ -16,7 +22,7 @@ module.exports = {
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie.value);
         var auxAbrang = "";
-        console.log(obj);
+  /*      console.log(obj);*/
         var json = [];
         for (var key in obj) {
             for (keyy in obj[key]) {
