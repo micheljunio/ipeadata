@@ -111,15 +111,17 @@ module.exports = {
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie);
         ter = territorio;
+        var nivelTerr=[];
 
         for (var i in obj) {
             for (var j in ter) {
                 if ((obj[i].TERCODIGO) == (ter[j].ID)) {
-                    obj[i].TERCODIGO = ter[j].Nome;
+                    nivelTerr[i] = ter[j].Nome;
                 }
             }
         }
-
+       
+ 
         var serieJson = [];
         for (var i in obj) {
             var item = obj[i].TERCODIGO;
@@ -135,15 +137,18 @@ module.exports = {
                 serieJson.push({
                     "SERCODIGO": obj[i].SERCODIGO,
                     "NIVNOME": obj[i].NIVNOME,
-                    "TERCODIGO": item
+                    "TERCODIGO": item,
+                    "Nivel Territorial":nivelTerr[i]
                 });
             }
 
         }
+        console.log(serieJson);
         for (var i in obj) {
             var item = obj[i].TERCODIGO;
             if (item == "") {
                 item = obj[i].SERCODIGO;
+
             };
             let nameSerie = jsonQ(serieJson),
                 name = nameSerie.find('TERCODIGO');
@@ -158,6 +163,7 @@ module.exports = {
                 serieJson = serie;
             }
         }
+        console.log(serieJson);
         return serieJson;
     },
 
@@ -168,11 +174,20 @@ module.exports = {
         console.log(codigosTemporais["Semestral"]);
         if(serie[0].TERCODIGO !== ""){
             serieJson.push({
-            field: "TERCODIGO",
+            field: "TERCODIGO", visible: false,
+            headerText: "Código Territorial",
+            width: 140
+            },
+            {
+            field: "Nivel Territorial",
             headerText: "Nível Territorial",
             width: 140
-            });
         }
+
+        );
+        }
+    
+
         for (var i in obj) {
             var data = (obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3] + obj[i].VALDATA[4] + obj[i].VALDATA[5] + obj[i].VALDATA[6]);
             var dataAux = parseInt(obj[i].VALDATA[0] + obj[i].VALDATA[1] + obj[i].VALDATA[2] + obj[i].VALDATA[3]);
@@ -204,7 +219,7 @@ module.exports = {
         var gridObj = $("#"+div).data("ejGrid");
         var serie = gridObj.getCurrentViewData(); 
         var csv = Papa.unparse(serie);
-        var data = new Blob([csv]);
+        var data = new Blob([csv],{ type: "text/plain;charset=utf-8" });
         var a2 = document.getElementById('a2');
         a2.href = URL.createObjectURL(data);
     },
@@ -216,7 +231,7 @@ module.exports = {
         while (xls.includes(',')) {
             xls = xls.replace(',', '; ');
         }
-        var data = new Blob([xls]);
+        var data = new Blob([xls] , { type: "text/plain;charset=utf-8" });
         var a = document.getElementById('a');
         a.href = URL.createObjectURL(data);
 
@@ -246,7 +261,7 @@ module.exports = {
         while (csv.includes(',')) {
             csv = csv.replace(',', '; ');
         }
-        var data = new Blob([csv]);
+        var data = new Blob([csv],{ type: "text/plain;charset=utf-8" });
         var a3 = document.getElementById('a3');
         a3.href = URL.createObjectURL(data);
     },
