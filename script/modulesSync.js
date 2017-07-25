@@ -1,6 +1,7 @@
 module.exports = {
 
     moduleGrid: function (data, div, columns, metaConfigs) {
+        var start = new Date().getTime();
         metaConfigs["dataSource"] = data;
         metaConfigs["columns"] = columns;
 
@@ -15,9 +16,13 @@ module.exports = {
         });
 
         $("#" + div).ejGrid(metaConfigs);
+        var end = new Date().getTime();
+        var time = end - start;
+        console.log('Execution time Grid: ' + time); 
     },
 
     filteredGrid: function (serie, ter, abrang, inicio, fim) {
+        var start = new Date().getTime();
         var datainicio = inicio, datafim = fim;
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie.value);
@@ -46,6 +51,9 @@ module.exports = {
                 }
             }
         }
+        var end = new Date().getTime();
+        var time = end - start;
+        console.log('Execution time Filtro Regioes Grid: ' + time);   
         return json;
     },
     //Função responsável para idendificar o linha da Grid que foi selecionada
@@ -69,6 +77,7 @@ module.exports = {
     //Funcao responsavel para criar  a legendas da coluna de forma dinamica
 
     moduleGraphJson: function (serie) {
+        var start = new Date().getTime();
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie);
 
@@ -110,10 +119,14 @@ module.exports = {
                 "y": obj[i].VALVALOR
             });
         }
+        var end = new Date().getTime();
+        var time = end - start;
+        console.log('Execution time Json Grafico: ' + time); 
         return serieJson;
     },
 
     moduleGridJson: function (serie, territorio) {
+        var start = new Date().getTime();
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie);
         ter = territorio;
@@ -126,7 +139,6 @@ module.exports = {
                 }
             }
         }
-       
  
         var serieJson = [];
         for (var i in obj) {
@@ -149,7 +161,6 @@ module.exports = {
             }
 
         }
-        console.log(serieJson);
         for (var i in obj) {
             var item = obj[i].TERCODIGO;
             if (item == "") {
@@ -169,15 +180,17 @@ module.exports = {
                 serieJson = serie;
             }
         }
-        console.log(serieJson);
+        var end = new Date().getTime();
+        var time = end - start;
+        console.log('Execution time Json Grid: ' + time); 
         return serieJson;
     },
 
     moduleColumnJson: function (serie, anoInicio, anoFim, codigosTemporais, periodo) {
+        var start = new Date().getTime();
         var jsonQ = require("jsonq");
         var obj = jsonQ.order(serie);
         var serieJson = [];         
-        console.log(codigosTemporais["Semestral"]);
         if(serie[0].TERCODIGO !== ""){
             serieJson.push({
             field: "TERCODIGO", visible: false,
@@ -217,7 +230,9 @@ module.exports = {
                 }
             }
         }
-        console.log(serieJson);
+        var end = new Date().getTime();
+        var time = end - start;
+        console.log('Execution time column Json: ' + time); 
         return serieJson;
     },
 
