@@ -43,7 +43,7 @@ class App extends Component {
         }
 
     return (
-      <Grid fluid="true">
+      <Grid fluid={true}>
         {/*navbar*/}
         <Row>
           <Col className="nopadding barranew" xs={12} md={12}>

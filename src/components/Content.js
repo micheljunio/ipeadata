@@ -63,7 +63,7 @@ class Content extends Component {
             ter: "Brasil",
             abrang: -1,
             inicio: 1985,
-            fim: 2011, 
+            fim: 2011,
             showModal: true
         };
     }
@@ -109,40 +109,36 @@ class Content extends Component {
             var url = yourUrl;
             var responseGet = "";
             $.ajax({
-              url: yql_url,
-              data: {
-                q: 'SELECT * FROM json WHERE url="'+url+'"',
-                format: 'json',
-                jsonCompat: 'new'
-              },
-              async:false,
-              success: function (response) {
-                responseGet = response.query.results.json;
-              }
+                url: yql_url,
+                data: {
+                    q: 'SELECT * FROM json WHERE url="' + url + '"',
+                    format: 'json',
+                    jsonCompat: 'new'
+                },
+                async: false,
+                success: function (response) {
+                    responseGet = response.query.results.json;
+                }
             });
-            
-         return responseGet;
 
-        /*console.log(teste());*/
-        /*return response;*/
+            return responseGet;
 
-/*            return Httpreq.responseText;*/
+            /*console.log(teste());*/
+            /*return response;*/
+
+            /*            return Httpreq.responseText;*/
         }
 
         serieOld = this.props.url.id;
         var string =
-            "http://ipeadata.gov.br/api/odata4/Metadados('" +
-            this.props.url.id +
-            "')/Valores";
+            "http://ipeadata.gov.br/api/odata4/Metadados('" + this.props.url.id + "')/Valores";
         json_obj2 = Get(string);
-        console.log(json_obj2);
         tipoGrid = 0;
         //json_obj2 = metadadoAnoColuna;
         if (json_obj2.value.length == 0) {
             json_obj2 = metadados;
             tipoGrid = 1;
         }
-
         /*
         json_obj2 = filteredGrid(json_obj2);
         console.log(json_obj2);    
@@ -154,7 +150,6 @@ class Content extends Component {
         if (this.props.url.id == undefined) {
             return (
                 <Jumbotron>
-                    {" "}
                     <img alt="imagem" className="imageminicial" src={img} />
                 </Jumbotron>
             );
@@ -236,36 +231,164 @@ class Content extends Component {
         return <MapaSerie />;
     }
 
-    renderComponents() {}
+    renderComponents() { }
 
     renderConfig(jsonView) {
 
-    var dados = jsonView.value;
-        if (dados[0].NIVNOME != undefined && dados[0].NIVNOME != ""){    
-/*
-        this.setState({ ter: "Brasil"});
-        this.setState({ abrang: -1});
-        this.setState({ inicio: 1985}); 
-        this.setState({ fim: 2011});  
-        this.setState({ ter: "Brasil"});*/  
+        var dados = jsonView.value;
+        if (dados[0].NIVNOME != undefined && dados[0].NIVNOME != "") {
+            /*
+                    this.setState({ ter: "Brasil"});
+                    this.setState({ abrang: -1});
+                    this.setState({ inicio: 1985}); 
+                    this.setState({ fim: 2011});  
+                    this.setState({ ter: "Brasil"});*/
 
-        if (this.state.inicio > this.state.fim) {        
+            if (this.state.inicio > this.state.fim) {
 
-            return (
-                <div>
+                return (
                     <div>
-                        <Modal show={this.state.showModal} onHide={this.Modalclose}>
-                            <Modal.Header closeButton>
-                                <Modal.Title>Erro!</Modal.Title>
-                            </Modal.Header>
+                        <div>
+                            <Modal show={this.state.showModal} onHide={this.Modalclose}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Erro!</Modal.Title>
+                                </Modal.Header>
 
-                            <Modal.Body>
-                                Data errada
+                                <Modal.Body>
+                                    Data errada
                             </Modal.Body>
 
-                        </Modal>
-                    </div>
+                            </Modal>
+                        </div>
 
+                        <Grid fluid="true">
+                            {/*navbar*/}
+                            <Row>
+
+                                <Col xs={3} md={3}>
+                                    <p>Nível Geográfico</p>
+                                </Col>
+                                <Col xs={3} md={3}>
+                                    <SplitButton
+                                        bsStyle="primary"
+                                        key="1"
+                                        id="split-button-basic-1"
+                                        onSelect={this.eventobotao}
+                                        title="Nivel Geografico"
+                                    >
+                                        <MenuItem eventKey={"Brasil"}>
+                                            {" "}Brasil
+                                        {" "}
+                                        </MenuItem>
+                                        <MenuItem eventKey={"Regiões"}>
+                                            {" "}Regiões
+                                        {" "}
+                                        </MenuItem>
+                                        <MenuItem eventKey={"Estados"}>
+                                            {" "}Estados
+                                        {" "}
+                                        </MenuItem>
+                                    </SplitButton>
+                                </Col>
+
+                            </Row>
+
+                            <Row>
+
+                                <Col xs={3} md={3}>
+                                    <p>inicio</p>
+                                </Col>
+                                <Col xs={3} md={3}>
+
+                                    <SplitButton
+                                        bsStyle="primary"
+                                        onSelect={this.eventobotao3}
+                                        key="3"
+                                        id="split-button-basic-1"
+                                        title="inicio"
+                                    >
+                                        <MenuItem eventKey={1985}> 1985 </MenuItem>
+                                        <MenuItem eventKey={1986}> 1986 </MenuItem>
+                                        <MenuItem eventKey={1987}> 1987 </MenuItem>
+                                        <MenuItem eventKey={1988}> 1988 </MenuItem>
+                                        <MenuItem eventKey={1989}> 1989 </MenuItem>
+                                        <MenuItem eventKey={1990}> 1990 </MenuItem>
+                                        <MenuItem eventKey={1991}> 1991 </MenuItem>
+                                        <MenuItem eventKey={1992}> 1992 </MenuItem>
+                                        <MenuItem eventKey={1993}> 1993 </MenuItem>
+                                        <MenuItem eventKey={1994}> 1994 </MenuItem>
+                                        <MenuItem eventKey={1995}> 1995 </MenuItem>
+                                        <MenuItem eventKey={1996}> 1996 </MenuItem>
+                                        <MenuItem eventKey={1997}> 1997 </MenuItem>
+                                        <MenuItem eventKey={1998}> 1998 </MenuItem>
+                                        <MenuItem eventKey={1999}> 1999 </MenuItem>
+                                        <MenuItem eventKey={2000}> 2000 </MenuItem>
+                                        <MenuItem eventKey={2001}> 2001 </MenuItem>
+                                        <MenuItem eventKey={2003}> 2003 </MenuItem>
+                                        <MenuItem eventKey={2004}> 2004 </MenuItem>
+                                        <MenuItem eventKey={2005}> 2005 </MenuItem>
+                                        <MenuItem eventKey={2006}> 2006 </MenuItem>
+                                        <MenuItem eventKey={2007}> 2007 </MenuItem>
+                                        <MenuItem eventKey={2008}> 2008 </MenuItem>
+                                        <MenuItem eventKey={2009}> 2009 </MenuItem>
+                                        <MenuItem eventKey={2010}> 2010 </MenuItem>
+                                        <MenuItem eventKey={2011}> 2011 </MenuItem>
+
+                                    </SplitButton>
+
+                                </Col>
+
+                                <Col xs={3} md={3}>
+                                    <p>Fim</p>
+                                </Col>
+                                <Col xs={3} md={3}>
+
+                                    <SplitButton
+                                        bsStyle="primary"
+                                        onSelect={this.eventobotao4}
+                                        key="4"
+                                        id="split-button-basic-1"
+                                        title="fim"
+                                    >
+                                        <MenuItem eventKey={1985}> 1985 </MenuItem>
+                                        <MenuItem eventKey={1986}> 1986 </MenuItem>
+                                        <MenuItem eventKey={1987}> 1987 </MenuItem>
+                                        <MenuItem eventKey={1988}> 1988 </MenuItem>
+                                        <MenuItem eventKey={1989}> 1989 </MenuItem>
+                                        <MenuItem eventKey={1990}> 1990 </MenuItem>
+                                        <MenuItem eventKey={1991}> 1991 </MenuItem>
+                                        <MenuItem eventKey={1992}> 1992 </MenuItem>
+                                        <MenuItem eventKey={1993}> 1993 </MenuItem>
+                                        <MenuItem eventKey={1994}> 1994 </MenuItem>
+                                        <MenuItem eventKey={1995}> 1995 </MenuItem>
+                                        <MenuItem eventKey={1996}> 1996 </MenuItem>
+                                        <MenuItem eventKey={1997}> 1997 </MenuItem>
+                                        <MenuItem eventKey={1998}> 1998 </MenuItem>
+                                        <MenuItem eventKey={1999}> 1999 </MenuItem>
+                                        <MenuItem eventKey={2000}> 2000 </MenuItem>
+                                        <MenuItem eventKey={2001}> 2001 </MenuItem>
+                                        <MenuItem eventKey={2003}> 2003 </MenuItem>
+                                        <MenuItem eventKey={2004}> 2004 </MenuItem>
+                                        <MenuItem eventKey={2005}> 2005 </MenuItem>
+                                        <MenuItem eventKey={2006}> 2006 </MenuItem>
+                                        <MenuItem eventKey={2007}> 2007 </MenuItem>
+                                        <MenuItem eventKey={2008}> 2008 </MenuItem>
+                                        <MenuItem eventKey={2009}> 2009 </MenuItem>
+                                        <MenuItem eventKey={2010}> 2010 </MenuItem>
+                                        <MenuItem eventKey={2011}> 2011 </MenuItem>
+
+                                    </SplitButton>
+
+                                </Col>
+                            </Row>
+                        </Grid>
+                    </div>
+                );
+
+            }
+
+            if (this.state.ter === "Brasil") {
+                return (
                     <Grid fluid="true">
                         {/*navbar*/}
                         <Row>
@@ -279,19 +402,19 @@ class Content extends Component {
                                     key="1"
                                     id="split-button-basic-1"
                                     onSelect={this.eventobotao}
-                                    title="Nivel Geografico"
+                                    title={this.state.ter}
                                 >
                                     <MenuItem eventKey={"Brasil"}>
                                         {" "}Brasil
-                                        {" "}
+                                    {" "}
                                     </MenuItem>
                                     <MenuItem eventKey={"Regiões"}>
                                         {" "}Regiões
-                                        {" "}
+                                    {" "}
                                     </MenuItem>
                                     <MenuItem eventKey={"Estados"}>
                                         {" "}Estados
-                                        {" "}
+                                    {" "}
                                     </MenuItem>
                                 </SplitButton>
                             </Col>
@@ -310,7 +433,7 @@ class Content extends Component {
                                     onSelect={this.eventobotao3}
                                     key="3"
                                     id="split-button-basic-1"
-                                    title="inicio"
+                                    title={this.state.inicio}
                                 >
                                     <MenuItem eventKey={1985}> 1985 </MenuItem>
                                     <MenuItem eventKey={1986}> 1986 </MenuItem>
@@ -353,7 +476,7 @@ class Content extends Component {
                                     onSelect={this.eventobotao4}
                                     key="4"
                                     id="split-button-basic-1"
-                                    title="fim"
+                                    title={this.state.fim}
                                 >
                                     <MenuItem eventKey={1985}> 1985 </MenuItem>
                                     <MenuItem eventKey={1986}> 1986 </MenuItem>
@@ -387,318 +510,190 @@ class Content extends Component {
                             </Col>
                         </Row>
                     </Grid>
-                </div>
-            );
-        
+                );
+            }
+
+            if (this.state.ter === "Regiões" || this.state.ter === "Estados") {
+                var text;
+                if (this.state.abrang === -1) {
+                    text = "Todos"
+                }
+                if (this.state.abrang == 1) {
+                    text = "Regial Centro-Oeste"
+                }
+                if (this.state.abrang == 2) {
+                    text = "Regial Nordeste"
+                }
+                if (this.state.abrang == 3) {
+                    text = "Regial Norte"
+                }
+                if (this.state.abrang == 4) {
+                    text = "Regial Sudeste"
+                }
+                if (this.state.abrang == 5) {
+                    text = "Regial Sul"
+                }
+
+                return (
+                    <Grid fluid="true">
+                        {/*navbar*/}
+                        <Row>
+
+                            <Col xs={3} md={3}>
+                                <p>Nível Geográfico</p>
+                            </Col>
+                            <Col xs={3} md={3}>
+                                <SplitButton
+                                    bsStyle="primary"
+                                    key="1"
+                                    id="split-button-basic-1"
+                                    onSelect={this.eventobotao}
+                                    title={this.state.ter}
+                                >
+                                    <MenuItem eventKey={"Brasil"}>
+                                        {" "}Brasil
+                                    {" "}
+                                    </MenuItem>
+                                    <MenuItem eventKey={"Regiões"}>
+                                        {" "}Regiões
+                                    {" "}
+                                    </MenuItem>
+                                    <MenuItem eventKey={"Estados"}>
+                                        {" "}Estados
+                                    {" "}
+                                    </MenuItem>
+                                </SplitButton>
+                            </Col>
+
+                        </Row>
+                        <Row>
+
+                            <Col xs={3} md={3}>
+                                <p>Abrangencia</p>
+                            </Col>
+                            <Col xs={3} md={3}>
+
+                                <SplitButton
+                                    onSelect={this.eventobotao2}
+                                    bsStyle="primary"
+                                    key="2"
+                                    id="split-button-basic-1"
+                                    title={text}
+                                >
+                                    <MenuItem eventKey={"1"}>
+                                        {" "}Regial Centro-Oeste
+                                    {" "}
+                                    </MenuItem>
+                                    <MenuItem eventKey={"2"}>
+                                        {" "}Regial Nordeste
+                                    {" "}
+                                    </MenuItem>
+                                    <MenuItem eventKey={"3"}>
+                                        {" "}Regial Norte
+                                    {" "}
+                                    </MenuItem>
+                                    <MenuItem eventKey={"4"}>
+                                        {" "}Regial Sudeste
+                                    {" "}
+                                    </MenuItem>
+                                    <MenuItem eventKey={"5"}> Regial Sul </MenuItem>
+                                </SplitButton>
+
+                            </Col>
+                        </Row>
+                        <Row>
+
+                            <Col xs={3} md={3}>
+                                <p>inicio</p>
+                            </Col>
+                            <Col xs={3} md={3}>
+
+                                <SplitButton
+                                    bsStyle="primary"
+                                    onSelect={this.eventobotao}
+                                    key="3"
+                                    id="split-button-basic-1"
+                                    title={this.state.inicio}
+                                >
+                                    <MenuItem eventKey={1985}> 1985 </MenuItem>
+                                    <MenuItem eventKey={1986}> 1986 </MenuItem>
+                                    <MenuItem eventKey={1987}> 1987 </MenuItem>
+                                    <MenuItem eventKey={1988}> 1988 </MenuItem>
+                                    <MenuItem eventKey={1989}> 1989 </MenuItem>
+                                    <MenuItem eventKey={1990}> 1990 </MenuItem>
+                                    <MenuItem eventKey={1991}> 1991 </MenuItem>
+                                    <MenuItem eventKey={1992}> 1992 </MenuItem>
+                                    <MenuItem eventKey={1993}> 1993 </MenuItem>
+                                    <MenuItem eventKey={1994}> 1994 </MenuItem>
+                                    <MenuItem eventKey={1995}> 1995 </MenuItem>
+                                    <MenuItem eventKey={1996}> 1996 </MenuItem>
+                                    <MenuItem eventKey={1997}> 1997 </MenuItem>
+                                    <MenuItem eventKey={1998}> 1998 </MenuItem>
+                                    <MenuItem eventKey={1999}> 1999 </MenuItem>
+                                    <MenuItem eventKey={2000}> 2000 </MenuItem>
+                                    <MenuItem eventKey={2001}> 2001 </MenuItem>
+                                    <MenuItem eventKey={2003}> 2003 </MenuItem>
+                                    <MenuItem eventKey={2004}> 2004 </MenuItem>
+                                    <MenuItem eventKey={2005}> 2005 </MenuItem>
+                                    <MenuItem eventKey={2006}> 2006 </MenuItem>
+                                    <MenuItem eventKey={2007}> 2007 </MenuItem>
+                                    <MenuItem eventKey={2008}> 2008 </MenuItem>
+                                    <MenuItem eventKey={2009}> 2009 </MenuItem>
+                                    <MenuItem eventKey={2010}> 2010 </MenuItem>
+                                    <MenuItem eventKey={2011}> 2011 </MenuItem>
+
+                                </SplitButton>
+
+                            </Col>
+
+                            <Col xs={3} md={3}>
+                                <p>Fim</p>
+                            </Col>
+                            <Col xs={3} md={3}>
+
+                                <SplitButton
+                                    bsStyle="primary"
+                                    onSelect={this.eventobotao4}
+                                    key="4"
+                                    id="split-button-basic-1"
+                                    title={this.state.fim}
+                                >
+                                    <MenuItem eventKey={1985}> 1985 </MenuItem>
+                                    <MenuItem eventKey={1986}> 1986 </MenuItem>
+                                    <MenuItem eventKey={1987}> 1987 </MenuItem>
+                                    <MenuItem eventKey={1988}> 1988 </MenuItem>
+                                    <MenuItem eventKey={1989}> 1989 </MenuItem>
+                                    <MenuItem eventKey={1990}> 1990 </MenuItem>
+                                    <MenuItem eventKey={1991}> 1991 </MenuItem>
+                                    <MenuItem eventKey={1992}> 1992 </MenuItem>
+                                    <MenuItem eventKey={1993}> 1993 </MenuItem>
+                                    <MenuItem eventKey={1994}> 1994 </MenuItem>
+                                    <MenuItem eventKey={1995}> 1995 </MenuItem>
+                                    <MenuItem eventKey={1996}> 1996 </MenuItem>
+                                    <MenuItem eventKey={1997}> 1997 </MenuItem>
+                                    <MenuItem eventKey={1998}> 1998 </MenuItem>
+                                    <MenuItem eventKey={1999}> 1999 </MenuItem>
+                                    <MenuItem eventKey={2000}> 2000 </MenuItem>
+                                    <MenuItem eventKey={2001}> 2001 </MenuItem>
+                                    <MenuItem eventKey={2003}> 2003 </MenuItem>
+                                    <MenuItem eventKey={2004}> 2004 </MenuItem>
+                                    <MenuItem eventKey={2005}> 2005 </MenuItem>
+                                    <MenuItem eventKey={2006}> 2006 </MenuItem>
+                                    <MenuItem eventKey={2007}> 2007 </MenuItem>
+                                    <MenuItem eventKey={2008}> 2008 </MenuItem>
+                                    <MenuItem eventKey={2009}> 2009 </MenuItem>
+                                    <MenuItem eventKey={2010}> 2010 </MenuItem>
+                                    <MenuItem eventKey={2011}> 2011 </MenuItem>
+
+                                </SplitButton>
+
+                            </Col>
+                        </Row>
+                    </Grid>
+                );
+            }
         }
 
-        if (this.state.ter === "Brasil") {
-            return (
-                <Grid fluid="true">
-                    {/*navbar*/}
-                    <Row>
-
-                        <Col xs={3} md={3}>
-                            <p>Nível Geográfico</p>
-                        </Col>
-                        <Col xs={3} md={3}>
-                            <SplitButton
-                                bsStyle="primary"
-                                key="1"
-                                id="split-button-basic-1"
-                                onSelect={this.eventobotao}
-                                title={this.state.ter}
-                            >
-                                <MenuItem eventKey={"Brasil"}>
-                                    {" "}Brasil
-                                    {" "}
-                                </MenuItem>
-                                <MenuItem eventKey={"Regiões"}>
-                                    {" "}Regiões
-                                    {" "}
-                                </MenuItem>
-                                <MenuItem eventKey={"Estados"}>
-                                    {" "}Estados
-                                    {" "}
-                                </MenuItem>
-                            </SplitButton>
-                        </Col>
-
-                    </Row>
-
-                    <Row>
-
-                        <Col xs={3} md={3}>
-                            <p>inicio</p>
-                        </Col>
-                        <Col xs={3} md={3}>
-
-                            <SplitButton
-                                bsStyle="primary"
-                                onSelect={this.eventobotao3}
-                                key="3"
-                                id="split-button-basic-1"
-                                title={this.state.inicio}
-                            >
-                                <MenuItem eventKey={1985}> 1985 </MenuItem>
-                                <MenuItem eventKey={1986}> 1986 </MenuItem>
-                                <MenuItem eventKey={1987}> 1987 </MenuItem>
-                                <MenuItem eventKey={1988}> 1988 </MenuItem>
-                                <MenuItem eventKey={1989}> 1989 </MenuItem>
-                                <MenuItem eventKey={1990}> 1990 </MenuItem>
-                                <MenuItem eventKey={1991}> 1991 </MenuItem>
-                                <MenuItem eventKey={1992}> 1992 </MenuItem>
-                                <MenuItem eventKey={1993}> 1993 </MenuItem>
-                                <MenuItem eventKey={1994}> 1994 </MenuItem>
-                                <MenuItem eventKey={1995}> 1995 </MenuItem>
-                                <MenuItem eventKey={1996}> 1996 </MenuItem>
-                                <MenuItem eventKey={1997}> 1997 </MenuItem>
-                                <MenuItem eventKey={1998}> 1998 </MenuItem>
-                                <MenuItem eventKey={1999}> 1999 </MenuItem>
-                                <MenuItem eventKey={2000}> 2000 </MenuItem>
-                                <MenuItem eventKey={2001}> 2001 </MenuItem>
-                                <MenuItem eventKey={2003}> 2003 </MenuItem>
-                                <MenuItem eventKey={2004}> 2004 </MenuItem>
-                                <MenuItem eventKey={2005}> 2005 </MenuItem>
-                                <MenuItem eventKey={2006}> 2006 </MenuItem>
-                                <MenuItem eventKey={2007}> 2007 </MenuItem>
-                                <MenuItem eventKey={2008}> 2008 </MenuItem>
-                                <MenuItem eventKey={2009}> 2009 </MenuItem>
-                                <MenuItem eventKey={2010}> 2010 </MenuItem>
-                                <MenuItem eventKey={2011}> 2011 </MenuItem>
-
-                            </SplitButton>
-
-                        </Col>
-
-                        <Col xs={3} md={3}>
-                            <p>Fim</p>
-                        </Col>
-                        <Col xs={3} md={3}>
-
-                            <SplitButton
-                                bsStyle="primary"
-                                onSelect={this.eventobotao4}
-                                key="4"
-                                id="split-button-basic-1"
-                                title={this.state.fim}
-                            >
-                                <MenuItem eventKey={1985}> 1985 </MenuItem>
-                                <MenuItem eventKey={1986}> 1986 </MenuItem>
-                                <MenuItem eventKey={1987}> 1987 </MenuItem>
-                                <MenuItem eventKey={1988}> 1988 </MenuItem>
-                                <MenuItem eventKey={1989}> 1989 </MenuItem>
-                                <MenuItem eventKey={1990}> 1990 </MenuItem>
-                                <MenuItem eventKey={1991}> 1991 </MenuItem>
-                                <MenuItem eventKey={1992}> 1992 </MenuItem>
-                                <MenuItem eventKey={1993}> 1993 </MenuItem>
-                                <MenuItem eventKey={1994}> 1994 </MenuItem>
-                                <MenuItem eventKey={1995}> 1995 </MenuItem>
-                                <MenuItem eventKey={1996}> 1996 </MenuItem>
-                                <MenuItem eventKey={1997}> 1997 </MenuItem>
-                                <MenuItem eventKey={1998}> 1998 </MenuItem>
-                                <MenuItem eventKey={1999}> 1999 </MenuItem>
-                                <MenuItem eventKey={2000}> 2000 </MenuItem>
-                                <MenuItem eventKey={2001}> 2001 </MenuItem>
-                                <MenuItem eventKey={2003}> 2003 </MenuItem>
-                                <MenuItem eventKey={2004}> 2004 </MenuItem>
-                                <MenuItem eventKey={2005}> 2005 </MenuItem>
-                                <MenuItem eventKey={2006}> 2006 </MenuItem>
-                                <MenuItem eventKey={2007}> 2007 </MenuItem>
-                                <MenuItem eventKey={2008}> 2008 </MenuItem>
-                                <MenuItem eventKey={2009}> 2009 </MenuItem>
-                                <MenuItem eventKey={2010}> 2010 </MenuItem>
-                                <MenuItem eventKey={2011}> 2011 </MenuItem>
-
-                            </SplitButton>
-
-                        </Col>
-                    </Row>
-                </Grid>
-            );
-        }
-
-        if (this.state.ter === "Regiões" || this.state.ter === "Estados") {
-            var text;
-            if (this.state.abrang === -1){
-                text = "Todos"         
-            }
-            if (this.state.abrang == 1){
-                text = "Regial Centro-Oeste"         
-            }
-            if (this.state.abrang == 2){
-                text = "Regial Nordeste"         
-            }
-            if (this.state.abrang == 3){
-                text = "Regial Norte"         
-            }
-            if (this.state.abrang == 4){
-                text = "Regial Sudeste"         
-            }
-            if (this.state.abrang == 5){
-                text = "Regial Sul"         
-            }
-
-            return (
-                <Grid fluid="true">
-                    {/*navbar*/}
-                    <Row>
-
-                        <Col xs={3} md={3}>
-                            <p>Nível Geográfico</p>
-                        </Col>
-                        <Col xs={3} md={3}>
-                            <SplitButton
-                                bsStyle="primary"
-                                key="1"
-                                id="split-button-basic-1"
-                                onSelect={this.eventobotao}
-                                title={this.state.ter}
-                            >
-                                <MenuItem eventKey={"Brasil"}>
-                                    {" "}Brasil
-                                    {" "}
-                                </MenuItem>
-                                <MenuItem eventKey={"Regiões"}>
-                                    {" "}Regiões
-                                    {" "}
-                                </MenuItem>
-                                <MenuItem eventKey={"Estados"}>
-                                    {" "}Estados
-                                    {" "}
-                                </MenuItem>
-                            </SplitButton>
-                        </Col>
-
-                    </Row>
-                    <Row>
-
-                        <Col xs={3} md={3}>
-                            <p>Abrangencia</p>
-                        </Col>
-                        <Col xs={3} md={3}>
-
-                            <SplitButton
-                                onSelect={this.eventobotao2}
-                                bsStyle="primary"
-                                key="2"
-                                id="split-button-basic-1"
-                                title={text}
-                            >
-                                <MenuItem eventKey={"1"}>
-                                    {" "}Regial Centro-Oeste
-                                    {" "}
-                                </MenuItem>
-                                <MenuItem eventKey={"2"}>
-                                    {" "}Regial Nordeste
-                                    {" "}
-                                </MenuItem>
-                                <MenuItem eventKey={"3"}>
-                                    {" "}Regial Norte
-                                    {" "}
-                                </MenuItem>
-                                <MenuItem eventKey={"4"}>
-                                    {" "}Regial Sudeste
-                                    {" "}
-                                </MenuItem>
-                                <MenuItem eventKey={"5"}> Regial Sul </MenuItem>
-                            </SplitButton>
-
-                        </Col>
-                    </Row>
-                    <Row>
-
-                        <Col xs={3} md={3}>
-                            <p>inicio</p>
-                        </Col>
-                        <Col xs={3} md={3}>
-
-                            <SplitButton
-                                bsStyle="primary"
-                                onSelect={this.eventobotao}
-                                key="3"
-                                id="split-button-basic-1"
-                                title={this.state.inicio}
-                            >
-                                <MenuItem eventKey={1985}> 1985 </MenuItem>
-                                <MenuItem eventKey={1986}> 1986 </MenuItem>
-                                <MenuItem eventKey={1987}> 1987 </MenuItem>
-                                <MenuItem eventKey={1988}> 1988 </MenuItem>
-                                <MenuItem eventKey={1989}> 1989 </MenuItem>
-                                <MenuItem eventKey={1990}> 1990 </MenuItem>
-                                <MenuItem eventKey={1991}> 1991 </MenuItem>
-                                <MenuItem eventKey={1992}> 1992 </MenuItem>
-                                <MenuItem eventKey={1993}> 1993 </MenuItem>
-                                <MenuItem eventKey={1994}> 1994 </MenuItem>
-                                <MenuItem eventKey={1995}> 1995 </MenuItem>
-                                <MenuItem eventKey={1996}> 1996 </MenuItem>
-                                <MenuItem eventKey={1997}> 1997 </MenuItem>
-                                <MenuItem eventKey={1998}> 1998 </MenuItem>
-                                <MenuItem eventKey={1999}> 1999 </MenuItem>
-                                <MenuItem eventKey={2000}> 2000 </MenuItem>
-                                <MenuItem eventKey={2001}> 2001 </MenuItem>
-                                <MenuItem eventKey={2003}> 2003 </MenuItem>
-                                <MenuItem eventKey={2004}> 2004 </MenuItem>
-                                <MenuItem eventKey={2005}> 2005 </MenuItem>
-                                <MenuItem eventKey={2006}> 2006 </MenuItem>
-                                <MenuItem eventKey={2007}> 2007 </MenuItem>
-                                <MenuItem eventKey={2008}> 2008 </MenuItem>
-                                <MenuItem eventKey={2009}> 2009 </MenuItem>
-                                <MenuItem eventKey={2010}> 2010 </MenuItem>
-                                <MenuItem eventKey={2011}> 2011 </MenuItem>
-
-                            </SplitButton>
-
-                        </Col>
-
-                        <Col xs={3} md={3}>
-                            <p>Fim</p>
-                        </Col>
-                        <Col xs={3} md={3}>
-
-                            <SplitButton
-                                bsStyle="primary"
-                                onSelect={this.eventobotao4}
-                                key="4"
-                                id="split-button-basic-1"
-                                title={this.state.fim}
-                            >
-                                <MenuItem eventKey={1985}> 1985 </MenuItem>
-                                <MenuItem eventKey={1986}> 1986 </MenuItem>
-                                <MenuItem eventKey={1987}> 1987 </MenuItem>
-                                <MenuItem eventKey={1988}> 1988 </MenuItem>
-                                <MenuItem eventKey={1989}> 1989 </MenuItem>
-                                <MenuItem eventKey={1990}> 1990 </MenuItem>
-                                <MenuItem eventKey={1991}> 1991 </MenuItem>
-                                <MenuItem eventKey={1992}> 1992 </MenuItem>
-                                <MenuItem eventKey={1993}> 1993 </MenuItem>
-                                <MenuItem eventKey={1994}> 1994 </MenuItem>
-                                <MenuItem eventKey={1995}> 1995 </MenuItem>
-                                <MenuItem eventKey={1996}> 1996 </MenuItem>
-                                <MenuItem eventKey={1997}> 1997 </MenuItem>
-                                <MenuItem eventKey={1998}> 1998 </MenuItem>
-                                <MenuItem eventKey={1999}> 1999 </MenuItem>
-                                <MenuItem eventKey={2000}> 2000 </MenuItem>
-                                <MenuItem eventKey={2001}> 2001 </MenuItem>
-                                <MenuItem eventKey={2003}> 2003 </MenuItem>
-                                <MenuItem eventKey={2004}> 2004 </MenuItem>
-                                <MenuItem eventKey={2005}> 2005 </MenuItem>
-                                <MenuItem eventKey={2006}> 2006 </MenuItem>
-                                <MenuItem eventKey={2007}> 2007 </MenuItem>
-                                <MenuItem eventKey={2008}> 2008 </MenuItem>
-                                <MenuItem eventKey={2009}> 2009 </MenuItem>
-                                <MenuItem eventKey={2010}> 2010 </MenuItem>
-                                <MenuItem eventKey={2011}> 2011 </MenuItem>
-
-                            </SplitButton>
-
-                        </Col>
-                    </Row>
-                </Grid>
-            );
-        }
-    }
-        
     }
 
     render() {

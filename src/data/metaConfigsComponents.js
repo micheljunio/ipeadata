@@ -13,6 +13,7 @@ var metaConfigs =
 			allowMultiSorting: true,
 			allowResizeToFit: true,
             dataSource: "dataManager",
+		    enableResponsiveRow: false,
 			filterSettings: { filterType: "excel" },
 			rowSelected: "window.rowSelected"
 		},
