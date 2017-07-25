@@ -178,8 +178,6 @@ class Content extends Component {
         }
 
         var dados = jsonView.value;
-        console.log(dados);
-        console.log(dados[0].NIVNOME);
 
         if (dados[0].NIVNOME != undefined && dados[0].NIVNOME != "") {
             dados = filteredGrid(
