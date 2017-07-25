@@ -7,7 +7,6 @@ import { DropdownButton, MenuItem} from "react-bootstrap";
 
 const STATES_URL = 'dist/states.json';
 const date=statesData
-console.log(date);
 export default class MapaSerie extends React.Component {
 
   constructor (props) {
