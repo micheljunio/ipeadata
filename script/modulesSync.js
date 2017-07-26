@@ -146,7 +146,7 @@ module.exports = {
             if (item == "") {
                 item = obj[i].SERCODIGO;
             };
-            let nameSerie = jsonQ(serieJson),
+            var nameSerie = jsonQ(serieJson),
                 name = nameSerie.find('TERCODIGO');
             var index = name.index(function () {
                 return this == item;
@@ -167,7 +167,7 @@ module.exports = {
                 item = obj[i].SERCODIGO;
 
             };
-            let nameSerie = jsonQ(serieJson),
+            var nameSerie = jsonQ(serieJson),
                 name = nameSerie.find('TERCODIGO');
             var index = name.index(function () {
                 return this == item;
